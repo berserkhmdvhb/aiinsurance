@@ -19,7 +19,7 @@ Moreover, a pipeline including main stages of the classification (refer to [`tar
 To install this package in an R edtior (e.g., Rstudio), install [`devtools`](https://www.r-project.org/nosvn/pandoc/devtools.html) library and then install my package. Please follow the following commands:
 
 ```r
-install.packages("devtools", dependencies = TRUE)
+install.packages("devtools")
 library(devtools)
 install_github("berserkhmdvhb/aiinsurance")
 ```
