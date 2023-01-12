@@ -13,8 +13,11 @@ library(aiinsurance)
 library(cachem)
 
 
-#shinyOptions(cache = cachem::cache_disk("./app-cache",
-#                                        max_age = Inf))
+appDir <- system.file("plot_app", package = "aiinsurance")
+cacheDir <- paste(appDir,"/app-cache",sep="")
+shinyOptions(cache = cachem::cache_disk(cacheDir,
+                                        max_size = 2048 * 2048^2,
+                                        max_age = Inf))
 ###
 get_data_train <- function(){
   aiinsurance::insurance_train

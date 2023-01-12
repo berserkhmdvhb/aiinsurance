@@ -21,7 +21,12 @@ Imports:
     car,
     Metrics,
     pROC,
-    randomForest
+    randomForest,
+    targets,
+    shiny,
+    shinycustomloader,
+    cachem,
+    rticles
 Suggests: 
     knitr,
     rmarkdown,
@@ -32,9 +37,6 @@ Suggests:
     tidyverse,
     ggplot2,
     readr,
-    rticles,
-    targets,
-    shiny,
-    shinycustomloader
+    rticles
 VignetteBuilder: knitr
 Config/testthat/edition: 3
