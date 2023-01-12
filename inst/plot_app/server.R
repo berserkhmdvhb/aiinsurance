@@ -20,7 +20,7 @@ server <- function(session, input, output) {
       aiinsurance::rf_predict_hmd(data=aiinsurance::insurance_test,
                      fit=model_random_forest)
     }
-  }) #|> bindCache(input$model_selected) |> bindEvent(input$run_plot)
+  }) |> bindCache(input$model_selected) |> bindEvent(input$run_plot)
 
 
   plot_eval <- reactive({
@@ -37,7 +37,7 @@ server <- function(session, input, output) {
       eval_glm$confusion_matrix_plot
     }
 
-  })  #|> bindCache(input$evaluation_selected) |> bindEvent(input$run_plot)
+  }) |> bindCache(input$model_selected, input$evaluation_selected) |> bindEvent(input$run_plot)
 
 
   output$evaluation_plots <- renderPlot({
