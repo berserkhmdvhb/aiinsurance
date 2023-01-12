@@ -81,35 +81,6 @@
 \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
 \makesavenoteenv{longtable}
 
-% Pandoc citation processing
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-% for Pandoc 2.8 to 2.10.1
-\newenvironment{cslreferences}%
-  {}%
-  {\par}
-% For Pandoc 2.11+
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
-  \fi
-  % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \begin{document}
 \maketitle
@@ -124,9 +95,9 @@ not. Two machine learning models, i.e., logistic regression and random
 forest is implemented to predict the outcomes using the historical data.
 The results indicate successful and promising predictions with accuracy
 of over 80 percent. Besides, prediction, informative insights from the
-dataset and models have been garnered. For instance, by dint of
-extracting feature importance from the random forest model, the parts of
-the dataset that play the more effective role in the prediction become
+dataset and models have been drawn. For instance, by dint of extracting
+feature importance from the random forest model, the parts of the
+dataset that play the more effective role in the prediction become
 evidenced.
 \end{abstract}
 
@@ -134,14 +105,16 @@ evidenced.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Here goes an introduction text
+The use of statistical learning models has been a common practice in
+actuarial science since the 1980s. It was not long after since the field
+adoped linear models and generalized linear models (GLMs). However, it
+was in the past few years that the use of AI and machine learning
+garnered significant attention in the field \cite{rev1}.
 
 \hypertarget{headings-first-level}{%
 \section{Headings: first level}\label{headings-first-level}}
 
 \label{sec:headings}
-
-You can use directly LaTeX command or Markdown text.
 
 LaTeX command can be used to reference other section. See Section
 \ref{sec:headings}. However, you can also use \textbf{bookdown}
@@ -169,8 +142,8 @@ references}\label{examples-of-citations-figures-tables-references}}
 
 \label{sec:others}
 
-You can insert references. Here is some text (Kour and Saabne 2014b,
-2014a) and see Hadash et al. (2018).
+You can insert references. Here is some text (\textbf{kour2014real?};
+\textbf{kour2014fast?}) and see (\textbf{hadash2018estimate?}).
 
 The documentation for \verb+natbib+ may be found at
 
@@ -302,27 +275,6 @@ Valiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1 \\
 \item
   Item 3
 \end{itemize}
-
-\hypertarget{refs}{}
-\begin{CSLReferences}{1}{0}
-\leavevmode\vadjust pre{\hypertarget{ref-hadash2018estimate}{}}%
-Hadash, Guy, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and
-Alon Jacovi. 2018. {``Estimate and Replace: A Novel Approach to
-Integrating Deep Neural Networks with Existing Applications.''}
-\emph{arXiv Preprint arXiv:1804.09028}.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kour2014fast}{}}%
-Kour, George, and Raid Saabne. 2014a. {``Fast Classification of
-Handwritten on-Line Arabic Characters.''} In \emph{Soft Computing and
-Pattern Recognition (SoCPaR), 2014 6th International Conference of},
-312--18. IEEE.
-
-\leavevmode\vadjust pre{\hypertarget{ref-kour2014real}{}}%
----------. 2014b. {``Real-Time Segmentation of on-Line Handwritten
-Arabic Script.''} In \emph{Frontiers in Handwriting Recognition (ICFHR),
-2014 14th International Conference on}, 417--22. IEEE.
-
-\end{CSLReferences}
 
 \bibliographystyle{unsrt}
 \bibliography{references.bib}

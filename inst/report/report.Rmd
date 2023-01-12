@@ -4,7 +4,7 @@ authors:
     name: Hamed Vaheb
     email: hamed.vaheb.001@student.uni.lu
 abstract: 
-  This report describes the machine learning project which aims at analysis and prediction of the car insurance claims dataset. Based on historical data of the clients, the variable of interest is the outcome of insurance, which indicates whether a customer has claimed his loan or not. Two machine learning models, i.e., logistic regression and random forest is implemented to predict the outcomes using the historical data. The results indicate successful and promising predictions with accuracy of over 80 percent. Besides, prediction, informative insights from the dataset and models have been garnered. For instance, by dint of extracting feature importance from the random forest model, the parts of the dataset that play the more effective role in the prediction become evidenced.
+  This report describes the machine learning project which aims at analysis and prediction of the car insurance claims dataset. Based on historical data of the clients, the variable of interest is the outcome of insurance, which indicates whether a customer has claimed his loan or not. Two machine learning models, i.e., logistic regression and random forest is implemented to predict the outcomes using the historical data. The results indicate successful and promising predictions with accuracy of over 80 percent. Besides, prediction, informative insights from the dataset and models have been drawn. For instance, by dint of extracting feature importance from the random forest model, the parts of the dataset that play the more effective role in the prediction become evidenced.
 
 bibliography: references.bib
 biblio-style: unsrt
@@ -12,13 +12,14 @@ output: rticles::arxiv_article
 ---
 
 # Introduction
+The use of statistical learning models has been a common practice in actuarial science since the 1980s. 
+It was not long after since the field adoped linear models and generalized linear models (GLMs).
+However, it was in the past few years that the use of AI and machine learning garnered significant attention in the field \cite{rev1}.
 
-Here goes an introduction text
 
 # Headings: first level
 \label{sec:headings}
 
-You can use directly LaTeX command or Markdown text. 
 
 LaTeX command can be used to reference other section. See Section \ref{sec:headings}.
 However, you can also use **bookdown** extensions mechanism for this.
