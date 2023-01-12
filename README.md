@@ -1,5 +1,5 @@
 # aiinsurance  <img src="inst/figures/logo.png" align="right" style="width: 25%;"/>
-Author: Hamed Vaheb
+Creator: Hamed Vaheb
 
 Icon Source: [aiinsurance.io](https://aiinsurance.io/)
 
