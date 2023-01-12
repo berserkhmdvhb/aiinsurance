@@ -6,5 +6,7 @@ title: AI Insurance Package
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
-type: software
-authors: []
+authors:
+  - family-names: Vaheb
+    given-names: Hamed
+type: package
