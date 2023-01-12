@@ -1,0 +1,748 @@
+---
+title: "Car Insurance Claims Classification Report"
+author: "Hamed Vaheb"
+#1date: "09 Jan 2021"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    code_folding: hide
+    theme: readable
+    highlight: haddock
+  pdf_document:
+    toc: yes
+---
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(aiinsurance)
+library(dplyr)
+library(janitor)
+library(visdat)
+library(ggplot2)
+library(imbalance)
+library(readr)
+library(caret) #for dummyVar function
+library(Metrics)
+library(randomForest)
+library(tidyverse)
+```
+# **Introduction**
+This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`aiinsurance`](https://github.com/berserkhmdvhb/aiinsurance). 
+You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
+
+`devtools::install_github("https://github.com/berserkhmdvhb/aiinsurance")`
+
+You can explore the documentation of package I provided with 
+
+`help(package="aiinsurance")`
+
+Also, this report is accessible as vignette of the package, which can be accessed with
+
+`vignette(package = "aiinsurance")`
+
+(Note: I just made a meta-reference)
+
+
+Note that all functions of the package are suffixed with `hmd`.
+
+
+ 
+# **Load Dataset**
+To provide a test case on a dataset with discrete target variable, I used the the [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+
+The dataset is embedded in the package, therefore by simply running the following commands one can load and display the dataset.
+. It can be used by the following syntax:
+
+`data("car_insurance_data")`
+
+
+
+
+```{r}
+data(car_insurance_data)
+
+dplyr::glimpse(car_insurance_data)
+```
+
+
+Summary of statistical properties of columns are provided in the following:
+
+```{r}
+summary(car_insurance_data)
+```
+
+
+
+
+# **Preprocess** {#preprocess}
+Before feeding data to the model, various preprocessing stages are performed in the following subsections:
+
+## Clean Column Names
+
+```{r}
+df <- janitor::clean_names(car_insurance_data)
+
+names(df)
+```
+
+And the following is to make the codes reproducible, as random values might be involved in different stages:
+```{r}
+set.seed(12345)
+```
+
+## Categorical Columns
+We need to factorise the categorical columns, which can be done by merely inputting columns intended to be converted in `cat_cols` in the `prepare_hmd` function. Before doing that, we report and visualise the nature of categorical data and their frequency in the dataset
+
+```{r}
+categoricals_print_hmd(df)
+```
+
+```{r warning=FALSE}
+vis_dat(df)
+```
+
+```{r}
+df <- categoricals_hmd(df) 
+dplyr::glimpse(df)
+```
+
+
+```{r}
+vis_dat(df)
+```
+
+
+## Missing Data
+
+
+
+```{r}
+df[is.na(df) | df=="Inf"] = NA
+vis_miss(df, sort_miss = TRUE)
+```
+
+
+```{r}
+is.na(df |> select("credit_score","annual_mileage")) |> colSums()
+## Classification Models
+```
+
+As only two numerical columns include NA values, the will be imputed with the median of their respective columns.
+For this `impute_median_hmd` function is used from the package:
+
+```{r}
+df <- impute_median_hmd(df)
+is.na(df) |> colSums()
+```
+As evident, there is no missing data anymore.
+## Check Imbalance of Target
+
+**Visualize Balance**
+
+As imbalance of target classes affect predictions, the frequency of each class in the `outcome` column is visualized:
+
+
+```{r}
+# Most basic bar chart
+ggplot(df, aes(x = outcome)) +
+    geom_bar()
+```
+
+```{r}
+table(df$outcome)
+```
+
+```{r}
+imbalance::imbalanceRatio(df, classAttr = "outcome")
+```
+## Encoding Categorical Columns
+
+Since later it is realized that data is imbalanced and therefore it should be resampled, it is required that data would only contain numerical columns for the next part. For this reason, one-hot-encoding is applied in the following:
+
+```{r}
+dummy <- dummyVars(" ~ .", data=df)
+df_enc <- data.frame(predict(dummy, newdata = df)) 
+dplyr::glimpse(df_enc)
+```
+
+Ensuring the encoded dataframe didn't slip a NA value:
+```{r}
+is.na(df_enc) |> colSums()
+```
+
+## Split to Train/Test
+
+
+
+```{r}
+
+df_dict <- train_test_splitter_hmd(df_enc, 
+                             proportion=0.8)
+train <- df_dict$train
+test <- df_dict$test
+
+
+```
+
+## Normalize
+
+```{r}
+
+for (col in names(train)){
+  if (col %in% c("annual_mileage", "postal_code", "credit_score"))
+  {
+    next
+  }
+  train[[col]] <- as.integer(train[[col]])
+  test[[col]] <- as.integer(test[[col]])
+}
+```
+
+
+
+
+```{r}
+df_dict_norm <- normalizer_hmd(train,test)
+
+
+train <- df_dict_norm$train_norm
+test <- df_dict_norm$test_norm
+
+train$id <- as.double(train$id)
+test$id <- as.double(test$id)
+```
+
+```{r}
+print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
+print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
+```
+
+## Oversampling
+
+
+```{r}
+
+#train_racog <- racog(train, 
+#                     numInstances = 3000, 
+#                     burnin = 100, 
+#                     lag = 20, 
+#                     classAttr = "outcome")
+```
+
+
+
+
+
+Merge new sampled data with original train dataset
+
+```{r}
+#insurance_train <- rbind(train , train_racog)
+```
+ 
+
+
+Save the processed dataframe to memory:
+  
+  
+  
+
+
+```{r}
+#path = "/home/hamed/Documents/R/aiinsurance/inst/"
+#file_name = "insurance_train.csv"
+#readr::write_csv(insurance_train, 
+#                 file = #paste(path,file_name,sep=""))
+```
+
+
+Load back the processed data
+
+```{r}
+#insurance_train <- #readr::read_csv(paste(path,file_name,sep=""))
+```
+
+Do the same for test data
+
+```{r}
+#insurance_test <- test
+#path = "/home/hamed/Documents/R/aiinsurance/inst/"
+#file_name = "insurance_test.csv"
+#readr::write_csv(insurance_test, 
+#                 file = paste(path,file_name,sep=""))
+                   
+#insurance_test <- #readr::read_csv(paste(path,file_name,sep=""))
+```
+
+
+we need to also remove the id of the beneficiaries as it will bias the learning towards this and may cause data leakage for test datasets with the same id
+
+```{r}
+#insurance_train <- within(insurance_train, rm("id"))
+#insurance_test <- within(insurance_test, rm("id"))
+```
+
+```{r}
+data("insurance_train")
+data("insurance_test")
+```
+
+
+
+```{r}
+glimpse(insurance_train)
+```
+
+```{r}
+glimpse(insurance_test)
+```
+
+
+```{r}
+table(insurance_train$outcome)
+```
+
+
+
+
+
+I added a `preprocess_hmd` function in package that is a wrapper around all the steps and functions from the [preprocessing section](#preprocess)
+section. Therefore, simply by writing the following syntax, the final `insurance_train` and `insurance_tetst` datasets can be obtained from the original `car_insurance_data`:
+
+```{r}
+#h <- preprocess_hmd(car_insurance_data)
+#insurance_train <- h$insurance_train
+#insurance_test <- h$insurance_test
+```
+
+
+
+
+
+
+Data Visualisation
+
+
+```{r}
+#insurance_train |> ggplot(aes(x = credit_score, y = #speeding_violations)) +
+#  geom_point(color = outcome)
+```
+
+# **Classification Models**
+
+## **Generalized Linear Models**
+
+```{r}
+actual <- insurance_test$outcome
+```
+
+**GLMNET**
+
+```{r}
+fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_predict_hmd(fit, 
+                        data = insurance_test,  
+                        target = "outcome", 
+                        type = "binomial")
+coef = h$coef
+pred_glm <- h$predictions
+pred_proba_glm <- h$predict_proba
+```
+
+
+```{r}
+summary(fit)    
+```
+
+```{r}
+coef
+```
+
+```{r}
+head(pred_glm)
+```
+
+Extract AIC and BIC from the fit of glm
+```{r}
+fit$aic
+```
+
+
+
+
+avplot of results
+
+```{r warning=FALSE}
+#glmnet_plot_hmd(fit)
+```
+
+**cross validated GLMNET**
+
+
+**min**
+```{r}
+fit <- glmnet_cv_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_cv_predict_hmd(fit, 
+                           data = insurance_test, 
+                           target = "outcome", 
+                           lchoice = "min", 
+                           type = "binomial")
+coef = h$coef
+pred_glm_cv_min <- h$predictions
+pred_proba_glm_cv_min <- h$predict_proba
+```
+
+```{r warning=FALSE}
+glmnet_cv_plot_hmd(fit)
+```
+
+```{r}
+summary(fit)    
+```
+
+
+
+```{r}
+coef
+```
+
+```{r}
+head(pred_glm_cv_min)
+```
+
+Extract AIC and BIC from the fit of glm
+```{r}
+
+glmnet_cv_aic_hmd(fit, lchoice = "min")
+
+```
+
+
+
+
+
+**1SE**
+
+```{r}
+fit <- glmnet_cv_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_cv_predict_hmd(fit, 
+                           data = insurance_test, 
+                           target = "outcome", 
+                           lchoice = "1se", 
+                           type = "binomial")
+coef = h$coef
+pred_glm_cv_1se <- h$predictions
+pred_proba_glm_cv_1se <- h$predict_proba
+```
+
+```{r}
+summary(fit)    
+```
+
+
+```{r}
+coef
+```
+
+```{r}
+head(pred_glm_cv_1se)
+```
+
+Extract AIC and BIC from the fit of glm
+```{r}
+
+glmnet_cv_aic_hmd(fit, lchoice = "1se")
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Evaluate    
+
+
+**GLMNET**
+
+
+```{r}
+eval <- eval_hmd(actual, pred_glm)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glm, plot = TRUE, print.auc = TRUE)
+```
+
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot
+```
+
+**GLMNET CV**
+
+**min**
+
+Confusion Matrix
+
+
+
+```{r}
+eval <- eval_hmd(actual, pred_glm_cv_min)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glm_cv_min, plot = TRUE, print.auc = TRUE)
+```
+
+
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot	
+```
+
+**1se**
+
+
+```{r}
+eval <- eval_hmd(actual, pred_glm_cv_1se)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glm_cv_1se, plot = TRUE, print.auc = TRUE)
+```
+
+
+## **Random Forest**
+
+```{r}
+actual <- aiinsurance::insurance_test$outcome
+X_train <- aiinsurance::insurance_train[, colnames(aiinsurance::insurance_train)[colnames(aiinsurance::insurance_train) != "outcome"]]
+X_test <- aiinsurance::insurance_test[, colnames(aiinsurance::insurance_test)[colnames(aiinsurance::insurance_test) != "outcome"]]
+y_train <- as.factor(aiinsurance::insurance_train[["outcome"]])
+y_test <- as.factor(aiinsurance::insurance_test[["outcome"]])
+```
+
+```{r}
+rf <- rf_fit_hmd(insurance_train, 
+                 ntree = 300,
+                 mtry = 10,
+                 proximity = TRUE, 
+                 importance = TRUE)
+```
+
+
+```{r}
+print(rf)
+```
+
+```{r}
+predict_rf <- rf_predict_hmd(data=insurance_test, fit=rf)
+```
+
+
+```{r}
+plot(rf)
+```
+          
+       
+```{r}
+# Number of nodes for the trees
+hist(treesize(rf),                        # give us the number of trees in term of number of nodes
+     main = "Number of Nodes for the Trees",
+     col = "grey")
+```     
+          
+### Variable Importance        
+
+```{r}
+varImpPlot(rf,
+           sort = T,
+           n.var = 10,
+           main = "Top 10 Variable Importance") 
+```
+
+           
+### Hyperparameter Tuning
+
+
+```{r}
+
+t <- tuneRF(X_train, 
+            y_train, 
+            stepFactor = 0.5, 
+            plot = TRUE, 
+            ntreeTry = 300, 
+            trace = TRUE, 
+            improve = 0.01)
+
+```
+
+
+```{r}
+print(t)
+```
+
+### Evaluate
+
+
+```{r}
+eval <- eval_hmd(actual, predict_rf$predictions_num)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pred_proba_rf <- predict_rf$predict_proba
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_rf, plot = TRUE, print.auc = TRUE)
+```
+
+
+
+
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot
+```
+
+
+
+
+# Extra Material: Decoding One-Hot-Encoding
+
+
+
+```{r}
+
+col_list <- names(insurance_test)
+
+cols_list_enc <- grep("\\.", col_list, value = TRUE, perl = TRUE)
+
+
+
+pattern <- "([a-zA-Z0-9_-]*)(.)"
+common_names <- list()
+for (col in cols_list_enc)
+{
+  common_names <- append(common_names, str_match(col, pattern)[2])
+}
+common_names <- common_names |> unique()
+
+insurance_test_revert <- 
+insurance_test[, !(colnames(insurance_test) %in% cols_list_enc)]
+
+for (name in common_names){
+  cols_revert <- lapply(cols_list_enc, 
+                      function(x) x[grepl(name, x)])
+  cols_revert <- cols_revert[lengths(cols_revert)!=0] 
+  #cols_revert <- lapply(cols_list_enc, 
+  #                    function(x) str_match(x,"([\\.])(.*)")[3])
+  
+  cols_revert <- cols_revert |> unlist()
+  
+  
+  w <- which(insurance_test[cols_revert]==1, arr.ind = T) 
+
+  insurance_test_revert_name <- names(insurance_test[cols_revert])[w[order(w[,1]),2]]
+  
+  insurance_test_revert[name] <- insurance_test_revert_name
+    
+}
+```
+
+```{r}
+insurance_test[,0:4] |> tidyr::pivot_longer(col=starts_with("age"), names_to = "age",  names_prefix="age.") |> select(-value)
+```
+
+
+```{r}
+insurance_test_revert |> dplyr::glimpse()
+```
