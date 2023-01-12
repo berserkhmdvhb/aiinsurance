@@ -53,14 +53,13 @@ git clone git@github.com:berserkhmdvhb/aiinsurance.git
 ```
 
 Then navigate to to the cloned folder and open `aiinsurance.Rproj` in an R editor to create a project.
-Firstly, install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
+Install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
 **Note** : Make sure to install the `aiinsurance` package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself, and hence if one installs renv after, the `aiinsurance` will no longer exist.
 
 After restoring the `renv` and installing the `aiinsurance` package, run the following in the console:
 ```r
 library(aiinsurance)
-install.packages("targets", dependencies = TRUE)
 library(targets)
 targets::tar_make()
 ```
@@ -121,22 +120,14 @@ The steps of the pipeline are elaborated on in the following:
 ## `shiny` App
 
 Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. 
-To view the app, install the `aiinsurance` package (refer to [Install](#Install)).
-
-After installing the pacakge, install the `shiny` and `shinycustomloader` packages and load them
-
+To view the app, Install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)).
+**Note** : Make sure to install the `aiinsurance` package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself, and hence if one installs renv after, the `aiinsurance` will no longer exist.
+Load the `aiinsurance` package, and other required libraries for the shiny app, and finally run the function `shiny_run_hmd` from the package.
 ```r
-install.packages("shiny", dependencies = TRUE)
-install.packages("shinycustomloader", dependencies = TRUE)
-install.packages("cachem", dependencies = TRUE)
+library(aiinsurance)
 library(shiny)
 library(shinycustomloader)
 library(cachem)
-```
-
-Finally, load the aiinsurance library, and run the function `shiny_run_hmd` from the package.
-```r
-library(aiinsurance)
 aiinsurance::shiny_run_hmd()
 ```
 
