@@ -35,7 +35,7 @@ Please run the commands of this section in a console of an R editor (e.g., Rstud
 Install the [`renv`](https://rstudio.github.io/renv/articles/renv.html) library, load its and then use the [`renv.lock`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/renv.lock) file to install the requied packages. Please follow the following commands in the console:
 
 ```r
-install.packages("renv", dependencies = TRUE)
+install.packages("renv")
 library(renv)
 renv::restore()
 ```
