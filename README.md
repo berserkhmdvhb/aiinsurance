@@ -163,7 +163,8 @@ help(package = aiinsurance)
 Various tests have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
 Since the inputs `actual` and `predicted` should have certain conditions, the following type checkings and other tests were embedded inside the `eval_hmd` function:
 
-1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`
+1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`.
+If they are of class `factor`, they will be converted to `numeric` class, as this makes later tests and computations more convenient.
 2. The actual input and predict input should be binary, therefore if any of them contain more than 2 values, error will raise.
 3. The actual input and predict input should have same classes, e.g., they both should contain classes 0 and 1.
 
