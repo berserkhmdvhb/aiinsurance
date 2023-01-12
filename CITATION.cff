@@ -7,6 +7,7 @@ message: >-
   If you use this software, please cite it using the
   metadata from this file.
 authors:
-  - family-names: Vaheb
-    given-names: Hamed
+  - family-names: "Vaheb"
+    given-names: "Hamed"
 type: package
+url: "https://github.com/berserkhmdvhb/aiinsurance"
