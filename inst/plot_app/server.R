@@ -20,7 +20,7 @@ server <- function(session, input, output) {
       aiinsurance::rf_predict_hmd(data=aiinsurance::insurance_test,
                      fit=model_random_forest)
     }
-  }) |> bindCache(input$model_selected) |> bindEvent(input$run_plot)
+  }) #|> bindCache(input$model_selected) |> bindEvent(input$run_plot)
 
 
   plot_eval <- reactive({
@@ -31,13 +31,13 @@ server <- function(session, input, output) {
       plot_roc_curve(roc_obj)
     }
     else if (input$evaluation_selected == "Confusion Matrix"){
-      print(preds()$predictions)
+      print(preds()$predictions |> unique())
       eval_glm <- aiinsurance::eval_hmd(actual,
                                         preds()$predictions)
       eval_glm$confusion_matrix_plot
     }
 
-  })  |> bindCache(input$evaluation_selected) |> bindEvent(input$run_plot)
+  })  #|> bindCache(input$evaluation_selected) |> bindEvent(input$run_plot)
 
 
   output$evaluation_plots <- renderPlot({

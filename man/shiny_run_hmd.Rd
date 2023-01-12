@@ -2,7 +2,7 @@
 % Please edit documentation in R/shiny_run_hmd.R
 \name{shiny_run_hmd}
 \alias{shiny_run_hmd}
-\title{Display shiny app}
+\title{Display Shiny App}
 \usage{
 shiny_run_hmd()
 }
@@ -10,7 +10,7 @@ shiny_run_hmd()
 Returns fit object of glmnet function
 }
 \description{
-Display shiny app
+Display Shiny App
 }
 \details{
 This function displays the interactive shiny app in which one can have an intuition about

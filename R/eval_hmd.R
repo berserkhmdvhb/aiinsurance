@@ -16,10 +16,12 @@ eval_hmd <- function(actual,
 
   if (is.factor(y_actual)){
     y_actual <- as.numeric(y_actual)
+    y_actual <- ifelse(y_actual==1,0,1)
   }
 
   if (is.factor(y_predicted)){
     y_predicted <- as.numeric(y_predicted)
+    y_predicted <- ifelse(y_predicted==1,0,1)
   }
 
   if (!(is.matrix(y_actual))){
@@ -36,11 +38,11 @@ eval_hmd <- function(actual,
     }
   }
 
-  if (!(actual |> unique() |> length() == 2) | !(actual |> unique() |> length() == 2)){
+  if (!(y_actual |> unique() |> length() == 2) | !(y_predicted |> unique() |> length() == 2)){
     stop("Both actual and predicted should be binary. Ensure they contain only two classes.")
   }
 
-  if (!(setequal(y_predicted |> unique(), actual |> unique()))){
+  if (!(setequal(unique(y_actual), unique(y_predicted)))){
     stop("Both actual and predicted should have the same classes.")
   }
 

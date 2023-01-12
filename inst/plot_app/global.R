@@ -12,7 +12,9 @@ library(randomForest)
 library(aiinsurance)
 library(cachem)
 
-appDir <- system.file("plot_app", package = "aiinsurance")
+
+#shinyOptions(cache = cachem::cache_disk("./app-cache",
+#                                        max_age = Inf))
 ###
 get_data_train <- function(){
   aiinsurance::insurance_train
