@@ -3,14 +3,14 @@ title: "Car Insurance Claims Classification Report"
 author: "Hamed Vaheb"
 #1date: "09 Jan 2021"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     number_sections: yes
     toc: yes
     code_folding: hide
     theme: readable
     highlight: haddock
-  pdf_document:
-    toc: yes
 ---
 
 
