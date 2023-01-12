@@ -1,5 +1,5 @@
 # aiinsurance  <img src="inst/figures/logo.png" align="right" style="width: 25%;"/>
-Author: Hamed Vaheb
+Creator: Hamed Vaheb
 
 Icon Source: [aiinsurance.io](https://aiinsurance.io/)
 
@@ -129,7 +129,7 @@ To view the app, load the `aiinsurance` package, and run the function `shiny_run
 aiinsurance::shiny_run_hmd()
 ```
 
-Although the shiny App could be based on `targets`, since I wanted the shiny app to work just by installing the package (and without the need to clone anything), I separated the `shiny` app and `targerts` pipeline.
+Although the shiny app could be based on `targets`, since I wanted the shiny app to work just by installing the package (and without the need to clone anything), I separated the `shiny` app and `targerts` pipeline.
 
 ### Tree Structure
 
