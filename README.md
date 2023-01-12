@@ -193,6 +193,19 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 [PDF](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report/report.pdf)
 
-The [rticles](https://github.com/rstudio/rticles) library was used to produce the report. The [arXiv](https://arxiv.org/) pre-prints based on George Kour’s template is used as the template. Each time the Rmarkdown file is knitted, a tex file and then pdf file is generated.
+The [rticles](https://github.com/rstudio/rticles) library was used to produce the report. The [arXiv](https://arxiv.org/) pre-prints based on George Kour’s template is used as the template. Each time the Rmarkdown file is knitted, a .tex file and then .pdf file is generated. Since the .tex file is regenerated atuomatically, it is not possible to edit it. To edit the .tex file, first find the location of installed libraries with the following command in R console
+
+
+```r
+.libPaths()
+```
+
+Navigate to this directory in command line and insert the following commands:
+
+```bash
+cd ./rticles/rmarkdown/templates/arxiv/resources
+nano template.tex
+```
+Now the edits in .tex file will be permanent.
 
 
