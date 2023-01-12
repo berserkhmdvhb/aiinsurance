@@ -183,9 +183,14 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 # Report
 
-The Rmarkdown report for the insurance claims' classification of the outcomes can be accessed in the following links:
+1. The Rmarkdown for implementing the insurance claims' classification of the outcomes is provided in the following links:
 
-[Link of Rmardkown file](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.Rmd)
+[Link of Rmardkown file](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/implement.Rmd)
 
-[Link of HTML rendering of the Rmarkdown file](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.html)
+[Link of HTML rendering](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.html)
+
+2. The written report explaining the theory and implementation can is provided in the following links:
+
+[PDF](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report/report.pdf)
+
 
