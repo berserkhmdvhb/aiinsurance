@@ -7,7 +7,9 @@
 #' @return Returns normalized dataframe
 #' @details
 #' This functions allows the user to normalize given train and test data based on the method
-#' user prefers
+#' user prefers. The methods available are "minmax", which transforms features by
+#' scaling each feature to a given range, and "std", the standard scaler, which
+#' standardizes features by removing the mean and scaling to unit variance.
 
 
 
