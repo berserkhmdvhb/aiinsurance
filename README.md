@@ -120,13 +120,23 @@ The steps of the pipeline are elaborated on in the following:
     
 ## `shiny` App
 
-Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. To view the app, simply install the `aiinsurance` package (refer to [Install](#Install)), and then run the function `shiny_run_hmd` from the package.
+Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. 
+To view the app, install the `aiinsurance` package (refer to [Install](#Install)).
 
+After installing the pacakge, install the `shiny` and `shinycustomloader` packages and load them
+
+```r
+install.packages("shiny", dependencies = TRUE)
+install.packages("shinycustomloader", dependencies = TRUE)
+library(shiny)
+library(shinycustomloader)
+```
+
+Finally, load the aiinsurance library, and run the function `shiny_run_hmd` from the package.
 ```r
 library(aiinsurance)
 aiinsurance::shiny_run_hmd()
 ```
-
 
 Although the shiny App could be based on `targets`, since I wanted the shiny app to work just by installing the package (and without the need to clone anything), I separated the `shiny` app and `targerts` pipeline.
 
