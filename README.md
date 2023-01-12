@@ -128,8 +128,10 @@ After installing the pacakge, install the `shiny` and `shinycustomloader` packag
 ```r
 install.packages("shiny", dependencies = TRUE)
 install.packages("shinycustomloader", dependencies = TRUE)
+install.packages("cachem", dependencies = TRUE)
 library(shiny)
 library(shinycustomloader)
+library(cachem)
 ```
 
 Finally, load the aiinsurance library, and run the function `shiny_run_hmd` from the package.
