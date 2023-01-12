@@ -32,6 +32,9 @@ Suggests:
     tidyverse,
     ggplot2,
     readr,
-    rticles
+    rticles,
+    targets,
+    shiny,
+    shinycustomloader
 VignetteBuilder: knitr
 Config/testthat/edition: 3
