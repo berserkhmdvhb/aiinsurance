@@ -1,11 +1,37 @@
 Package: aiinsurance
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Insurance Data Prediction
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: person("Hamed", "Vaheb", email = "hamed.vaheb@gmail.com", role = c("aut", "cre"))
+Description: This package is for analyzing and predicting [car insurance data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
+License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.2.3
+RemoteType: github
+Depends:
+    R (>= 4.1),
+Imports:
+    dplyr,
+    janitor,
+    stats,
+    hash,
+    caret,
+    glmnet,
+    car,
+    Metrics,
+    pROC,
+    randomForest
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    tibble,
+    visdat,
+    imbalance,
+    tidyverse,
+    ggplot2,
+    readr,
+    rticles
+VignetteBuilder: knitr
+Config/testthat/edition: 3
