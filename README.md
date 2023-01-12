@@ -9,7 +9,7 @@ The `aiinsurance` package is dedicated to a project for the workshop of master o
 In this package, functions are defined for various stages of classification of the `outcome` column of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 The raw dataset along with the processed train and test datasets, obtained by using the `aiinsurance` functions (prepared to be fed in models) are incorporated in the package.
 A report is provided in the package that elaborates on all the stages from loading the data, preprocessing steps, applying logistic regression and random forest, and then evaluating and plotting the results.
-The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation), and the link to report of the classification project is provided on [Report](#Report).
+The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation), and the link to implementation and report of the classification project is provided on [Report](#Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 
 **Note**: All functions from this pakcage are suffixed with `hmd` so as not to confuse with other built-in packages.
@@ -183,9 +183,14 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 # Report
 
-The Rmarkdown report for the insurance claims' classification of the outcomes can be accessed in the following links:
+1. The Rmarkdown for implementing the insurance claims' classification of the outcomes is provided in the following links:
 
-[Link of Rmardkown file](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.Rmd)
+[Link of Rmardkown file](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/implement.Rmd)
 
-[Link of HTML rendering of the Rmarkdown file](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.html)
+[Link of HTML rendering](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.html)
+
+2. The written report explaining both theory and implementation can is provided in the following links:
+
+[PDF](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report/report.pdf)
+
 
