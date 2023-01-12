@@ -137,7 +137,7 @@ Although the shiny App could be based on `targets`, since I wanted the shiny app
 
 ```bash
 ├── inst
-│   ├── my_app
+│   ├── plot_app
 │   │   ├── app-cache
 │   │   ├── global.R
 │   │   ├── server.R
