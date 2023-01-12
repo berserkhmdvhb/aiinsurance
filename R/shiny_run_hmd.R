@@ -1,4 +1,4 @@
-#' Display shiny app
+#' Display Shiny App
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
