@@ -55,7 +55,7 @@ git clone git@github.com:berserkhmdvhb/aiinsurance.git
 Then navigate to to the cloned folder and open `aiinsurance.Rproj` in an R editor to create a project.
 Firstly, install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)), install and load the `targets` library, and the run `tar_make()` to run the pipeline.
 
-**Note** : Make sure to install the package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself.
+**Note** : Make sure to install the `aiinsurance` package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself, and hence if one installs renv after, the `aiinsurance` will no longer exist.
 
 After restoring the `renv` and installing the `aiinsurance` package, run the following in the console:
 ```r
