@@ -187,7 +187,7 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 [Link of Rmardkown file](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/implement.Rmd)
 
-[Link of HTML rendering](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report.html)
+[Link of HTML rendering](https://htmlpreview.github.io/?https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/implement.html)
 
 2. The written report explaining both theory and implementation can is provided in the following links:
 
