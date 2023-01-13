@@ -36,7 +36,6 @@ Suggests:
     imbalance,
     tidyverse,
     ggplot2,
-    readr,
-    rticles
+    readr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
