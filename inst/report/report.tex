@@ -89,18 +89,19 @@ This report describes the project of analysis and prediction of the car
 insurance claims dataset. The dataset includes historical data of the
 policyholders (e.g., age, gender, vehicle details , etc.), among which
 the variable of interest is the outcome of insurance, indicating whether
-a customer's is approved or not. The \texttt{aiinsurance} R package
-\cite{package} is developed to make this work reproducible, accessible,
-and equipped with advanced features, e.g., a pipeline that performs the
-main steps of this work in a single command, and an interactive app to
-display the performance of the models. Using package's functions, two
-machine learning models, i.e., logistic regression and random forest are
-implemented to predict the outcomes based on solely the historical data.
-The results indicate promising prediction power with various evaluation
-metrics (e.g., accuracy, precision, recall, etc.) of over 80 percent. In
-addition to prediction, informative insights from the dataset and models
-have been drawn, e.g., by dint of the random forest model, the variables
-of the dataset that perform effective role in the prediction become
+a customer's claim is approved or not. The \texttt{aiinsurance} R
+package \cite{package} is developed to make this work reproducible,
+accessible, and equipped with advanced features, e.g., a pipeline that
+performs the main steps of this work in a single command, and an
+interactive app to display the performance of the models. Using
+package's functions, two machine learning models, i.e., logistic
+regression and random forest are implemented to classify the outcomes
+based on solely the historical data. The results indicate promising
+prediction power with various evaluation metrics (e.g., accuracy,
+precision, recall, etc.) of over 80 percent. In addition to
+classification, informative insights from the dataset and models have
+been drawn, e.g., by dint of the random forest model, the variables of
+the dataset that perform more effective role in the prediction become
 evident.
 \end{abstract}
 
@@ -132,22 +133,24 @@ indicating whether a customer has claimed his loan or not.
 A classical linear model and a modern nonlinear model is used and
 compared. The former model is logistic regression, which is an example
 of GLMs, accommodated to classification setting, i.e., for predicting
-discrete classes, in our case, status of claims. The latter model is a
-nonlinear tree-based model.
+discrete classes, in this work's case, status of claims. The latter
+model is a nonlinear tree-based model.
 
 The remainder of this work is organized as the following: In section
 \ref{sec:concepts}, main concepts included in the work are explained. In
 \ref{subsec:claim}, the concept of car insurance is introduced followed
 by an elaboration on claims and how they interact among an insurer and a
-policyholder. In section \ref{subsec:modelsintro}, the machine learning
-models, logistic regression \ref{subsubsec:logit}, and random forest
-\ref{subsubsec:rf} are briefly explained. As a contribution of this
+policyholder. Subsequently, the two machine learning models, logistic
+regression \ref{subsec:model-logit}, and random forest
+\ref{subsec:model-rf} are briefly explained. As a contribution of this
 work, the \texttt{aiinsurance} package \cite{package}, introduced in
-\ref{subsec:package} is developed, which automates many of the
+\ref{subsec:package}, is developed, which automates many of the
 classification tasks, uses advanced features, e.g., runs a pipeline that
 performs the main steps of this work in a single command, and it
 provides an interactive shiny app to display the performance of the
 models.
+
+\newpage
 
 \hypertarget{preliminary-concepts}{%
 \section{\texorpdfstring{Preliminary Concepts
@@ -158,7 +161,7 @@ models.
 \label{subsec:claim}}{Car Insurance Claims }}\label{car-insurance-claims}}
 
 \begin{wrapfigure}{l}{0.25\textwidth}
-\includegraphics[width=0.7\linewidth]{./figures/carinsurance.png}
+\includegraphics[width=0.9\linewidth]{./figures/carinsurance.png}
 \end{wrapfigure}
 
 Car insurance is a type of insurance policy that financially protects
@@ -168,33 +171,81 @@ insurance, comprehensive insurance, and personal injury protection.
 
 An insurance claim is a formal request by a policyholder to an insurance
 company for coverage or compensation for a covered loss or policy event,
-in our case, a car accident. The insurance company either accepts or
-rejects the claim. If it is approved, the insurance company will issue
-payment to the insured or an approved interested party on behalf of the
-insured.
+in this work's case, a car accident. The insurance company either
+accepts or rejects the claim. If it is approved, the insurance company
+will issue payment to the insured or an approved interested party on
+behalf of the insured.
 
-Predicting the outcome of claims be utilized to better understand the
-customer strata and incorporate the findings throughout the insurance
-policy enrollment (including the underwriting and approval or rejection
-stages), triage claims and automate where possible, gradually obviating
-the need for human interaction, and optimize the entire insurance policy
-enrollment process flow. \cite{claim}
+Predicting the outcome of claims can be utilized to better understand
+the customer strata and incorporate the findings throughout the
+insurance policy enrollment (including the underwriting and approval or
+rejection stages), triage claims and automate where possible, gradually
+obviating the need for human interaction, and optimize the entire
+insurance policy enrollment process flow \cite{claim}.
 
-\hypertarget{models}{%
-\subsection{\texorpdfstring{Models
-\label{subsec:modelsintro}}{Models }}\label{models}}
+\hypertarget{model-logistic-regression}{%
+\subsection{\texorpdfstring{Model: Logistic Regression
+\label{subsec:model-logit}}{Model: Logistic Regression }}\label{model-logistic-regression}}
 
-\hypertarget{logistic-regression}{%
-\subsubsection{\texorpdfstring{Logistic Regression
-\label{subsubsec:logit}}{Logistic Regression }}\label{logistic-regression}}
+\begin{wrapfigure}{l}{0.25\textwidth}
+\includegraphics[width=0.7\linewidth]{./figures/logit-model.png}
+\end{wrapfigure}
 
-\hypertarget{random-forest}{%
-\subsubsection{\texorpdfstring{Random Forest
-\label{subsubsec:rf}}{Random Forest }}\label{random-forest}}
+Logistic regression (logit), which is type of GLM, uses the logistic
+function to model the probability of the binary outcome by creating a
+model that takes in the input variable (e.g., client's information) and
+produces a probability that a ``outcome'' (the variable we aim to
+predict) is 1. The ``outcome'' in this work is whether a customer's
+claim is approved or not. The logistic function is defined as the
+following:
 
-Recent models learn nonlinear transformations and interactions between
-variables from the data without manually specifying them. This is
-performed implicitly with tree-based models, e.g., random forest.
+\[\frac{1}{1 + e^{-x}}\]
+
+This probability can then be used to make a prediction about the
+outcome. For instance, if the probability that the client's claim will
+be approved is greater than a certain threshold (e.g., 0.5), we predict
+that the claim will be approved. In another words, the goal of logit is
+to find the best set of coefficients for a set of independent variables
+that maximizes the likelihood (measuring how well parameters of a model
+fit the data) of the observed data.
+
+\hypertarget{model-random-forest}{%
+\subsection{\texorpdfstring{Model: Random Forest
+\label{subsec:model-rf}}{Model: Random Forest }}\label{model-random-forest}}
+
+\begin{wrapfigure}{l}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{./figures/rf-model.png}
+\end{wrapfigure}
+
+An ensemble learning model is a model that is constructed from multiple
+models, to obtain combined results, expected to be improved compared to
+any of the constituent models. The random forest is an ensemble model
+built from decision trees, i.e., flowchart-like tree structures, wherein
+each internal node represents a ``test'' on a variable (e.g., vehicle
+type), each branch represents the outcome of the test, and each leaf
+node represents a class label (e.g., 1 for claim approval and 0 for
+claim rejection). The intuition behind a decision tree is to recursively
+split the data into subsets based on the values of the input variables,
+such that the subsets are as ``pure'' as possible in terms of their
+class labels. The less pure a subset is, the more the data belongs to
+the same class, and the more pure it is, the more data is evenly split
+among all classes. The goal is to create a tree that can accurately
+classify new examples by traversing the tree from the root to a leaf
+node, making decisions at each internal node based on the values of the
+input variables.
+
+As a single random tree might not be able to capture the proper inherent
+complexity of a data, and may either overfit (become too complex and
+remembers data rather than learning from it) or underfit (become too
+simple and hence unable to learn the inherent complicated patterns in
+the data). By training multiple decision trees and combining their
+predictions by taking a majority vote, a random forest is able to
+capture a more robust and accurate representation of the data. The
+randomness in the random forest comes from randomly selecting subsets of
+the data to train each decision tree, and randomly selecting subsets of
+input variables to consider at each split point in the decision tree.
+This helps to decorrelate the trees and make the model more robust to
+overfitting.
 
 \hypertarget{implementation-and-results}{%
 \section{\texorpdfstring{Implementation and Results

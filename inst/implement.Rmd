@@ -29,22 +29,14 @@ library(Metrics)
 library(randomForest)
 library(tidyverse)
 ```
+
 # **Introduction**
 
-This report is dedicated to project of a workshop of master of data science at University of Luxembourg, I built the [`aiinsurance`](https://github.com/berserkhmdvhb/aiinsurance). 
-You can install this package by first installing the [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) package and then using the following syntax:
-
-`devtools::install_github("https://github.com/berserkhmdvhb/aiinsurance")`
+This report is dedicated to project of a workshop of master of data science at University of Luxembourg, for which I built the [`aiinsurance`](https://github.com/berserkhmdvhb/aiinsurance) package.
 
 You can explore the documentation of package I provided with 
 
 `help(package="aiinsurance")`
-
-Also, this report is accessible as vignette of the package, which can be accessed with
-
-`vignette(package = "aiinsurance")`
-
-(Note: I just made a meta-reference)
 
 
 Note that all functions of the package are suffixed with `hmd`.
@@ -464,7 +456,13 @@ glmnet_cv_aic_hmd(fit, lchoice = "1se")
 
 
 
+### Plot
 
+
+
+```{r}
+plot(outcome ~ )
+```
 
 
 
