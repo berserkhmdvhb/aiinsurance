@@ -12,15 +12,13 @@
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 \usepackage{graphicx}
+\usepackage{wrapfig}
 
 \title{Car Insurance Claims Classification Report}
 
 \author{
-    Hamed Vaheb
-   \\
-     \\
-   \\
-  \texttt{\href{mailto:hamed.vaheb.001@student.uni.lu}{\nolinkurl{hamed.vaheb.001@student.uni.lu}}} \\
+    Hamed Vaheb\\
+  \texttt{\href{mailto:hamed.vaheb.001@student.uni.lu}{\nolinkurl{hamed.vaheb.001@student.uni.lu}}}% \\
   }
 
 % Pandoc syntax highlighting
@@ -89,25 +87,30 @@
 \begin{abstract}
 This report describes the project of analysis and prediction of the car
 insurance claims dataset. The dataset includes historical data of the
-policyholders, among which the variable of interest is the outcome of
-insurance, indicating whether a customer has claimed his or not. The
-\texttt{aiinsurance} R package \cite{package} is developed to make this
-work reproducible, accessible, and equipped with advanced features,
-e.g., a pipeline that performs the main steps of this work with a single
-command, and an interactive app to display the performance of the
-models. Using package's functions, two machine learning models, i.e.,
-logistic regression and random forest are implemented to predict the
-outcomes based on solely the historical data. The results indicate
-promising prediction power with various evaluation metrics (e.g.,
-accuracy, precision, recall, etc.) of over 80 percent. In addition to
-prediction, informative insights from the dataset and models have been
-drawn, e.g., by dint of the random forest model, the variables of the
-dataset that perform effective role in the prediction become evident.
+policyholders (e.g., age, gender, vehicle details , etc.), among which
+the variable of interest is the outcome of insurance, indicating whether
+a customer's is approved or not. The \texttt{aiinsurance} R package
+\cite{package} is developed to make this work reproducible, accessible,
+and equipped with advanced features, e.g., a pipeline that performs the
+main steps of this work in a single command, and an interactive app to
+display the performance of the models. Using package's functions, two
+machine learning models, i.e., logistic regression and random forest are
+implemented to predict the outcomes based on solely the historical data.
+The results indicate promising prediction power with various evaluation
+metrics (e.g., accuracy, precision, recall, etc.) of over 80 percent. In
+addition to prediction, informative insights from the dataset and models
+have been drawn, e.g., by dint of the random forest model, the variables
+of the dataset that perform effective role in the prediction become
+evident.
 \end{abstract}
 
 
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
+
+\begin{wrapfigure}{l}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{./figures/aiactuary.png}
+\end{wrapfigure}
 
 Rapid advances in artificial intelligence (AI) and machine learning are
 creating products and services with the potential not only to change the
@@ -122,26 +125,41 @@ in the past few years that the use of AI and machine learning, and hence
 more modern models garnered significant attention in the field
 \cite{rev1}.
 
-In this work, both a classical linear model and a modern nonlinear model
-is used and compared for predicting policyholders' claims. The former is
-logistic regression, which is an example of GLMs, accommodated to
-classification setting, i.e., for predicting discrete classes, in our
-case, ``outcome'' of insurance that indicates whether a customer has
-claimed his loan or not.
+The goal of this work is to predict status of policyholders' claims. The
+status lies at the ``outcome'' column of the car insruance dataset,
+indicating whether a customer has claimed his loan or not.
+
+A classical linear model and a modern nonlinear model is used and
+compared. The former model is logistic regression, which is an example
+of GLMs, accommodated to classification setting, i.e., for predicting
+discrete classes, in our case, status of claims. The latter model is a
+nonlinear tree-based model.
 
 The remainder of this work is organized as the following: In section
-\ref{concepts}, main concepts included in the work are explained. In
-\ref{claim}, the concept of insurance claim and how it interacts among
-an insurer and a policyholder is explained, and in \ref{models}, the
-machine learning models, logistic regression \ref{} \cite{package}
+\ref{sec:concepts}, main concepts included in the work are explained. In
+\ref{subsec:claim}, the concept of car insurance is introduced followed
+by an elaboration on claims and how they interact among an insurer and a
+policyholder. In section \ref{subsec:modelsintro}, the machine learning
+models, logistic regression \ref{subsubsec:logit}, and random forest
+\ref{subsubsec:rf} are briefly explained. As a contribution of this
+work, the \texttt{aiinsurance} package \cite{package}, introduced in
+\ref{subsec:package} is developed, which automates many of the
+classification tasks, uses advanced features, e.g., runs a pipeline that
+performs the main steps of this work in a single command, and it
+provides an interactive shiny app to display the performance of the
+models.
 
 \hypertarget{preliminary-concepts}{%
 \section{\texorpdfstring{Preliminary Concepts
-\label{concepts}}{Preliminary Concepts }}\label{preliminary-concepts}}
+\label{sec:concepts}}{Preliminary Concepts }}\label{preliminary-concepts}}
 
-\hypertarget{car-insurance-claims-claim}{%
-\subsection{\texorpdfstring{Car Insurance Claims \{claim\}\\
-}{Car Insurance Claims \{claim\} }}\label{car-insurance-claims-claim}}
+\hypertarget{car-insurance-claims}{%
+\subsection{\texorpdfstring{Car Insurance Claims
+\label{subsec:claim}}{Car Insurance Claims }}\label{car-insurance-claims}}
+
+\begin{wrapfigure}{l}{0.25\textwidth}
+\includegraphics[width=0.7\linewidth]{./figures/carinsurance.png}
+\end{wrapfigure}
 
 Car insurance is a type of insurance policy that financially protects
 drivers in the event of an accident or theft. There are several types of
@@ -153,31 +171,46 @@ company for coverage or compensation for a covered loss or policy event,
 in our case, a car accident. The insurance company either accepts or
 rejects the claim. If it is approved, the insurance company will issue
 payment to the insured or an approved interested party on behalf of the
-insured.1
+insured.
+
+Predicting the outcome of claims be utilized to better understand the
+customer strata and incorporate the findings throughout the insurance
+policy enrollment (including the underwriting and approval or rejection
+stages), triage claims and automate where possible, gradually obviating
+the need for human interaction, and optimize the entire insurance policy
+enrollment process flow. \cite{claim}
 
 \hypertarget{models}{%
-\subsection{Models}\label{models}}
+\subsection{\texorpdfstring{Models
+\label{subsec:modelsintro}}{Models }}\label{models}}
+
+\hypertarget{logistic-regression}{%
+\subsubsection{\texorpdfstring{Logistic Regression
+\label{subsubsec:logit}}{Logistic Regression }}\label{logistic-regression}}
 
 \hypertarget{random-forest}{%
-\subsubsection{Random Forest}\label{random-forest}}
+\subsubsection{\texorpdfstring{Random Forest
+\label{subsubsec:rf}}{Random Forest }}\label{random-forest}}
 
 Recent models learn nonlinear transformations and interactions between
 variables from the data without manually specifying them. This is
 performed implicitly with tree-based models, e.g., random forest.
 
-\hypertarget{logistic-regression}{%
-\subsubsection{Logistic Regression}\label{logistic-regression}}
+\hypertarget{implementation-and-results}{%
+\section{\texorpdfstring{Implementation and Results
+\label{sec:impl}}{Implementation and Results }}\label{implementation-and-results}}
 
 \hypertarget{aiinsurance-package}{%
-\section{\texorpdfstring{\texttt{aiinsurance}
-Package}{aiinsurance Package}}\label{aiinsurance-package}}
+\subsection{\texorpdfstring{\texttt{aiinsurance} Package
+\label{subsec:package}}{aiinsurance Package }}\label{aiinsurance-package}}
 
 \hypertarget{dataset-analysis}{%
-\subsection{Dataset Analysis}\label{dataset-analysis}}
+\subsection{\texorpdfstring{Dataset Analysis
+\label{subsec:data}}{Dataset Analysis }}\label{dataset-analysis}}
 
-\hypertarget{implementation-and-results}{%
-\subsection{Implementation and
-Results}\label{implementation-and-results}}
+\hypertarget{classification-models}{%
+\subsection{\texorpdfstring{Classification Models
+\label{subsec:models}}{Classification Models }}\label{classification-models}}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}

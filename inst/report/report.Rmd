@@ -4,7 +4,7 @@ authors:
     name: Hamed Vaheb
     email: hamed.vaheb.001@student.uni.lu
 abstract: 
-  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders, among which the variable of interest is the outcome of insurance, indicating whether a customer has claimed his   or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work with a single command, and an interactive app to display the performance of the models. Using package's functions, two machine learning models, i.e., logistic regression and random forest are implemented to predict the outcomes based on solely the historical data. The results indicate promising prediction power with various evaluation metrics (e.g., accuracy, precision, recall, etc.) of over 80 percent. In addition to prediction, informative insights from the dataset and models have been drawn, e.g., by dint of the random forest model, the variables of the dataset that perform effective role in the prediction become evident.
+  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details , etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app to display the performance of the models. Using package's functions, two machine learning models, i.e., logistic regression and random forest are implemented to predict the outcomes based on solely the historical data. The results indicate promising prediction power with various evaluation metrics (e.g., accuracy, precision, recall, etc.) of over 80 percent. In addition to prediction, informative insights from the dataset and models have been drawn, e.g., by dint of the random forest model, the variables of the dataset that perform effective role in the prediction become evident.
 
 bibliography: references.bib
 biblio-style: unsrt
@@ -13,6 +13,10 @@ output: rticles::arxiv_article
 
 # Introduction
 
+\begin{wrapfigure}{l}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{./figures/aiactuary.png}
+\end{wrapfigure}
+
 Rapid advances in artificial intelligence (AI) and machine learning are creating products and services with
 the potential not only to change the environment in which actuaries operate but also to provide new opportunities within actuarial science \cite{aiinins}.
 
@@ -20,46 +24,53 @@ The use of statistical learning models has been a common practice in actuarial s
 It was not long after since the field adopted classical models, such as linear models and generalized linear models (GLMs).
 While actuaries use GLMs frequently in practice, it was in the past few years that the use of AI and machine learning, and hence more modern models garnered significant attention in the field \cite{rev1}.
 
-In this work, both a classical linear model and a modern nonlinear model is used and compared for predicting policyholders' claims. The former is logistic regression, which is an example of GLMs, accommodated to classification setting, i.e., for predicting discrete classes, in our case, "outcome" of insurance that indicates whether a customer has claimed his loan or not.
+The goal of this work is to predict status of policyholders' claims. 
+The status lies at the "outcome" column of the car insruance dataset, indicating whether a customer has claimed his loan or not.
+
+A classical linear model and a modern nonlinear model is used and compared.
+The former model is logistic regression, which is an example of GLMs, accommodated to classification setting, i.e., for predicting discrete classes, in our case, status of claims.
+The latter model is a nonlinear tree-based model.
 
 The remainder of this work is organized as the following:
-In section \ref{concepts}, main concepts included in the work are explained. In \ref{claim}, the concept of insurance claim and how it interacts among an insurer and a policyholder is explained, and in \ref{models}, the machine learning models, logistic regression \ref{}
-\cite{package}
+In section \ref{sec:concepts}, main concepts included in the work are explained. In \ref{subsec:claim}, the concept of car insurance is introduced followed by an elaboration on claims and how they interact among an insurer and a policyholder. In section \ref{subsec:modelsintro}, the machine learning models, logistic regression \ref{subsubsec:logit}, and random forest \ref{subsubsec:rf} are briefly explained.
+As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{subsec:package}, is developed, which automates many of the classification tasks, uses advanced features, e.g., runs a pipeline that performs the main steps of this work in a single command, and it provides an interactive shiny app to display the performance of the models.
+
+
+
+# Preliminary Concepts \label{sec:concepts}
 
 
 
 
-# Preliminary Concepts \label{concepts}
+## Car Insurance Claims \label{subsec:claim}
 
 
 
-
-## Car Insurance Claims {claim}\
+\begin{wrapfigure}{l}{0.25\textwidth}
+\includegraphics[width=0.7\linewidth]{./figures/carinsurance.png}
+\end{wrapfigure}
 
 Car insurance is a type of insurance policy that financially protects drivers in the event of an accident or theft. There are several types of car insurance coverage, including liability insurance, collision insurance, comprehensive insurance, and personal injury protection. 
 
-An insurance claim is a formal request by a policyholder to an insurance company for coverage or compensation for a covered loss or policy event, in our case, a car accident. The insurance company either accepts or rejects the claim. If it is approved, the insurance company will issue payment to the insured or an approved interested party on behalf of the insured.1
+An insurance claim is a formal request by a policyholder to an insurance company for coverage or compensation for a covered loss or policy event, in our case, a car accident. The insurance company either accepts or rejects the claim. If it is approved, the insurance company will issue payment to the insured or an approved interested party on behalf of the insured.
+
+Predicting the outcome of claims be utilized to better understand the customer strata and incorporate the findings throughout the insurance policy enrollment (including the underwriting and approval or rejection stages), triage claims and automate where possible, gradually obviating the need for human interaction, and optimize the entire insurance policy enrollment process flow. \cite{claim}  
 
 
 
-## Models
 
-### Random Forest
+## Models \label{subsec:modelsintro}
+
+
+
+### Logistic Regression \label{subsubsec:logit}
+
+### Random Forest \label{subsubsec:rf}
 
 
 Recent models learn nonlinear transformations and interactions between variables from the data without manually specifying them. This is performed implicitly with tree-based models, e.g., random forest.
 
 
-### Logistic Regression
-
-
-
-
-# `aiinsurance` Package
-
-
-
-## Dataset Analysis
 
 
 
@@ -67,8 +78,16 @@ Recent models learn nonlinear transformations and interactions between variables
 
 
 
-## Implementation and Results
 
+
+
+# Implementation and Results \label{sec:impl}
+
+## `aiinsurance` Package \label{subsec:package}
+
+## Dataset Analysis \label{subsec:data}
+
+## Classification Models \label{subsec:models}
 
 
 
