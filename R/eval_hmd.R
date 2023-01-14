@@ -61,10 +61,10 @@ eval_hmd <- function(actual,
   plt <- as.data.frame(cm$table)
   plt$Prediction <- factor(plt$Prediction, levels=rev(levels(plt$Prediction)))
 
-  cm_plot <- ggplot2::ggplot(plt, ggplot2::aes(plt$Prediction, plt$Reference, fill=plt$Freq)) +
+  cm_plot <- ggplot2::ggplot(plt, ggplot2::aes( plt$Reference, plt$Prediction, fill=plt$Freq)) +
     ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes(label=plt$Freq)) +
     ggplot2::scale_fill_gradient(low="white", high="#009194") +
-    ggplot2::labs(x = "Reference", y = "Prediction") +
+    ggplot2::labs(x = "Prediction", y = "Reference") +
     ggplot2::scale_x_discrete(labels=c("Class 0","Class 1")) +
     ggplot2::scale_y_discrete(labels=c("Class 1","Class 0"))
 

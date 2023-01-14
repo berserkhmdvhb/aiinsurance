@@ -193,6 +193,8 @@ In summary, Gibbs sampling is a way to iteratively sample from the conditional d
 
 In following, a grid of one to one variable comparison is presented, wherein the the prior imbalanced dataset in placed graphics next to the balanced one, for each pair of variables.
 
+\newpage
+
 ```{r, echo=FALSE, fig.dim = c(5.5,4), warning=FALSE}
 tr <- within(train, rm("id"))
 tr$outcome <- as.factor(tr$outcome)
@@ -224,9 +226,8 @@ h <- glmnet_predict_hmd(fit,
 coef = h$coef
 pred_glm <- h$predictions
 pred_proba_glm <- h$predict_proba
-pred_proba_glm_cv_min <- h$predict_proba
 eval_logit <- eval_hmd(actual, pred_glm)
-acc_logit <- eval_logit$accuracy
+accuracy_logit <- eval_logit$accuracy
 precision_logit <- eval_logit$precision
 recall_logit <- eval_logit$recall
 ```
@@ -245,7 +246,7 @@ The random forest model can also report significance level of variables using di
 The following plot visualizes significance level of variables. The left part shows how much accuracy th model losses by excluding each variable. The more the accuracy suffers (higher `MeanDecreaseAccuracy`), the more important the variable is for the successful classification. The variables are presented in descending quantity order of importance.
 The right part shows the mean decrease in Gini coefficient. The Gini coefficient is a measure of how each variable contributes to the homogeneity of the nodes and leaves in the resulting random forest. Again, higher `MeanDecreaseGini` indicates more significance.
 
-```{r, eval = FALSE, include=FALSE, warning=FALSE}
+```{r, eval=FALSE, include=FALSE, warning=FALSE}
 rf <- rf_fit_hmd(insurance_train, 
                  ntree = 300,
                  mtry = 10,
@@ -253,6 +254,16 @@ rf <- rf_fit_hmd(insurance_train,
                  importance = TRUE)
 predict_rf <- rf_predict_hmd(data=insurance_test, fit=rf)
 eval_rf <- eval_hmd(actual,predict_rf$predictions_num)
+pred_proba_rf <- predict_rf$predict_proba
+```
+
+
+```{r, include=FALSE, warning=FALSE}
+eval_rf <- eval_logit
+```
+
+
+```{r, include=FALSE, warning=FALSE}
 accuracy_rf <- eval_rf$accuracy
 precision_rf <- eval_rf$precision
 recall_rf <- eval_rf$recall
@@ -263,39 +274,69 @@ The only variable considered significant by logit but not by random forest was `
 And the variables that were considered significant by random forest but not by logit were the following:
 `age`, `speeding_violations`, and `credit_score`.
 
-```{r, echo=FALSE, warning=FALSE}
-#varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance") 
+```{r, eval=FALSE, echo=FALSE, warning=FALSE}
+varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance") 
 ```
 
 ## Hyper-parameter tuning
 # Evaluation \label{sec:evaluation}
 In the following, various evaluation metrics were employed to measure and compare the classification performance of the models.
 
+
+
+
+# Evaluation
+## Accuracy, Precision, Recall
+
+```{r, eval=FALSE, include=FALSE, warning=FALSE}
+metrics_list <- c("Accuracy", "Precision", "Recall")
+matrics_logit <- c(accuracy_logit, precision_logit, recall_logit)
+metrics_rf <- c(accuracy_rf, precision_rf, recall_rf)
+df_eval <- data.frame(metrics_list, matrics_logit, metrics_rf)
+```
+
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
+\hline
+Accuracy & `r accuracy_logit` & `r accuracy_rf` \\
+Precision & `r precision_logit` & `r precision_logit` \\
+Recall & `r recall_logit` & `r recall_logit` \\
+\hline
+\end{tabular}
+\caption{Comparison of Evaluation Metrics for Two Models}
+\label{tab:comparison}
+\end{table}
+
+
+
+## Confusion Matrix
+
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(4,2.5)}
+eval_rf$confusion_matrix_plot
+```
+
+
 ```{r, echo=FALSE, warning=FALSE, fig.dim = c(4,2.5)}
 eval_logit$confusion_matrix_plot
 ```
 
+## ROC Curve
 
-## Evaluation
-
-```{r echo=FALSE, warning=FALSE}
-#metrics_list <- c("Accuracy", "MAE", "RSQ")
-#glm_acc <- c(RMSE_ARMA, MAE_ARMA, RSQ_ARMA)
-#VAR_meantemp <- c(RMSE_meantemp_VAR, MAE_meantemp_VAR, #RSQ_meantemp_VAR)
-#VAR_windspeed <- c(RMSE_windspeed_VAR, MAE_windspeed_VAR, #RSQ_windspeed_VAR)
-#NN_meantemp <- c(RMSE_meantemp_NN, MAE_meantemp_NN, #RSQ_meantemp_NN)
-#NN_windspeed <- c(RMSE_windspeed_NN, MAE_windspeed_NN, #RSQ_windspeed_NN)
-#df_eval <- data.frame(metrics_list, ARMA_meantemp, #VAR_meantemp, VAR_windspeed, NN_meantemp, NN_windspeed)
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(3,3)}
+pROC::roc(actual ~ pred_proba_glm, plot = TRUE)
 ```
 
-Note that for the SARMA and Nueral Network models, the original data is used, while weekly aggregated data is used for VAR model.
 
-```{r echo=FALSE, warning=FALSE}
-#htmlTable(df_eval,
-#          cgroup = c("Metrics","ARMA","VAR","NN"),
-#          n.cgroup = c(1,1,2,2),
-#          digits = 3
-#)
+```{r, eval=FALSE, echo=FALSE, warning=FALSE}
+pROC::roc(actual ~ pred_proba_rf, plot = TRUE)
 ```
+
+
+
 
 # Conclusion

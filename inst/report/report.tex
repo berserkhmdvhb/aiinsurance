@@ -378,6 +378,8 @@ In following, a grid of one to one variable comparison is presented,
 wherein the the prior imbalanced dataset in placed graphics next to the
 balanced one, for each pair of variables.
 
+\newpage
+
 \includegraphics{report_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \hypertarget{classification-models}{%
@@ -457,13 +459,56 @@ following: \texttt{age}, \texttt{speeding\_violations}, and
 In the following, various evaluation metrics were employed to measure
 and compare the classification performance of the models.
 
-\includegraphics{report_files/figure-latex/unnamed-chunk-13-1.pdf}
-
 \hypertarget{evaluation-1}{%
-\subsection{Evaluation}\label{evaluation-1}}
+\section{Evaluation}\label{evaluation-1}}
 
-Note that for the SARMA and Nueral Network models, the original data is
-used, while weekly aggregated data is used for VAR model.
+\hypertarget{accuracy-precision-recall}{%
+\subsection{Accuracy, Precision,
+Recall}\label{accuracy-precision-recall}}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
+\hline
+Accuracy & 0.8115 & 0.8115 \\
+Precision & 0.8444084 & 0.8444084 \\
+Recall & 0.6496259 & 0.6496259 \\
+\hline
+\end{tabular}
+\caption{Comparison of Evaluation Metrics for Two Models}
+\label{tab:comparison}
+\end{table}
+
+\hypertarget{confusion-matrix}{%
+\subsection{Confusion Matrix}\label{confusion-matrix}}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\hypertarget{roc-curve}{%
+\subsection{ROC Curve}\label{roc-curve}}
+
+\begin{verbatim}
+## Setting levels: control = 0, case = 1
+\end{verbatim}
+
+\begin{verbatim}
+## Setting direction: controls < cases
+\end{verbatim}
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{verbatim}
+## 
+## Call:
+## roc.formula(formula = actual ~ pred_proba_glm, plot = TRUE)
+## 
+## Data: pred_proba_glm in 1383 controls (actual 0) < 617 cases (actual 1).
+## Area under the curve: 0.9017
+\end{verbatim}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}

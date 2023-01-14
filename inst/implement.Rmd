@@ -236,6 +236,7 @@ Merge new sampled data with original train dataset
 ```{r}
 #insurance_train <- rbind(train , train_racog)
 ```
+
  
 
 ```{r}
