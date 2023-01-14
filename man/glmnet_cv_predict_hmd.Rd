@@ -9,7 +9,7 @@ glmnet_cv_predict_hmd(
   data = aiinsurance::insurance_test,
   target = "outcome",
   lchoice = "min",
-  type = "binomial"
+  threshold = 0.5
 )
 }
 \arguments{
@@ -21,9 +21,8 @@ glmnet_cv_predict_hmd(
 
 \item{lchoice}{how to choose lambda model. Choices are "min", "1se".}
 
-\item{type}{Type of prediction required. Type "link" gives the linear predictors
-for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-Type "response" gi}
+\item{threshold}{Cutoff point of probability of class 1, to classify the inputs
+with the probability above threshold as 1.}
 }
 \value{
 Returns prediction of the cv.glmnet function

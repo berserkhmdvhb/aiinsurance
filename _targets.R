@@ -43,8 +43,7 @@ list(
     predictions_glm,
     glmnet_predict_hmd(model_glm,
                     data = insurance_test,
-                    target = "outcome",
-                    type = "response")
+                    target = "outcome")
   ),
   tar_target(
     pred_proba_glmnet,

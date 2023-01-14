@@ -3,10 +3,8 @@
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data
 #' @param lchoice how to choose lambda model. Choices are "min", "1se".
-#' @param type Type of prediction required. Type "link" gives the linear predictors
-#' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-#' Type "response" gi
-#' @param target Target column in the data
+#' @param threshold Cutoff point of probability of class 1, to classify the inputs
+#' with the probability above threshold as 1.
 #' @export
 #' @return Returns prediction of the cv.glmnet function
 #' @details
@@ -17,7 +15,7 @@ glmnet_cv_predict_hmd <- function(fit,
                                   data = aiinsurance::insurance_test,
                                   target = "outcome",
                                   lchoice="min",
-                                  type="binomial"
+                                  threshold = 0.5
                           ){
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -33,14 +31,11 @@ glmnet_cv_predict_hmd <- function(fit,
 
   lambda <- paste("lambda.",{{lchoice}},sep = "")
   coef <- coef({{fit}}, s=lambda)
-  if ({{type}} == "response")
-  {
-    predict_proba <- stats::predict({{fit}}, features, s=lambda, type="response")
-  }
-  else{
-    predict_proba <- stats::predict({{fit}}, features, s=lambda)
-  }
-  predict <- ifelse(predict_proba > 0.5, 1, 0)
+
+  predict_proba <- stats::predict({{fit}}, type="response", features, s=lambda)
+  predict <- ifelse(predict_proba > {{threshold}}, 1, 0)
+
+  h <- hash::hash()
   h <- hash::hash()
   h[["coef"]] <- coef
   h[["predict_proba"]] <- predict_proba

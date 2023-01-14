@@ -8,7 +8,7 @@ glmnet_predict_hmd(
   fit,
   data = aiinsurance::insurance_test,
   target = "outcome",
-  type = "binomial"
+  threshold = 0.5
 )
 }
 \arguments{
@@ -18,9 +18,8 @@ glmnet_predict_hmd(
 
 \item{target}{Target column in the data}
 
-\item{type}{Type of prediction required. Type "link" gives the linear predictors
-for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-Type "response" gi}
+\item{threshold}{Cutoff point of probability of class 1, to classify the inputs
+with the probability above threshold as 1.}
 }
 \value{
 Returns fit object of glmnet function

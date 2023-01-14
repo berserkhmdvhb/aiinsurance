@@ -7,8 +7,7 @@ server <- function(session, input, output) {
                                   family = "binomial")
       aiinsurance::glmnet_predict_hmd(model_glm,
                          data = aiinsurance::insurance_test,
-                         target = "outcome",
-                         type = "binomial")
+                         target = "outcome")
     }
     else if (input$model_selected == "Random Forest"){
       model_random_forest <- aiinsurance::rf_fit_hmd(aiinsurance::insurance_train,

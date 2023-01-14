@@ -2,10 +2,11 @@
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
 #' @param target An arbitrary dataframe
-#' @param type Type of prediction required. Type "link" gives the linear predictors
-#' for "binomial" or "multinomial" models; for "gaussian" models it gives the fitted values.
-#' Type "response" gi
+#' "response" gives the fitted probabilities. "class" produces the class label
+#' corresponding to the maximum probability.
 #' @param target Target column in the data
+#' @param threshold Cutoff point of probability of class 1, to classify the inputs
+#' with the probability above threshold as 1.
 #' @export
 #' @return Returns fit object of glmnet function
 #' @details
@@ -19,7 +20,7 @@
 glmnet_predict_hmd <- function(fit,
                                data = aiinsurance::insurance_test,
                                target ="outcome",
-                               type="binomial"
+                               threshold = 0.5
                           ){
   if(nrow({{data}}) == 0) {
     warning("The returned data frame is empty.")
@@ -32,14 +33,8 @@ glmnet_predict_hmd <- function(fit,
 
   features <- df[, colnames(df)[colnames(df) != {{target}}]]
   coef <- coef({{fit}})
-  if ({{type}} == "response")
-  {
-    predict_proba <- stats::predict({{fit}}, features, type="response")
-  }
-  else{
-    predict_proba <- stats::predict({{fit}}, features)
-  }
-  predict <- ifelse(predict_proba >0.5, 1, 0)
+  predict_proba <- stats::predict({{fit}}, features, type="response")
+  predict <- ifelse(predict_proba > {{threshold}}, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef
   h[["predict_proba"]] <- predict_proba
