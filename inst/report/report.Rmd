@@ -55,7 +55,7 @@ The latter model is a nonlinear tree-based model.
 
 The remainder of this work is organized as the following:
 In section \ref{sec:concepts}, main concepts included in the work are explained. In \ref{subsec:claim}, the concept of car insurance is introduced followed by an elaboration on claims and how they interact among an insurer and a policyholder. Subsequently, the two machine learning models, logistic regression \ref{subsec:model-logit}, and random forest \ref{subsec:model-rf} are briefly explained.
-As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{subsec:package}, is developed, which automates many of the classification tasks, uses advanced features, e.g., runs a pipeline that performs the main steps of this work in a single command, and it provides an interactive shiny app to display the performance of the models.
+As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, uses advanced features, e.g., runs a pipeline that performs the main steps of this work in a single command, and it provides an interactive shiny app to display the performance of the models.
 
 
 \newpage
@@ -76,8 +76,8 @@ Predicting the outcome of claims can be utilized to better understand the custom
 
 ## Model: Logistic Regression \label{subsec:model-logit}
 
-\begin{wrapfigure}{l}{0.25\textwidth}
-\includegraphics[width=0.7\linewidth]{./figures/logit-model.png}
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[width=0.9\linewidth]{./figures/logit-model.png}
 \end{wrapfigure}
 
 Logistic regression (logit), which is type of GLM, uses the logistic function to model the probability of the binary outcome by creating a model that takes in the input variable (e.g., client's information) and produces a probability that a  "outcome" (the variable we aim to predict) is 1. The "outcome" in this work is whether a customer's claim is approved or not.
@@ -101,13 +101,11 @@ The random forest is an ensemble model built from decision trees, i.e., flowchar
 
 As a single random tree might not be able to capture the proper inherent complexity of a data, and may either overfit (become too complex and remembers data rather than learning from it) or underfit (become too simple and hence unable to learn the inherent complicated patterns in the data). By training multiple decision trees and combining their predictions by taking a majority vote, a random forest is able to capture a more robust and accurate representation of the data. The randomness in the random forest comes from randomly selecting subsets of the data to train each decision tree, and randomly selecting subsets of input variables to consider at each split point in the decision tree. This helps to decorrelate the trees, i.e., reducing the correlation or dependence between the trees, consequently, make the model more robust to overfitting.
 
-# Implementation \label{sec:impl}
-
-## `aiinsurance` Package \label{subsec:package} 
+# `aiinsurance` Package \label{sec:package} 
 
 
 \begin{wrapfigure}{l}{0.15\textwidth}
-\includegraphics[width=0.7\linewidth]{"./figures/logo.png"}
+\includegraphics[width=0.9\linewidth]{"./figures/logo.png"}
 \captionsetup{justification=raggedright,singlelinecheck=false}
 \caption*{ \tiny \href{https://aiinsurance.io/}{Icon Source}}
 \end{wrapfigure}
@@ -118,7 +116,7 @@ Instructions on how to install and use the package's functions and features is p
 
 Noteworthy features of the package are explained in the following: A pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Using package's functions
 
-## Exploratory Data Analysis (EDA) \label{sec:data}
+# Exploratory Data Analysis (EDA) \label{sec:data}
 
 
 \scriptsize
@@ -139,7 +137,7 @@ df <- categoricals_hmd(df)
 \normalsize
 
 
-```{r, echo=FALSE, warning=FALSE, fig.dim = c(5.5, 2.5), fig.align = 'center'}
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(5.5, 3), fig.align = 'center'}
 vis_dat(df)
 ```
 
@@ -157,6 +155,13 @@ vis_miss(df, sort_miss = TRUE)
 df <- impute_median_hmd(df)
 ```
 
+# Preprocessing 
+
+## Class Imabalance and RaCog
+
+ 
+RaCog (Rapidly converging Gibbs algorithm.)
+
 The proportion of outcome classes are shown in the following:
 
 ```{r, echo=FALSE, fig.dim = c(1.5, 2), fig.align = 'center'}
@@ -164,13 +169,43 @@ ggplot(df, aes(x = outcome)) +
     geom_bar()
 ```
 
+The number of class 0 and class 1 labels are respectively 6867, 3133
 
-## Preprocessing 
+Imbalance ratio is defined as size of minority class (1 in our case) over size of majority class (0).
+Therefore, the ideal number for this quantity is 1.
+Imbalance ratio:0.45624
 
-### Encoding Categorical Columns
+
+After oversampling,
+
+The number of class 0 and class 1 labels are respectively 5484, 5516
+
+Imbalance ratio is approximately 1 now.
+
+## Encoding Categorical Columns
+
+# Classification Models
+## Logistic Regression \label{subsec:logit}
 
 
-## Classification Models \label{subsec:models}
+```{r, include=FALSE}
+data("insurance_train")
+data("insurance_test")
+actual <- insurance_test$outcome
+```
+
+```{r, include=FALSE}
+fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glmnet_predict_hmd(fit, 
+                        data = insurance_test,  
+                        target = "outcome", 
+                        type = "binomial")
+coef = h$coef
+pred_glm <- h$predictions
+pred_proba_glm <- h$predict_proba
+```
+
+### Logis
 
 
 # Results and Discussion \label{sec:results}

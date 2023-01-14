@@ -38,6 +38,47 @@
   \texttt{\href{mailto:hamed.vaheb.001@student.uni.lu}{\nolinkurl{hamed.vaheb.001@student.uni.lu}}}% \\
   }
 
+% Pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % tightlist command for lists without linebreak
 \providecommand{\tightlist}{%
@@ -109,7 +150,7 @@ policyholder. Subsequently, the two machine learning models, logistic
 regression \ref{subsec:model-logit}, and random forest
 \ref{subsec:model-rf} are briefly explained. As a contribution of this
 work, the \texttt{aiinsurance} package \cite{package}, introduced in
-\ref{subsec:package}, is developed, which automates many of the
+\ref{sec:package}, is developed, which automates many of the
 classification tasks, uses advanced features, e.g., runs a pipeline that
 performs the main steps of this work in a single command, and it
 provides an interactive shiny app to display the performance of the
@@ -152,8 +193,8 @@ insurance policy enrollment process flow \cite{claim}.
 \subsection{\texorpdfstring{Model: Logistic Regression
 \label{subsec:model-logit}}{Model: Logistic Regression }}\label{model-logistic-regression}}
 
-\begin{wrapfigure}{l}{0.25\textwidth}
-\includegraphics[width=0.7\linewidth]{./figures/logit-model.png}
+\begin{wrapfigure}{l}{0.2\textwidth}
+\includegraphics[width=0.9\linewidth]{./figures/logit-model.png}
 \end{wrapfigure}
 
 Logistic regression (logit), which is type of GLM, uses the logistic
@@ -213,16 +254,12 @@ This helps to decorrelate the trees, i.e., reducing the correlation or
 dependence between the trees, consequently, make the model more robust
 to overfitting.
 
-\hypertarget{implementation}{%
-\section{\texorpdfstring{Implementation
-\label{sec:impl}}{Implementation }}\label{implementation}}
-
 \hypertarget{aiinsurance-package}{%
-\subsection{\texorpdfstring{\texttt{aiinsurance} Package
-\label{subsec:package}}{aiinsurance Package }}\label{aiinsurance-package}}
+\section{\texorpdfstring{\texttt{aiinsurance} Package
+\label{sec:package}}{aiinsurance Package }}\label{aiinsurance-package}}
 
 \begin{wrapfigure}{l}{0.15\textwidth}
-\includegraphics[width=0.7\linewidth]{"./figures/logo.png"}
+\includegraphics[width=0.9\linewidth]{"./figures/logo.png"}
 \captionsetup{justification=raggedright,singlelinecheck=false}
 \caption*{ \tiny \href{https://aiinsurance.io/}{Icon Source}}
 \end{wrapfigure}
@@ -242,7 +279,7 @@ and an interactive app that displays the performance of the models.
 Using package's functions
 
 \hypertarget{exploratory-data-analysis-eda}{%
-\subsection{\texorpdfstring{Exploratory Data Analysis (EDA)
+\section{\texorpdfstring{Exploratory Data Analysis (EDA)
 \label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
 
 \scriptsize
@@ -293,20 +330,52 @@ In the following, the nature of categorical columns are reported:
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
+\hypertarget{preprocessing}{%
+\section{Preprocessing}\label{preprocessing}}
+
+\hypertarget{class-imabalance-and-racog}{%
+\subsection{Class Imabalance and
+RaCog}\label{class-imabalance-and-racog}}
+
+RaCog (Rapidly converging Gibbs algorithm.)
+
 The proportion of outcome classes are shown in the following:
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
-\hypertarget{preprocessing}{%
-\subsection{Preprocessing}\label{preprocessing}}
+The number of class 0 and class 1 labels are respectively 6867, 3133
+
+Imbalance ratio is defined as size of minority class (1 in our case)
+over size of majority class (0). Therefore, the ideal number for this
+quantity is 1. Imbalance ratio:0.45624
+
+After oversampling,
+
+The number of class 0 and class 1 labels are respectively 5484, 5516
+
+Imbalance ratio is approximately 1 now.
 
 \hypertarget{encoding-categorical-columns}{%
-\subsubsection{Encoding Categorical
+\subsection{Encoding Categorical
 Columns}\label{encoding-categorical-columns}}
 
 \hypertarget{classification-models}{%
-\subsection{\texorpdfstring{Classification Models
-\label{subsec:models}}{Classification Models }}\label{classification-models}}
+\section{Classification Models}\label{classification-models}}
+
+\hypertarget{logistic-regression}{%
+\subsection{\texorpdfstring{Logistic Regression
+\label{subsec:logit}}{Logistic Regression }}\label{logistic-regression}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"insurance\_train"}\NormalTok{)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"insurance\_test"}\NormalTok{)}
+\NormalTok{actual }\OtherTok{\textless{}{-}}\NormalTok{ insurance\_test}\SpecialCharTok{$}\NormalTok{outcome}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{logis}{%
+\subsubsection{Logis}\label{logis}}
 
 \hypertarget{results-and-discussion}{%
 \section{\texorpdfstring{Results and Discussion
