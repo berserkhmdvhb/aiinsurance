@@ -46,6 +46,8 @@ To view the documentation my package, how to use its functions, and to read the 
 
 ## `targets` Pipeline
 
+To run the pipeline, adhere to the instructions provided below:
+
 First clone the package's repository, using the following command in a command line:
 
 ```
@@ -120,11 +122,13 @@ The steps of the pipeline are elaborated on in the following:
 ## `shiny` App
 
 Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. 
+To view the shiny app, adhere to the instructions provided below:
+
 install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)).
 
 **Note** : Make sure to install the `aiinsurance` package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself, and hence if one installs renv after, the `aiinsurance` will no longer exist.
 
-To view the app, load the `aiinsurance` package, and run the function `shiny_run_hmd` from the package.
+load the `aiinsurance` package, and run the function `shiny_run_hmd` from the package. Executing the following command will display the app.
 ```r
 aiinsurance::shiny_run_hmd()
 ```
