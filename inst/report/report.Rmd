@@ -24,6 +24,7 @@ library(caret) #for dummyVar function
 library(Metrics)
 library(randomForest)
 library(tidyverse)
+library(fontawesome)
 ```
 
 
@@ -102,23 +103,49 @@ As a single random tree might not be able to capture the proper inherent complex
 
 
 
-
-
-
-
-# Implementation and Results \label{sec:impl}
-
+# Implementation \label{sec:impl}
 
 ## `aiinsurance` Package \label{subsec:package}
+```{r, echo=FALSE, out.width="5%"}
+knitr::include_graphics("../figures/logo.png")
+```
+README file in the main page of package's [Github repository](https://github.com/berserkhmdvhb/aiinsurance) `r fa(name = "github", height = "1em")`
 
 
 
-## Dataset Analysis \label{subsec:data}
+
+
+
+
+## Exploratory Data Analysis (EDA) \label{sec:data}
+
+```{r, echo=FALSE}
+data(car_insurance_data)
+df <- janitor::clean_names(car_insurance_data)
+df |> dplyr::glimpse()
+```
+
+
+
+List of categorical columns including characters:
+
+1] "List of categorical columns containing characters: "
+[1] "age"                "gender"            
+[3] "race"               "driving_experience"
+[5] "education"          "income"            
+[7] "vehicle_year"       "vehicle_type"      
+[1] "List of categorical columns containing numbers: "
+[1] "vehicle_ownership" "married"          
+[3] "children"          "postal_code"      
+[5] "outcome"    
+
+
+
 
 ## Classification Models \label{subsec:models}
 
 
-
+# Results and Discussion \label{sec:impl}
 
 
 # Conclusion

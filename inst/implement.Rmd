@@ -83,6 +83,7 @@ names(df)
 
 And the following is to make the codes reproducible, as random values might be involved in different stages:
 ```{r}
+df |> dplyr::glimpse()
 set.seed(12345)
 ```
 
@@ -461,7 +462,7 @@ glmnet_cv_aic_hmd(fit, lchoice = "1se")
 
 
 ```{r}
-plot(outcome ~ )
+#plot(outcome ~ )
 ```
 
 

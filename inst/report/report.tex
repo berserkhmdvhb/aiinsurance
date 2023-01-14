@@ -93,7 +93,7 @@ a customer's claim is approved or not. The \texttt{aiinsurance} R
 package \cite{package} is developed to make this work reproducible,
 accessible, and equipped with advanced features, e.g., a pipeline that
 performs the main steps of this work in a single command, and an
-interactive app to display the performance of the models. Using
+interactive app that displays the performance of the models. Using
 package's functions, two machine learning models, i.e., logistic
 regression and random forest are implemented to classify the outcomes
 based on solely the historical data. The results indicate promising
@@ -247,21 +247,66 @@ input variables to consider at each split point in the decision tree.
 This helps to decorrelate the trees and make the model more robust to
 overfitting.
 
-\hypertarget{implementation-and-results}{%
-\section{\texorpdfstring{Implementation and Results
-\label{sec:impl}}{Implementation and Results }}\label{implementation-and-results}}
+\hypertarget{implementation}{%
+\section{\texorpdfstring{Implementation
+\label{sec:impl}}{Implementation }}\label{implementation}}
 
 \hypertarget{aiinsurance-package}{%
 \subsection{\texorpdfstring{\texttt{aiinsurance} Package
 \label{subsec:package}}{aiinsurance Package }}\label{aiinsurance-package}}
 
-\hypertarget{dataset-analysis}{%
-\subsection{\texorpdfstring{Dataset Analysis
-\label{subsec:data}}{Dataset Analysis }}\label{dataset-analysis}}
+\includegraphics[width=0.05\linewidth]{../figures/logo} README file in
+the main page of package's
+\href{https://github.com/berserkhmdvhb/aiinsurance}{Github repository}
+\includegraphics[width=0.97em,height=1em]{report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf}
+
+\hypertarget{exploratory-data-analysis-eda}{%
+\subsection{\texorpdfstring{Exploratory Data Analysis (EDA)
+\label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
+
+\begin{verbatim}
+## Rows: 10,000
+## Columns: 19
+## $ id                  <int> 569520, 750365, 199901, 478866, 731664, 877557, 93~
+## $ age                 <chr> "65+", "16-25", "16-25", "16-25", "26-39", "40-64"~
+## $ gender              <chr> "female", "male", "female", "male", "male", "femal~
+## $ race                <chr> "majority", "majority", "majority", "majority", "m~
+## $ driving_experience  <chr> "0-9y", "0-9y", "0-9y", "0-9y", "10-19y", "20-29y"~
+## $ education           <chr> "high school", "none", "high school", "university"~
+## $ income              <chr> "upper class", "poverty", "working class", "workin~
+## $ credit_score        <dbl> 0.6290273, 0.3577571, 0.4931458, 0.2060129, 0.3883~
+## $ vehicle_ownership   <int> 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1,~
+## $ vehicle_year        <chr> "after 2015", "before 2015", "before 2015", "befor~
+## $ married             <int> 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1,~
+## $ children            <int> 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1,~
+## $ postal_code         <int> 10238, 10238, 10238, 32765, 32765, 10238, 10238, 1~
+## $ annual_mileage      <int> 12000, 16000, 11000, 11000, 12000, 13000, 13000, 1~
+## $ vehicle_type        <chr> "sedan", "sedan", "sedan", "sedan", "sedan", "seda~
+## $ speeding_violations <int> 0, 0, 0, 0, 2, 3, 7, 0, 0, 0, 6, 4, 4, 0, 0, 0, 10~
+## $ duis                <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 1, 0, 2, 0, 2,~
+## $ past_accidents      <int> 0, 0, 0, 0, 1, 3, 3, 0, 0, 0, 7, 0, 2, 0, 1, 0, 1,~
+## $ outcome             <int> 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,~
+\end{verbatim}
+
+List of categorical columns including characters:
+
+1{]} ``List of categorical columns containing characters:'' {[}1{]}
+``age'' ``gender''\\
+{[}3{]} ``race'' ``driving\_experience'' {[}5{]} ``education''
+``income''\\
+{[}7{]} ``vehicle\_year'' ``vehicle\_type''\\
+{[}1{]} ``List of categorical columns containing numbers:'' {[}1{]}
+``vehicle\_ownership'' ``married''\\
+{[}3{]} ``children'' ``postal\_code''\\
+{[}5{]} ``outcome''
 
 \hypertarget{classification-models}{%
 \subsection{\texorpdfstring{Classification Models
 \label{subsec:models}}{Classification Models }}\label{classification-models}}
+
+\hypertarget{results-and-discussion}{%
+\section{\texorpdfstring{Results and Discussion
+\label{sec:impl}}{Results and Discussion }}\label{results-and-discussion}}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
