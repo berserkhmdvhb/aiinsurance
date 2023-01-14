@@ -65,9 +65,9 @@ based on solely the historical data. The results indicate promising
 prediction power with various evaluation metrics (e.g., accuracy,
 precision, recall, etc.) of over 80 percent. In addition to
 classification, informative insights from the dataset and models have
-been drawn, e.g., by dint of the random forest model, the variables of
-the dataset that perform more effective role in the prediction become
-evident.
+been drawn, e.g., by dint of the both models, statistical significance
+level of the variables of the dataset can be measured to determine the
+variables that perform more effective role in the prediction.
 \end{abstract}
 
 
@@ -242,7 +242,7 @@ Using package's functions
 \label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
 
 An overview of the car insurance dataset is provided in the following:
-\scriptsize
+\tiny
 
 \begin{verbatim}
 ## Rows: 10,000
@@ -270,29 +270,16 @@ An overview of the car insurance dataset is provided in the following:
 
 \normalsize
 
-\scriptsize
-
-\begin{verbatim}
-## [1] "List of categorical columns containing characters: "
-## [1] "age"                "gender"             "race"              
-## [4] "driving_experience" "education"          "income"            
-## [7] "vehicle_year"       "vehicle_type"      
-## [1] "List of categorical columns containing numbers: "
-## [1] "vehicle_ownership" "married"           "children"         
-## [4] "postal_code"       "outcome"
-\end{verbatim}
-
 The following plot visualizes proportion of data types within the
 dataset.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
 The ``factor'' types of the plot represent categorical variables contain
-classes as characters, e.g., gender variable contains characters
-``male'' and female''. However, there are some categorical variables in
-the integer type as well, e.g., children. As this
-
-\normalsize
+classes as characters, e.g., \texttt{gender} variable contains
+characters \texttt{male} or \texttt{female}. However, there are some
+categorical variables in the integer type as well, e.g.,
+\texttt{married}.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
@@ -313,11 +300,8 @@ Imbalance ratio is defined as size of minority class (1 in our case)
 over size of majority class (0). Therefore, the ideal number for this
 quantity is 1. Imbalance ratio:0.45624
 
-After oversampling,
-
-The number of class 0 and class 1 labels are respectively 5484, 5516
-
-Imbalance ratio is approximately 1 now.
+After oversampling, the number of class 0 and class 1 labels are
+respectively 5484, 5516. Imbalance ratio is approximately 1 now.
 
 To make the dataset balanced, oversampling methods can be used, which
 are methods that generate samples from the dataset with the minority
@@ -343,15 +327,21 @@ As mentioned earlier, a prerequisite of RaCog algorithm is a discretized
 and numeric dataset. In addition to this, there are other reasons for
 encoding the dataset to only contain numbers. Firstly, most machine
 learning algorithms require that input and output variables are numbers.
-Secondly, even if the dataset only contain numbers, but
-
-another reason earlier, many oversampling methods only accept numerical
-data, hence in case of existing categorical columns in the dataset, they
-should be converted to numerical ones. One-hot-encoding is used to
-encode (represent) categorical variables as numerical values. This is
-done by creating a new binary column for each unique category in the
-data, with a value of 1 in the column corresponding to the category and
-0 in all other columns.
+Secondly, even if the dataset only contain numbers, and yet a
+categorical variable is represented with natural numbers, the following
+two cases might occur: Either the variable has a natural order, e.g.,
+\texttt{age} which contains four age groups can be represented with
+numbers \{1,2,3,4\}, such that higher numbers correspond to older age
+group. However, the variables \texttt{vehicle\_type}, \texttt{gender},
+\texttt{race}, etc are not suitable to be represented with natural
+numbers, as higher or lower numbers doest not indicate any inherent
+ordrer, and this might mislead a machine learning model.
+One-hot-encoding is used to encode (represent) categorical variables as
+numerical values but not natural numbers. This is done by creating a new
+binary column for each unique category in the data, with a value of 1 in
+the column corresponding to the category and 0 in all other columns.
+One-hot-encoding wouldn't contain any order for classes of columns, and
+therefore overcomes the ordering issue mentioned earlier.
 
 \hypertarget{racog}{%
 \subsection{\texorpdfstring{RaCog
@@ -361,8 +351,9 @@ Existing oversampling approaches for addressing imbalanced dataset
 (explained in \ref{subsec:imbalance}) typically do not consider the
 probability distribution of the minority class while synthetically
 generating new samples. This leads to poor representation of the
-minority class, and hence to poor classification performance. Rapidly
-converging Gibbs algorithm (RaCog) uses the joint probability
+minority class, and hence to poor classification performance.
+
+Rapidly converging Gibbs algorithm (RaCog) uses the joint probability
 distribution of input variables as well as Gibbs sampling to generate
 new minority class samples. Gibbs sampling is a Markov Chain Monte Carlo
 (MCMC) method \cite{bishop} that is used to sample from a
@@ -380,10 +371,8 @@ the distribution, such as the mean and variance of each variable.
 In summary, Gibbs sampling is a way to iteratively sample from the
 conditional distributions of each variable given the current values of
 the other variables, to estimate properties of a multi-dimensional
-distribution. This way it avoids the
-
-For more rigorous and detailed information on RaCog alogirhtm, the
-interested reader is reffered to \cite{racog}.
+distribution. For more rigorous and detailed information on RaCog
+alogirhtm, the interested reader is reffered to \cite{racog}.
 
 In following, a grid of one to one variable comparison is presented,
 wherein the the prior imbalanced dataset in placed graphics next to the
@@ -398,28 +387,86 @@ balanced one, for each pair of variables.
 \subsection{\texorpdfstring{Logistic Regression
 \label{subsec:logit}}{Logistic Regression }}\label{logistic-regression}}
 
-\includegraphics{report_files/figure-latex/unnamed-chunk-12-1.pdf}
+When applying the logistic regression model (explained in)
 
-\hypertarget{logit}{%
-\subsection{Logit}\label{logit}}
+Among results of fitting logistic regression (logit) on the dataset, the
+significance level of variables are reported, obtained by perturbing a
+small change in the variable under study while holding all other
+variables constant. The most significant variables that affects the
+prediction of outcomes, i.e., 1 for approval and 0 for or rejection of
+car insurance claims are listed below. The high significance levels were
+determined by observing small p-values. However, the direction of the
+variables' impact remains yet to be determined. The aim is to answer the
+following question. Would a significant have an effective role in
+increasing the chance of approval (class 1), or chance of rejection
+(class 0). The answer of this question lies at the sign of the
+coefficient of the variable in the model. The significant variables and
+their direction of significance are reported below. Positive effect
+means the variable increased chance in class 1.
 
-\hypertarget{cros-validation}{%
-\subsection{Cros-validation}\label{cros-validation}}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{driving\_experience.0.9y}: Having driving experience between
+  0-9 years, positive.
+\item
+  \texttt{vehicle\_ownership}: Whether the policyholder owns the vehicle
+  or not, negative.
+\item
+  \texttt{vehicle\_year.after.2015}: The vehicle was built after 2015,
+  negative.
+\item
+  \texttt{postal\_code}: Postal code of the policyholder.
+\end{itemize}
+
+\hypertarget{random-forest}{%
+\subsection{\texorpdfstring{Random Forest
+\label{subsec:rf}}{Random Forest }}\label{random-forest}}
+
+The random forest model can also report significance level of variables
+using different measures, two of which will be reported, accuracy, and
+Gini.
+
+The following plot visualizes significance level of variables. The left
+part shows how much accuracy th model losses by excluding each variable.
+The more the accuracy suffers (higher \texttt{MeanDecreaseAccuracy}),
+the more important the variable is for the successful classification.
+The variables are presented in descending quantity order of importance.
+The right part shows the mean decrease in Gini coefficient. The Gini
+coefficient is a measure of how each variable contributes to the
+homogeneity of the nodes and leaves in the resulting random forest.
+Again, higher \texttt{MeanDecreaseGini} indicates more significance.
+
+A salient point to take into account is that almost all variables for
+which both the logit model \ref{subsec:logit} considered high
+significance level also have high significance in random forest
+\ref{subsec:rf} based on at least one of the accuracy or Gini
+measurements. The only variable considered significant by logit but not
+by random forest was \texttt{gender.female}. And the variables that were
+considered significant by random forest but not by logit were the
+following: \texttt{age}, \texttt{speeding\_violations}, and
+\texttt{credit\_score}.
+
+\hypertarget{hyper-parameter-tuning}{%
+\subsection{Hyper-parameter tuning}\label{hyper-parameter-tuning}}
 
 \hypertarget{evaluation}{%
 \section{\texorpdfstring{Evaluation
 \label{sec:evaluation}}{Evaluation }}\label{evaluation}}
 
-\hypertarget{conclusion}{%
-\section{Conclusion}\label{conclusion}}
+In the following, various evaluation metrics were employed to measure
+and compare the classification performance of the models.
 
-\newpage
+\includegraphics{report_files/figure-latex/unnamed-chunk-13-1.pdf}
 
 \hypertarget{evaluation-1}{%
 \subsection{Evaluation}\label{evaluation-1}}
 
 Note that for the SARMA and Nueral Network models, the original data is
 used, while weekly aggregated data is used for VAR model.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
 
 \bibliographystyle{unsrt}
 \bibliography{references.bib}

@@ -65,8 +65,8 @@ eval_hmd <- function(actual,
     ggplot2::geom_tile() + ggplot2::geom_text(ggplot2::aes(label=plt$Freq)) +
     ggplot2::scale_fill_gradient(low="white", high="#009194") +
     ggplot2::labs(x = "Reference", y = "Prediction") +
-    ggplot2::scale_x_discrete(labels=c("Class_1","Class_2")) +
-    ggplot2::scale_y_discrete(labels=c("Class_2","Class_1"))
+    ggplot2::scale_x_discrete(labels=c("Class 0","Class 1")) +
+    ggplot2::scale_y_discrete(labels=c("Class 1","Class 0"))
 
 
   h <- hash::hash()
