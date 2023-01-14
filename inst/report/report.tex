@@ -5,7 +5,11 @@
 \usepackage[utf8]{inputenc} % allow utf-8 input
 \usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{lmodern}        % https://github.com/rstudio/rticles/issues/343
-\usepackage[pagebackref=false,colorlinks,urlcolor=red,linkcolor=blue,citecolor=blue]{hyperref}
+%[HMD] change reference style
+\usepackage{xcolor,sectsty}
+\definecolor{astral}{RGB}{46,116,181}
+\definecolor{capri}{rgb}{0.0, 0.75, 1.0}
+\usepackage[pagebackref=false,colorlinks,urlcolor=capri,linkcolor=blue,citecolor=blue]{hyperref}
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
@@ -13,71 +17,32 @@
 \usepackage{microtype}      % microtypography
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{caption}
 
-\title{Car Insurance Claims Classification Report}
+
+
+%[HMD] change the font
+%For SANS-SERIF
+%\usepackage{biolinum}
+%\renewcommand{\familydefault}{\sfdefault}
+% For SERIF
+\usepackage{libertine}
+\usepackage{libertinust1math}
+
+%[HMD] change title color
+%\title{Car Insurance Claims Classification Report}
+\title{\color{astral}Car Insurance Claims Classification Report}
 
 \author{
     Hamed Vaheb\\
   \texttt{\href{mailto:hamed.vaheb.001@student.uni.lu}{\nolinkurl{hamed.vaheb.001@student.uni.lu}}}% \\
   }
 
-% Pandoc syntax highlighting
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % tightlist command for lists without linebreak
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
-% From pandoc table feature
-\usepackage{longtable,booktabs,array}
-\usepackage{calc} % for calculating minipage widths
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 
 
 \begin{document}
@@ -244,8 +209,9 @@ capture a more robust and accurate representation of the data. The
 randomness in the random forest comes from randomly selecting subsets of
 the data to train each decision tree, and randomly selecting subsets of
 input variables to consider at each split point in the decision tree.
-This helps to decorrelate the trees and make the model more robust to
-overfitting.
+This helps to decorrelate the trees, i.e., reducing the correlation or
+dependence between the trees, consequently, make the model more robust
+to overfitting.
 
 \hypertarget{implementation}{%
 \section{\texorpdfstring{Implementation
@@ -257,26 +223,29 @@ overfitting.
 
 \begin{wrapfigure}{l}{0.15\textwidth}
 \includegraphics[width=0.7\linewidth]{"./figures/logo.png"}
-\caption*{ \href{Icon Source: }{https://aiinsurance.io/}}
+\captionsetup{justification=raggedright,singlelinecheck=false}
+\caption*{ \tiny \href{https://aiinsurance.io/}{Icon Source}}
 \end{wrapfigure}
 
 The \texttt{aiinsurance} R package \cite{package} is developed to make
 this work reproducible, accessible, and equipped with advanced features.
 
-Instructions on how to install and use the package is provided in the
-README file of package's
-\href{https://github.com/berserkhmdvhb/aiinsurance}{Github repository}
-\includegraphics[width=0.97em,height=1em]{report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf}
+Instructions on how to install and use the package's functions and
+features is provided in the
+\href{https://github.com/berserkhmdvhb/aiinsurance\#readme}{README part
+of package's Github repository}
+\includegraphics[width=0.97em,height=1em]{report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf}.
 
-e.g., a pipeline that performs the main steps of this work in a single
-command, and an interactive app that displays the performance of the
-models. Using package's functions
+Noteworthy features of the package are explained in the following: A
+pipeline that performs the main steps of this work in a single command,
+and an interactive app that displays the performance of the models.
+Using package's functions
 
 \hypertarget{exploratory-data-analysis-eda}{%
 \subsection{\texorpdfstring{Exploratory Data Analysis (EDA)
 \label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
 
-\tiny
+\scriptsize
 
 \begin{verbatim}
 ## Rows: 10,000
@@ -304,17 +273,36 @@ models. Using package's functions
 
 \normalsize
 
-List of categorical columns including characters:
+In the following, the nature of categorical columns are reported:
 
-1{]} ``List of categorical columns containing characters:'' {[}1{]}
-``age'' ``gender''\\
-{[}3{]} ``race'' ``driving\_experience'' {[}5{]} ``education''
-``income''\\
-{[}7{]} ``vehicle\_year'' ``vehicle\_type''\\
-{[}1{]} ``List of categorical columns containing numbers:'' {[}1{]}
-``vehicle\_ownership'' ``married''\\
-{[}3{]} ``children'' ``postal\_code''\\
-{[}5{]} ``outcome''
+\scriptsize
+
+\begin{verbatim}
+## [1] "List of categorical columns containing characters: "
+## [1] "age"                "gender"             "race"              
+## [4] "driving_experience" "education"          "income"            
+## [7] "vehicle_year"       "vehicle_type"      
+## [1] "List of categorical columns containing numbers: "
+## [1] "vehicle_ownership" "married"           "children"         
+## [4] "postal_code"       "outcome"
+\end{verbatim}
+
+\normalsize
+
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
+
+The proportion of outcome classes are shown in the following:
+
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-6-1} \end{center}
+
+\hypertarget{preprocessing}{%
+\subsection{Preprocessing}\label{preprocessing}}
+
+\hypertarget{encoding-categorical-columns}{%
+\subsubsection{Encoding Categorical
+Columns}\label{encoding-categorical-columns}}
 
 \hypertarget{classification-models}{%
 \subsection{\texorpdfstring{Classification Models
@@ -337,79 +325,13 @@ LaTeX command can be used to reference other section. See Section
 \ref{sec:headings}. However, you can also use \textbf{bookdown}
 extensions mechanism for this.
 
-\hypertarget{examples-of-citations-figures-tables-references}{%
-\section{\texorpdfstring{Examples of citations, figures, tables,
-references
-\label{sec:others}}{Examples of citations, figures, tables, references }}\label{examples-of-citations-figures-tables-references}}
-
-The documentation for \verb+natbib+ may be found at
-
-You can use custom blocks with LaTeX support from \textbf{rmarkdown} to
-create environment.
-
-\begin{center}
-\url{http://mirrors.ctan.org/macros/latex/contrib/natbib/natnotes.pdf\%7D}
-
-\end{center}
-
-Of note is the command \verb+\citet+, which produces citations
-appropriate for use in inline text.
-
-You can insert LaTeX environment directly too.
-
-\begin{verbatim}
-   investigated\dots
-\end{verbatim}
-
-produces
-
-\begin{quote}
-  Hasselmo, et al.\ (1995) investigated\dots
-\end{quote}
-
-\begin{center}
-  \url{https://www.ctan.org/pkg/booktabs}
-\end{center}
-
-\hypertarget{figures}{%
-\subsection{Figures}\label{figures}}
-
-You can insert figure using LaTeX directly.
-
-See Figure \ref{fig:fig1}. Here is how you add footnotes. {[}\^{}Sample
-of the first footnote.{]}
-
-\begin{figure}
-  \centering
-  \fbox{\rule[-.5cm]{4cm}{4cm} \rule[-.5cm]{4cm}{0cm}}
-  \caption{Sample figure caption.}
-  \label{fig:fig1}
-\end{figure}
-
-But you can also do that using R.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{plot}\NormalTok{(mtcars}\SpecialCharTok{$}\NormalTok{mpg)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{figure}
-\centering
-\includegraphics{report_files/figure-latex/fig2-1.pdf}
-\caption{Another sample figure}
-\end{figure}
-
-You can use \textbf{bookdown} to allow references for Tables and
-Figures.
-
-\hypertarget{tables}{%
-\subsection{Tables}\label{tables}}
+\hypertarget{evaluation}{%
+\subsection{Evaluation}\label{evaluation}}
 
 Below we can see how to use tables.
 
-See awesome Table\textasciitilde{}\ref{tab:table} which is written
-directly in LaTeX in source Rmd file.
+See awesome Table \ref{tab:table} which is written directly in LaTeX in
+source Rmd file.
 
 \begin{table}
  \caption{Sample table title}
@@ -429,49 +351,6 @@ directly in LaTeX in source Rmd file.
 \end{table}
 
 You can also use R code for that.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}\FunctionTok{head}\NormalTok{(mtcars), }\AttributeTok{caption =} \StringTok{"Head of mtcars table"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{longtable}[]{@{}lrrrrrrrrrrr@{}}
-\caption{Head of mtcars table}\tabularnewline
-\toprule
-& mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
-\midrule
-\endfirsthead
-\toprule
-& mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb \\
-\midrule
-\endhead
-Mazda RX4 & 21.0 & 6 & 160 & 110 & 3.90 & 2.620 & 16.46 & 0 & 1 & 4 &
-4 \\
-Mazda RX4 Wag & 21.0 & 6 & 160 & 110 & 3.90 & 2.875 & 17.02 & 0 & 1 & 4
-& 4 \\
-Datsun 710 & 22.8 & 4 & 108 & 93 & 3.85 & 2.320 & 18.61 & 1 & 1 & 4 &
-1 \\
-Hornet 4 Drive & 21.4 & 6 & 258 & 110 & 3.08 & 3.215 & 19.44 & 1 & 0 & 3
-& 1 \\
-Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440 & 17.02 & 0 & 0
-& 3 & 2 \\
-Valiant & 18.1 & 6 & 225 & 105 & 2.76 & 3.460 & 20.22 & 1 & 0 & 3 & 1 \\
-\bottomrule
-\end{longtable}
-
-\hypertarget{lists}{%
-\subsection{Lists}\label{lists}}
-
-\begin{itemize}
-\tightlist
-\item
-  Item 1
-\item
-  Item 2
-\item
-  Item 3
-\end{itemize}
 
 \bibliographystyle{unsrt}
 \bibliography{references.bib}
