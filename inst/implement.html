@@ -1082,6 +1082,14 @@ pre code {
 ##                 1.1959431                -0.1784208                        NA 
 ##       speeding_violations                      duis            past_accidents 
 ##                 1.4923479                -0.1607137                -2.3894743</code></pre>
+<p>Interpreting the results of a binomial generalized linear model (GLM) fit with the glmnet package in R can be done by looking at the coefficients of the model and their corresponding significance levels. The coefficients represent the change in the log-odds of the outcome for a one-unit change in the predictor variable, holding all other predictors constant. The significance levels of the coefficients can be determined by looking at the p-values, with smaller p-values indicating stronger evidence against the null hypothesis that the coefficient is equal to zero.</p>
+<p>The following columns had p-value less than <span class="math inline">\(2e-16\)</span>:</p>
+<ul>
+<li><code>driving_experience.0.9y</code></li>
+<li><code>vehicle_ownership</code></li>
+<li><code>vehicle_year.after.2015</code></li>
+<li><code>postal_code</code></li>
+</ul>
 <div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pred_glm)</span></code></pre></div>
 <pre><code>## 1 2 3 4 5 6 
 ## 0 0 0 0 1 0</code></pre>
