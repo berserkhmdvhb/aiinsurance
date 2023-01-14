@@ -255,14 +255,28 @@ overfitting.
 \subsection{\texorpdfstring{\texttt{aiinsurance} Package
 \label{subsec:package}}{aiinsurance Package }}\label{aiinsurance-package}}
 
-\includegraphics[width=0.05\linewidth]{../figures/logo} README file in
-the main page of package's
+\begin{wrapfigure}{l}{0.15\textwidth}
+\includegraphics[width=0.7\linewidth]{"./figures/logo.png"}
+\caption*{ \href{Icon Source: }{https://aiinsurance.io/}}
+\end{wrapfigure}
+
+The \texttt{aiinsurance} R package \cite{package} is developed to make
+this work reproducible, accessible, and equipped with advanced features.
+
+Instructions on how to install and use the package is provided in the
+README file of package's
 \href{https://github.com/berserkhmdvhb/aiinsurance}{Github repository}
 \includegraphics[width=0.97em,height=1em]{report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf}
+
+e.g., a pipeline that performs the main steps of this work in a single
+command, and an interactive app that displays the performance of the
+models. Using package's functions
 
 \hypertarget{exploratory-data-analysis-eda}{%
 \subsection{\texorpdfstring{Exploratory Data Analysis (EDA)
 \label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
+
+\tiny
 
 \begin{verbatim}
 ## Rows: 10,000
@@ -288,6 +302,8 @@ the main page of package's
 ## $ outcome             <int> 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0,~
 \end{verbatim}
 
+\normalsize
+
 List of categorical columns including characters:
 
 1{]} ``List of categorical columns containing characters:'' {[}1{]}
@@ -306,7 +322,7 @@ List of categorical columns including characters:
 
 \hypertarget{results-and-discussion}{%
 \section{\texorpdfstring{Results and Discussion
-\label{sec:impl}}{Results and Discussion }}\label{results-and-discussion}}
+\label{sec:results}}{Results and Discussion }}\label{results-and-discussion}}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
@@ -314,38 +330,17 @@ List of categorical columns including characters:
 \newpage
 
 \hypertarget{headings-first-level}{%
-\section{Headings: first level}\label{headings-first-level}}
-
-\label{sec:headings}
+\section{\texorpdfstring{Headings: first level
+\label{sec:headings}}{Headings: first level }}\label{headings-first-level}}
 
 LaTeX command can be used to reference other section. See Section
 \ref{sec:headings}. However, you can also use \textbf{bookdown}
 extensions mechanism for this.
 
-\hypertarget{headings-second-level}{%
-\subsection{Headings: second level}\label{headings-second-level}}
-
-You can use equation in blocks
-
-\[
-\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
-\]
-
-But also inline i.e \(z=x+y\)
-
-\hypertarget{headings-third-level}{%
-\subsubsection{Headings: third level}\label{headings-third-level}}
-
-Another paragraph.
-
 \hypertarget{examples-of-citations-figures-tables-references}{%
-\section{Examples of citations, figures, tables,
-references}\label{examples-of-citations-figures-tables-references}}
-
-\label{sec:others}
-
-You can insert references. Here is some text (\textbf{kour2014real?};
-\textbf{kour2014fast?}) and see (\textbf{hadash2018estimate?}).
+\section{\texorpdfstring{Examples of citations, figures, tables,
+references
+\label{sec:others}}{Examples of citations, figures, tables, references }}\label{examples-of-citations-figures-tables-references}}
 
 The documentation for \verb+natbib+ may be found at
 
@@ -363,7 +358,7 @@ appropriate for use in inline text.
 You can insert LaTeX environment directly too.
 
 \begin{verbatim}
-   \citet{hasselmo} investigated\dots
+   investigated\dots
 \end{verbatim}
 
 produces

@@ -105,11 +105,20 @@ As a single random tree might not be able to capture the proper inherent complex
 
 # Implementation \label{sec:impl}
 
-## `aiinsurance` Package \label{subsec:package}
-```{r, echo=FALSE, out.width="5%"}
-knitr::include_graphics("../figures/logo.png")
-```
-README file in the main page of package's [Github repository](https://github.com/berserkhmdvhb/aiinsurance) `r fa(name = "github", height = "1em")`
+## `aiinsurance` Package \label{subsec:package} 
+
+
+\begin{wrapfigure}{l}{0.15\textwidth}
+\includegraphics[width=0.7\linewidth]{"./figures/logo.png"}
+\caption*{ \href{Icon Source: }{https://aiinsurance.io/}}
+\end{wrapfigure}
+
+The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features.
+
+Instructions on how to install and use the package is provided in the README file of package's [Github repository](https://github.com/berserkhmdvhb/aiinsurance) `r fa(name = "github")`
+
+
+e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Using package's functions
 
 
 
@@ -119,12 +128,13 @@ README file in the main page of package's [Github repository](https://github.com
 
 ## Exploratory Data Analysis (EDA) \label{sec:data}
 
+\tiny
 ```{r, echo=FALSE}
 data(car_insurance_data)
 df <- janitor::clean_names(car_insurance_data)
 df |> dplyr::glimpse()
 ```
-
+\normalsize
 
 
 List of categorical columns including characters:
@@ -145,7 +155,7 @@ List of categorical columns including characters:
 ## Classification Models \label{subsec:models}
 
 
-# Results and Discussion \label{sec:impl}
+# Results and Discussion \label{sec:results}
 
 
 # Conclusion
@@ -153,32 +163,16 @@ List of categorical columns including characters:
 \newpage
 
 
-# Headings: first level
-\label{sec:headings}
+# Headings: first level \label{sec:headings}
 
 
 LaTeX command can be used to reference other section. See Section \ref{sec:headings}.
 However, you can also use **bookdown** extensions mechanism for this.
 
-## Headings: second level
-
-You can use equation in blocks
-
-$$
-\xi _{ij}(t)=P(x_{t}=i,x_{t+1}=j|y,v,w;\theta)= {\frac {\alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}{\sum _{i=1}^{N} \sum _{j=1}^{N} \alpha _{i}(t)a^{w_t}_{ij}\beta _{j}(t+1)b^{v_{t+1}}_{j}(y_{t+1})}}
-$$
-
-But also inline i.e $z=x+y$
-
-### Headings: third level
-
-Another paragraph. 
 
 
-# Examples of citations, figures, tables, references
-\label{sec:others}
+# Examples of citations, figures, tables, references \label{sec:others}
 
-You can insert references. Here is some text [@kour2014real; @kour2014fast] and see @hadash2018estimate.
 
 The documentation for \verb+natbib+ may be found at
 
@@ -194,7 +188,7 @@ appropriate for use in inline text.
 You can insert LaTeX environment directly too.
 
 \begin{verbatim}
-   \citet{hasselmo} investigated\dots
+   investigated\dots
 \end{verbatim}
 
 produces
