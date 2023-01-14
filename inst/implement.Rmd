@@ -238,11 +238,17 @@ Merge new sampled data with original train dataset
 ```
  
 
+```{r}
+tr <- within(train, rm("id"))
+tr$outcome <- as.factor(tr$outcome)
 
-Save the processed dataframe to memory:
-  
-  
-  
+tr2 <- insurance_train
+tr2$outcome <- as.factor(tr2$outcome)
+
+imbalance::plotComparison(dataset = tr, anotherDataset = tr2, attrs = c("credit_score", "annual_mileage", "speeding_violations"), classAttr = "outcome")
+```
+
+
 
 
 ```{r}
@@ -356,6 +362,14 @@ summary(fit)
 ```{r}
 coef
 ```
+
+Interpreting the results of a binomial generalized linear model (GLM) fit with the glmnet package in R can be done by looking at the coefficients of the model and their corresponding significance levels. The coefficients represent the change in the log-odds of the outcome for a one-unit change in the predictor variable, holding all other predictors constant. The significance levels of the coefficients can be determined by looking at the p-values, with smaller p-values indicating stronger evidence against the null hypothesis that the coefficient is equal to zero.
+
+The following columns had p-value less than $2e-16$:
+- `driving_experience.0.9y` 
+- `vehicle_ownership`
+- `vehicle_year.after.2015`
+- `postal_code`
 
 ```{r}
 head(pred_glm)

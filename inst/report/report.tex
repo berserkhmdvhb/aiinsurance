@@ -30,8 +30,8 @@
 \usepackage{libertinust1math}
 
 %[HMD] change title color
-%\title{Car Insurance Claims Classification Report}
-\title{\color{astral}Car Insurance Claims Classification Report}
+%\title{Car Insurance Claims Classification}
+\title{\color{astral}Car Insurance Claims Classification}
 
 \author{
     Hamed Vaheb\\
@@ -241,6 +241,7 @@ Using package's functions
 \section{\texorpdfstring{Exploratory Data Analysis (EDA)
 \label{sec:data}}{Exploratory Data Analysis (EDA) }}\label{exploratory-data-analysis-eda}}
 
+An overview of the car insurance dataset is provided in the following:
 \scriptsize
 
 \begin{verbatim}
@@ -269,8 +270,6 @@ Using package's functions
 
 \normalsize
 
-In the following, the nature of categorical columns are reported:
-
 \scriptsize
 
 \begin{verbatim}
@@ -283,20 +282,26 @@ In the following, the nature of categorical columns are reported:
 ## [4] "postal_code"       "outcome"
 \end{verbatim}
 
-\normalsize
+The following plot visualizes proportion of data types within the
+dataset.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-3-1} \end{center}
+
+The ``factor'' types of the plot represent categorical variables contain
+classes as characters, e.g., gender variable contains characters
+``male'' and female''. However, there are some categorical variables in
+the integer type as well, e.g., children. As this
+
+\normalsize
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 \hypertarget{preprocessing}{%
 \section{Preprocessing}\label{preprocessing}}
 
-\hypertarget{class-imabalance-and-racog}{%
-\subsection{Class Imabalance and
-RaCog}\label{class-imabalance-and-racog}}
-
-RaCog (Rapidly converging Gibbs algorithm.)
+\hypertarget{class-imabalance}{%
+\subsection{\texorpdfstring{Class Imabalance
+\label{subsec:imbalance}}{Class Imabalance }}\label{class-imabalance}}
 
 The proportion of outcome classes are shown in the following:
 
@@ -314,9 +319,77 @@ The number of class 0 and class 1 labels are respectively 5484, 5516
 
 Imbalance ratio is approximately 1 now.
 
+To make the dataset balanced, oversampling methods can be used, which
+are methods that generate samples from the dataset with the minority
+class (having outcome = 1). The key challenge in these methods is that
+the samples should be similar to the original dataset, as their
+information, i.e., distribution and other statistical properties should
+align with the original data, however, they should be different to a
+small extent too, so that they would resemble new data available in the
+dataset, not merely a copy of what exists in it. A promising
+oversampling method that is used for this work is the RaCog algorithm.
+Prior to explaining the algorithm in \ref{subsec:racog}, the process of
+respresenting the categorical columns of the dataset as numerical ones
+is explained in \ref{subsec:encode}, as this process is a prerequisite
+for many oversampling methods. For RaCog, the dataset should be
+discretized and numeric, and a one-hot-encoded dataset satisfies this
+property.
+
 \hypertarget{encoding-categorical-columns}{%
-\subsection{Encoding Categorical
-Columns}\label{encoding-categorical-columns}}
+\subsection{\texorpdfstring{Encoding Categorical Columns
+\label{subsec:encode}}{Encoding Categorical Columns }}\label{encoding-categorical-columns}}
+
+As mentioned earlier, a prerequisite of RaCog algorithm is a discretized
+and numeric dataset. In addition to this, there are other reasons for
+encoding the dataset to only contain numbers. Firstly, most machine
+learning algorithms require that input and output variables are numbers.
+Secondly, even if the dataset only contain numbers, but
+
+another reason earlier, many oversampling methods only accept numerical
+data, hence in case of existing categorical columns in the dataset, they
+should be converted to numerical ones. One-hot-encoding is used to
+encode (represent) categorical variables as numerical values. This is
+done by creating a new binary column for each unique category in the
+data, with a value of 1 in the column corresponding to the category and
+0 in all other columns.
+
+\hypertarget{racog}{%
+\subsection{\texorpdfstring{RaCog
+\label{subsec:racog}}{RaCog }}\label{racog}}
+
+Existing oversampling approaches for addressing imbalanced dataset
+(explained in \ref{subsec:imbalance}) typically do not consider the
+probability distribution of the minority class while synthetically
+generating new samples. This leads to poor representation of the
+minority class, and hence to poor classification performance. Rapidly
+converging Gibbs algorithm (RaCog) uses the joint probability
+distribution of input variables as well as Gibbs sampling to generate
+new minority class samples. Gibbs sampling is a Markov Chain Monte Carlo
+(MCMC) method \cite{bishop} that is used to sample from a
+multi-dimensional distribution. The basic idea behind Gibbs sampling is
+that in order to sample from a probability distribution with multiple
+random variables, instead of directly sampling from the joint
+distribution of all the variables, the algorithm iteratively sample from
+the conditional distributions of each variable given the current values
+of the other variables. By dint of this, the computational difficulties
+of sampling from the full joint distribution are avoided. The result of
+the algorithm is a sequence of samples from the joint distribution of
+all the variables, which can be used to estimate various properties of
+the distribution, such as the mean and variance of each variable.
+
+In summary, Gibbs sampling is a way to iteratively sample from the
+conditional distributions of each variable given the current values of
+the other variables, to estimate properties of a multi-dimensional
+distribution. This way it avoids the
+
+For more rigorous and detailed information on RaCog alogirhtm, the
+interested reader is reffered to \cite{racog}.
+
+In following, a grid of one to one variable comparison is presented,
+wherein the the prior imbalanced dataset in placed graphics next to the
+balanced one, for each pair of variables.
+
+\includegraphics{report_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \hypertarget{classification-models}{%
 \section{Classification Models}\label{classification-models}}
@@ -325,52 +398,28 @@ Columns}\label{encoding-categorical-columns}}
 \subsection{\texorpdfstring{Logistic Regression
 \label{subsec:logit}}{Logistic Regression }}\label{logistic-regression}}
 
-\hypertarget{logis}{%
-\subsubsection{Logis}\label{logis}}
+\includegraphics{report_files/figure-latex/unnamed-chunk-12-1.pdf}
 
-\hypertarget{results-and-discussion}{%
-\section{\texorpdfstring{Results and Discussion
-\label{sec:results}}{Results and Discussion }}\label{results-and-discussion}}
+\hypertarget{logit}{%
+\subsection{Logit}\label{logit}}
+
+\hypertarget{cros-validation}{%
+\subsection{Cros-validation}\label{cros-validation}}
+
+\hypertarget{evaluation}{%
+\section{\texorpdfstring{Evaluation
+\label{sec:evaluation}}{Evaluation }}\label{evaluation}}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
 
 \newpage
 
-\hypertarget{headings-first-level}{%
-\section{\texorpdfstring{Headings: first level
-\label{sec:headings}}{Headings: first level }}\label{headings-first-level}}
+\hypertarget{evaluation-1}{%
+\subsection{Evaluation}\label{evaluation-1}}
 
-LaTeX command can be used to reference other section. See Section
-\ref{sec:headings}. However, you can also use \textbf{bookdown}
-extensions mechanism for this.
-
-\hypertarget{evaluation}{%
-\subsection{Evaluation}\label{evaluation}}
-
-Below we can see how to use tables.
-
-See awesome Table \ref{tab:table} which is written directly in LaTeX in
-source Rmd file.
-
-\begin{table}
- \caption{Sample table title}
-  \centering
-  \begin{tabular}{lll}
-    \toprule
-    \multicolumn{2}{c}{Part}                   \\
-    \cmidrule(r){1-2}
-    Name     & Description     & Size ($\mu$m) \\
-    \midrule
-    Dendrite & Input terminal  & $\sim$100     \\
-    Axon     & Output terminal & $\sim$10      \\
-    Soma     & Cell body       & up to $10^6$  \\
-    \bottomrule
-  \end{tabular}
-  \label{tab:table}
-\end{table}
-
-You can also use R code for that.
+Note that for the SARMA and Nueral Network models, the original data is
+used, while weekly aggregated data is used for VAR model.
 
 \bibliographystyle{unsrt}
 \bibliography{references.bib}
