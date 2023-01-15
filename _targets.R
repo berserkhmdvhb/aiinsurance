@@ -14,8 +14,8 @@ library(aiinsurance)
 
 
 
-source("./R/glmnet_fit_hmd.R")
-source("./R/glmnet_predict_hmd.R")
+source("./R/glm_fit_hmd.R")
+source("./R/glm_predict_hmd.R")
 source("./R/rf_fit_hmd.R")
 source("./R/rf_predict_hmd.R")
 source("./R/functions.R")
@@ -35,25 +35,25 @@ list(
   ),
   tar_target(
     model_glm,
-    glmnet_fit_hmd(insurance_train,
+    glmn_fit_hmd(insurance_train,
                    target = "outcome",
                    family = "binomial")
   ),
   tar_target(
     predictions_glm,
-    glmnet_predict_hmd(model_glm,
+    glm_predict_hmd(model_glm,
                     data = insurance_test,
                     target = "outcome")
   ),
   tar_target(
-    pred_proba_glmnet,
+    pred_proba_glm,
     get_pred_proba(predictions_glm)
   ),
-  tar_target(roc_obj_glmnet,
-             roc_obj_cal(actual, pred_proba_glmnet)
+  tar_target(roc_obj_glm,
+             roc_obj_cal(actual, pred_proba_glm)
   ),
   tar_target(plot_glm,
-             plot_roc_curve(roc_obj_glmnet)
+             plot_roc_curve(roc_obj_glm)
   ),
   tar_target(model_random_forest,
              rf_fit_hmd(insurance_train,

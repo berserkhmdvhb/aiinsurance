@@ -25,7 +25,7 @@ glmnet_cv_predict_hmd(
 with the probability above threshold as 1.}
 }
 \value{
-Returns prediction of the cv.glmnet function
+Returns a hash of predictions, prediction probabilities, and coefficients
 }
 \description{
 Predict data with results from CV.GLMNET model

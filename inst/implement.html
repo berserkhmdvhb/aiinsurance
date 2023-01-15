@@ -992,8 +992,8 @@ pre code {
 <h2><span class="header-section-number">4.1</span> <strong>Generalized Linear Models</strong></h2>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>actual <span class="ot">&lt;-</span> insurance_test<span class="sc">$</span>outcome</span></code></pre></div>
 <p><strong>GLMNET</strong></p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glmnet_fit_hmd</span>(insurance_train, <span class="at">target=</span><span class="st">&quot;outcome&quot;</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">glmnet_predict_hmd</span>(fit, </span>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glm_fit_hmd</span>(insurance_train, <span class="at">target=</span><span class="st">&quot;outcome&quot;</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>h <span class="ot">&lt;-</span> <span class="fu">glm_predict_hmd</span>(fit, </span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">data =</span> insurance_test,  </span>
 <span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">target =</span> <span class="st">&quot;outcome&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in predict.lm(object, newdata, se.fit, scale = 1, type = if (type == :
@@ -1099,7 +1099,7 @@ pre code {
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>aic</span></code></pre></div>
 <pre><code>## [1] 8492.693</code></pre>
 <p>avplot of results</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glmnet_plot_hmd(fit)</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co">#glm_plot_hmd(fit)</span></span></code></pre></div>
 <p><strong>cross validated GLMNET</strong></p>
 <p><strong>min</strong></p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">glmnet_cv_fit_hmd</span>(insurance_train, <span class="at">target=</span><span class="st">&quot;outcome&quot;</span>, <span class="at">family=</span><span class="st">&quot;binomial&quot;</span>)</span>

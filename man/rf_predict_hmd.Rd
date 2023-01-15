@@ -8,7 +8,7 @@ rf_predict_hmd(fit, data = aiinsurance::insurance_test, target = "outcome")
 }
 \arguments{
 \item{fit}{fit object from a randomf forest model either from the randomForest
-package), or from the "glmnet_cv_fit_hmd" function}
+package)}
 
 \item{data}{An arbitrary dataframe}
 

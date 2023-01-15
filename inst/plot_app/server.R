@@ -2,10 +2,10 @@ server <- function(session, input, output) {
   preds <- reactive({
     if (input$model_selected == "Logistic Regression"){
       actual <- aiinsurance::insurance_test$outcome
-      model_glm <- aiinsurance::glmnet_fit_hmd(aiinsurance::insurance_train,
+      model_glm <- aiinsurance::glm_fit_hmd(aiinsurance::insurance_train,
                                   target = "outcome",
                                   family = "binomial")
-      aiinsurance::glmnet_predict_hmd(model_glm,
+      aiinsurance::glm_predict_hmd(model_glm,
                          data = aiinsurance::insurance_test,
                          target = "outcome")
     }

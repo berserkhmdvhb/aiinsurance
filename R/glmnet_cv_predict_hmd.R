@@ -6,7 +6,7 @@
 #' @param threshold Cutoff point of probability of class 1, to classify the inputs
 #' with the probability above threshold as 1.
 #' @export
-#' @return Returns prediction of the cv.glmnet function
+#' @return Returns a hash of predictions, prediction probabilities, and coefficients
 #' @details
 #' This functions allows the user to predict a given dataset using fit object
 #' obtained from the cv.glmnet function

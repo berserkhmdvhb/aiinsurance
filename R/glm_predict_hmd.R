@@ -1,5 +1,5 @@
-#' Predict data with results from GLMNET model
-#' @param fit fit object from a cv.glmnet model
+#' Predict data with results using GLM fit object
+#' @param fit fit object from a glm model
 #' @param data An arbitrary dataframe
 #' @param target An arbitrary dataframe
 #' "response" gives the fitted probabilities. "class" produces the class label
@@ -8,16 +8,11 @@
 #' @param threshold Cutoff point of probability of class 1, to classify the inputs
 #' with the probability above threshold as 1.
 #' @export
-#' @return Returns fit object of glmnet function
+#' @return Returns fit object of glm function
 #' @details
-#' This functions allows the user to perform cross-validated eslastic net (which
-#' is a generalized
-#' linear model) on a given
-#' dataframe by specifying feature names (response variables),
-#' target variable, family of distribution, and the dataset (in my case, Medical
-#' Cost Personal Datasets)
+#' This functions allows the user to predict the results obtained from GLM model
 
-glmnet_predict_hmd <- function(fit,
+glm_predict_hmd <- function(fit,
                                data = aiinsurance::insurance_test,
                                target ="outcome",
                                threshold = 0.5

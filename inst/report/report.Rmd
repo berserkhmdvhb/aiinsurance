@@ -219,8 +219,8 @@ actual <- insurance_test$outcome
 ```{r, include=FALSE, warning=FALSE}
 
 actual <- insurance_test$outcome
-fit <- glmnet_fit_hmd(insurance_train, target="outcome", family="binomial")
-h <- glmnet_predict_hmd(fit, 
+fit <- glm_fit_hmd(insurance_train, target="outcome", family="binomial")
+h <- glm_predict_hmd(fit, 
                         data = insurance_test,  
                         target = "outcome")
 coef = h$coef

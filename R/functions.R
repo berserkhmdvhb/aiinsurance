@@ -10,10 +10,6 @@ get_data_actual <- function(){
   aiinsurance::insurance_test$outcome
 }
 
-get_data_actual <- function(){
-  aiinsurance::insurance_test$outcome
-}
-
 get_pred_proba <- function(h)
 {
   h$predict_proba

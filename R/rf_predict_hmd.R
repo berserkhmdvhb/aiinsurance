@@ -1,6 +1,6 @@
 #' Predict data with results from random forest model
 #' @param fit fit object from a randomf forest model either from the randomForest
-#' package), or from the "glmnet_cv_fit_hmd" function
+#' package)
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data
 #' @export
