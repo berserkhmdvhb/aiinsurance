@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.12)  15 JAN 2023 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.12)  15 JAN 2023 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,50 +518,161 @@ LaTeX Font Info:    Redeclaring math accent \vec on input line 831.
 LaTeX Info: Redefining \vdots on input line 1241.
 LaTeX Info: Redefining \cdots on input line 1246.
 LaTeX Info: Redefining \not on input line 1488.
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip69
+\LTright=\skip70
+\LTpre=\skip71
+\LTpost=\skip72
+\LTchunksize=\count296
+\LTcapwidth=\dimen188
+\LT@head=\box55
+\LT@firsthead=\box56
+\LT@foot=\box57
+\LT@lastfoot=\box58
+\LT@gbox=\box59
+\LT@cols=\count297
+\LT@rows=\count298
+\c@LT@tables=\count299
+\c@LT@chunks=\count300
+\LT@p@ftn=\toks33
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/tools/array.sty
+Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
+\col@sep=\dimen189
+\ar@mcellbox=\box60
+\extrarowheight=\dimen190
+\NC@list=\toks34
+\extratabsurround=\skip73
+\backup@length=\skip74
+\ar@cellbox=\box61
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip75
+\multirow@cntb=\count301
+\multirow@dima=\skip76
+\bigstrutjot=\dimen191
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count302
+\float@exts=\toks35
+\float@box=\box62
+\@float@everytoks=\toks36
+\@floatcapt=\box63
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks37
+\minrowclearance=\skip77
+\rownum=\count303
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
+Package: pdflscape-nometadata 2022-10-28 v0.13 Display of landscape pages in PDF (HO)
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
-LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineT-TLF on input line 48.
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+)) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/tabu/tabu.sty
+Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box64
+\sift@deathcycles=\count304
+\@vwid@loff=\dimen192
+\@vwid@roff=\dimen193
+)
+\c@taburow=\count305
+\tabu@nbcols=\count306
+\tabu@cnt=\count307
+\tabu@Xcol=\count308
+\tabu@alloc=\count309
+\tabu@nested=\count310
+\tabu@target=\dimen194
+\tabu@spreadtarget=\dimen195
+\tabu@naturalX=\dimen196
+\tabucolX=\dimen197
+\tabu@Xsum=\dimen198
+\extrarowdepth=\dimen199
+\abovetabulinesep=\dimen256
+\belowtabulinesep=\dimen257
+\tabustrutrule=\dimen258
+\tabu@thebody=\toks38
+\tabu@footnotes=\toks39
+\tabu@box=\box65
+\tabu@arstrutbox=\box66
+\tabu@hleads=\box67
+\tabu@vleads=\box68
+\tabu@cellskip=\skip78
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box69
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/threeparttablex/threeparttablex.sty
+Package: threeparttablex 2013/07/23 v0.3 by daleif
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+\TPTL@width=\skip79
+) (/home/hamed/.TinyTeX/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box70
+\UL@hyphenbox=\box71
+\UL@skip=\skip80
+\UL@hook=\toks40
+\UL@height=\dimen259
+\UL@pe=\count311
+\UL@pixel=\dimen260
+\ULC@box=\box72
+Package: ulem 2019/11/18
+\ULdepth=\dimen261
+) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen262
+\c@nlinenum=\count312
+\TeXr@lab=\toks41
+)
+LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineT-TLF on input line 62.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertine/T1LinuxLibertineT-TLF.fd
 File: T1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for T1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 48.
+(Font)              scaled to size 10.0pt on input line 62.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count296
-\l__pdf_internal_box=\box55
+\l__color_backend_stack_int=\count313
+\l__pdf_internal_box=\box73
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 48.
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 48.
-LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 48.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 62.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for LS1/libertinust1math/m/n on input line 62.
+LaTeX Font Info:    Trying to load font information for LS1+libertinust1math on input line 62.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertinust1math/ls1libertinust1math.fd
 File: ls1libertinust1math.fd 2016/03/23 Fontinst v1.933 font definitions for LS1/libertinust1math.
 )
-LaTeX Font Info:    ... okay on input line 48.
-LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 48.
-LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 48.
+LaTeX Font Info:    ... okay on input line 62.
+LaTeX Font Info:    Checking defaults for LS2/libertinust1mathsym/m/n on input line 62.
+LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathsym on input line 62.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertinust1math/ls2libertinust1mathsym.fd
 File: ls2libertinust1mathsym.fd 2015/04/17 v1.1.2-latex LibertinusT1Mathsym LS2 font definitions
 )
-LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    ... okay on input line 62.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -630,33 +741,27 @@ LaTeX Font Info:    ... okay on input line 48.
 
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-(/home/hamed/.TinyTeX/texmf-dist/tex/latex/grfext/grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 48.
+Package hyperref Info: Link coloring ON on input line 62.
 (./report.out) (./report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 48.
-Package microtype Info: Applying patch `item' on input line 48.
-Package microtype Info: Applying patch `toc' on input line 48.
-Package microtype Info: Applying patch `eqnum' on input line 48.
-Package microtype Info: Applying patch `footnote' on input line 48.
+LaTeX Info: Redefining \microtypecontext on input line 62.
+Package microtype Info: Applying patch `item' on input line 62.
+Package microtype Info: Applying patch `toc' on input line 62.
+Package microtype Info: Applying patch `eqnum' on input line 62.
+Package microtype Info: Applying patch `footnote' on input line 62.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 48.
+LaTeX Info: Redefining \showhyphens on input line 62.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -665,168 +770,174 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
+Package caption Info: longtable package is loaded.
+(/home/hamed/.TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)
+Package caption Info: threeparttable package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@mv@tabular=\count297
-\c@mv@boldtabular=\count298
-LaTeX Info: Command `\dddot' is already robust on input line 48.
-LaTeX Info: Command `\ddddot' is already robust on input line 48.
+\c@mv@tabular=\count314
+\c@mv@boldtabular=\count315
+LaTeX Info: Command `\dddot' is already robust on input line 62.
+LaTeX Info: Command `\ddddot' is already robust on input line 62.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 17.28pt on input line 50.
+(Font)              scaled to size 17.28pt on input line 64.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 17.28pt on input line 50.
+(Font)              scaled to size 17.28pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/n' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/n' will be
-(Font)              scaled to size 5.0pt on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/it' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/it' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/m/it' will be
-(Font)              scaled to size 5.0pt on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS2/libertinust1mathsym/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS2/libertinust1mathsym/m/n' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS2/libertinust1mathsym/m/n' will be
-(Font)              scaled to size 5.0pt on input line 50.
-LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathex on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
+LaTeX Font Info:    Trying to load font information for LS2+libertinust1mathex on input line 64.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertinust1math/ls2libertinust1mathex.fd
 File: ls2libertinust1mathex.fd 2016/03/15 v1.0.0-latex LibertinusMath extensions LS2 font definitions
 )
 LaTeX Font Info:    Font shape `LS2/libertinust1mathex/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS2/libertinust1mathex/m/n' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS2/libertinust1mathex/m/n' will be
-(Font)              scaled to size 5.0pt on input line 50.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 64.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 50.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 64.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/home/hamed/.TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for LS1+libertinust1mathbb on input line 50.
+LaTeX Font Info:    Trying to load font information for LS1+libertinust1mathbb on input line 64.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertinust1math/ls1libertinust1mathbb.fd
 File: ls1libertinust1mathbb.fd 2016/08/22 latex LibertinusT1Mathbb LS1 font definitions
 )
 LaTeX Font Info:    Font shape `LS1/libertinust1mathbb/m/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1mathbb/m/n' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1mathbb/m/n' will be
-(Font)              scaled to size 5.0pt on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/n' will be
-(Font)              scaled to size 5.0pt on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
-(Font)              scaled to size 7.0pt on input line 50.
+(Font)              scaled to size 7.0pt on input line 64.
 LaTeX Font Info:    Font shape `LS1/libertinust1math/b/it' will be
-(Font)              scaled to size 5.0pt on input line 50.
+(Font)              scaled to size 5.0pt on input line 64.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
-LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineMonoT-TLF on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
+LaTeX Font Info:    Trying to load font information for T1+LinuxLibertineMonoT-TLF on input line 64.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertine/T1LinuxLibertineMonoT-TLF.fd
 File: T1LinuxLibertineMonoT-TLF.fd 2019/05/20 (autoinst) Font definitions for T1/LinuxLibertineMonoT-TLF.
 )
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <10> not available
-(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 50.
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 64.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 10.0pt on input line 50.
+(Font)              scaled to size 10.0pt on input line 64.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineMonoT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 12.0pt on input line 52.
+(Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 52.
+(Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
-(Font)              scaled to size 12.0pt on input line 52.
+(Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 73.
+(Font)              scaled to size 14.4pt on input line 87.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 73.
-<./figures/aiactuary.png, id=94, 1806.75pt x 652.4375pt>
+(Font)              scaled to size 14.4pt on input line 87.
+<./figures/aiactuary.png, id=90, 1806.75pt x 652.4375pt>
 File: ./figures/aiactuary.png Graphic file (type png)
 <use ./figures/aiactuary.png>
-Package pdftex.def Info: ./figures/aiactuary.png  used on input line 76.
+Package pdftex.def Info: ./figures/aiactuary.png  used on input line 90.
 (pdftex.def)             Requested size: 147.97438pt x 53.43053pt.
 [1
 
 
 {/home/hamed/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figures/aiactuary.png>]
-<./figures/carinsurance.png, id=122, 1497.595pt x 1173.38374pt>
+<./figures/carinsurance.png, id=119, 1497.595pt x 1173.38374pt>
 File: ./figures/carinsurance.png Graphic file (type png)
 <use ./figures/carinsurance.png>
-Package pdftex.def Info: ./figures/carinsurance.png  used on input line 131.
+Package pdftex.def Info: ./figures/carinsurance.png  used on input line 145.
 (pdftex.def)             Requested size: 105.69414pt x 82.80771pt.
-<./figures/logit-model.png, id=124, 481.8pt x 476.78125pt>
+<./figures/logit-model.png, id=121, 481.8pt x 476.78125pt>
 File: ./figures/logit-model.png Graphic file (type png)
 <use ./figures/logit-model.png>
-Package pdftex.def Info: ./figures/logit-model.png  used on input line 158.
+Package pdftex.def Info: ./figures/logit-model.png  used on input line 172.
 (pdftex.def)             Requested size: 84.55402pt x 83.67076pt.
-<./figures/rf-model.png, id=125, 3663.6875pt x 2420.04124pt>
+<./figures/rf-model.png, id=122, 3663.6875pt x 2420.04124pt>
 File: ./figures/rf-model.png Graphic file (type png)
 <use ./figures/rf-model.png>
-Package pdftex.def Info: ./figures/rf-model.png  used on input line 184.
+Package pdftex.def Info: ./figures/rf-model.png  used on input line 198.
 (pdftex.def)             Requested size: 147.97438pt x 97.70833pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 218.
+(Font)              scaled to size 10.0pt on input line 232.
 [2 <./figures/carinsurance.png> <./figures/logit-model.png> <./figures/rf-model.png>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/b/n' in size <14.4> not available
-(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' tried instead on input line 221.
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' tried instead on input line 235.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' will be
-(Font)              scaled to size 14.4pt on input line 221.
-<./figures/logo.png, id=140, 431.6125pt x 113.42375pt>
+(Font)              scaled to size 14.4pt on input line 235.
+<./figures/logo.png, id=137, 431.6125pt x 113.42375pt>
 File: ./figures/logo.png Graphic file (type png)
 <use ./figures/logo.png>
-Package pdftex.def Info: ./figures/logo.png  used on input line 224.
+Package pdftex.def Info: ./figures/logo.png  used on input line 238.
 (pdftex.def)             Requested size: 63.4139pt x 16.66322pt.
-<report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf, id=143, 248.93pt x 256.96pt>
+<report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf, id=140, 248.93pt x 256.96pt>
 File: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf Graphic file (type pdf)
 <use report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf>
-Package pdftex.def Info: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf  used on input line 234.
+Package pdftex.def Info: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf  used on input line 248.
 (pdftex.def)             Requested size: 9.6972pt x 9.99826pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 262.
+(Font)              scaled to size 6.0pt on input line 279.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <6> not available
-(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 264.
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 281.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 6.0pt on input line 264.
-<report_files/figure-latex/unnamed-chunk-3-1.pdf, id=149, 248.93pt x 146.5475pt>
+(Font)              scaled to size 6.0pt on input line 281.
+<report_files/figure-latex/unnamed-chunk-3-1.pdf, id=146, 248.93pt x 146.5475pt>
 File: report_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 295.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 312.
 (pdftex.def)             Requested size: 248.92938pt x 146.54712pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [3 <./figures/logo.png> <./report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf>]
-<report_files/figure-latex/unnamed-chunk-4-1.pdf, id=166, 260.975pt x 178.6675pt>
+<report_files/figure-latex/unnamed-chunk-4-1.pdf, id=162, 260.975pt x 178.6675pt>
 File: report_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 309.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 326.
 (pdftex.def)             Requested size: 260.97437pt x 178.66705pt.
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 316.
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 333.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 316.
+(Font)              scaled to size 10.0pt on input line 333.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -835,73 +946,71 @@ Package microtype Info: Loading generic protrusion settings for font family
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 [4 <./report_files/figure-latex/unnamed-chunk-3-1.pdf> <./report_files/figure-latex/unnamed-chunk-4-1.pdf>]
-Underfull \hbox (badness 2478) in paragraph at lines 358--362
+Underfull \hbox (badness 2478) in paragraph at lines 375--379
 []\T1/LinuxLibertineT-TLF/m/n/10 (+20) To ob-serve the changes in im-puted vari-ables, the den-sity plot of the vari-ables \T1/LinuxLibertineMonoT-TLF/regular/n/10 credit_score \T1/LinuxLibertineT-TLF/m/n/10 (+20) and
  []
 
-<report_files/figure-latex/unnamed-chunk-7-1.pdf, id=193, 383.4325pt x 168.63pt>
+<report_files/figure-latex/unnamed-chunk-7-1.pdf, id=190, 383.4325pt x 168.63pt>
 File: report_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 363.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 380.
 (pdftex.def)             Requested size: 383.43156pt x 168.62958pt.
-<report_files/figure-latex/unnamed-chunk-8-1.pdf, id=195, 107.40125pt x 104.39pt>
+<report_files/figure-latex/unnamed-chunk-8-1.pdf, id=192, 107.40125pt x 104.39pt>
 File: report_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 378.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 395.
 (pdftex.def)             Requested size: 107.40097pt x 104.38972pt.
 [5 <./report_files/figure-latex/unnamed-chunk-7-1.pdf> <./report_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<./figures/plotcompare.png, id=226, 526.96875pt x 325.215pt>
+<./figures/plotcompare.png, id=223, 526.96875pt x 325.215pt>
 File: ./figures/plotcompare.png Graphic file (type png)
 <use ./figures/plotcompare.png>
-Package pdftex.def Info: ./figures/plotcompare.png  used on input line 476.
+Package pdftex.def Info: ./figures/plotcompare.png  used on input line 493.
 (pdftex.def)             Requested size: 256.0861pt x 199.17484pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 [6]
-<./figures/varimp.png, id=240, 847.165pt x 381.425pt>
+<./figures/varimp.png, id=235, 847.165pt x 381.425pt>
 File: ./figures/varimp.png Graphic file (type png)
 <use ./figures/varimp.png>
-Package pdftex.def Info: ./figures/varimp.png  used on input line 548.
+Package pdftex.def Info: ./figures/varimp.png  used on input line 567.
 (pdftex.def)             Requested size: 233.31364pt x 142.25995pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 [7 <./figures/plotcompare.png (PNG copy)>]
-<report_files/figure-latex/unnamed-chunk-17-1.pdf, id=249, 371.3875pt x 112.42pt>
-File: report_files/figure-latex/unnamed-chunk-17-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/unnamed-chunk-17-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-17-1.pdf  used on input line 565.
+<report_files/figure-latex/unnamed-chunk-18-1.pdf, id=246, 371.3875pt x 112.42pt>
+File: report_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/unnamed-chunk-18-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-18-1.pdf  used on input line 660.
 (pdftex.def)             Requested size: 371.38658pt x 112.41972pt.
-<report_files/figure-latex/unnamed-chunk-19-1.pdf, id=250, 307.1475pt x 125.46875pt>
-File: report_files/figure-latex/unnamed-chunk-19-1.pdf Graphic file (type pdf)
-<use report_files/figure-latex/unnamed-chunk-19-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-19-1.pdf  used on input line 589.
+[8 <./figures/varimp.png>]
+<report_files/figure-latex/unnamed-chunk-20-1.pdf, id=257, 307.1475pt x 125.46875pt>
+File: report_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type pdf)
+<use report_files/figure-latex/unnamed-chunk-20-1.pdf>
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-20-1.pdf  used on input line 729.
 (pdftex.def)             Requested size: 307.14674pt x 125.46843pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-[8 <./figures/varimp.png> <./report_files/figure-latex/unnamed-chunk-17-1.pdf>] (./report.bbl
+[9 <./report_files/figure-latex/unnamed-chunk-18-1.pdf>] (./report.bbl
 Underfull \hbox (badness 2980) in paragraph at lines 4--7
 []\T1/LinuxLibertineT-TLF/m/n/10 (+20) Hamed Va-heb.  ai-in-sur-ance Pack-age.  Avail-able at [][]$\T1/LinuxLibertineMonoT-TLF/regular/n/10 http : / / github . com / berserkhmdvhb /
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 11.
-) [9 <./report_files/figure-latex/unnamed-chunk-19-1.pdf>] (./report.aux)
+) [10 <./report_files/figure-latex/unnamed-chunk-20-1.pdf>] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 63FF0679D6EDBBEBAEE250F784D01B51;3332.
+(rerunfilecheck)             Checksum: D6552ABBE9430BFB83DC30BFEDACBF75;3258.
  ) 
 Here is how much of TeX's memory you used:
- 16738 strings out of 478053
- 282471 string characters out of 5840784
- 1868793 words of memory out of 5000000
- 36298 multiletter control sequences out of 15000+600000
- 605700 words of font info for 206 fonts, out of 8000000 for 9000
+ 18342 strings out of 478053
+ 309688 string characters out of 5840784
+ 1869793 words of memory out of 5000000
+ 37831 multiletter control sequences out of 15000+600000
+ 606831 words of font info for 215 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,12n,77p,1003b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,77p,1003b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_tlukpt.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineMTB.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on report.pdf (9 pages, 2491756 bytes).
+Output written on report.pdf (10 pages, 2518804 bytes).
 PDF statistics:
- 350 PDF objects out of 1000 (max. 8388607)
- 290 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 46839 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 356 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 79 named destinations out of 1000 (max. 500000)
+ 46831 words of extra memory for PDF output out of 51595 (max. 10000000)
 

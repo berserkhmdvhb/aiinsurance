@@ -14,8 +14,9 @@ output:
 ---
 
 
+# **Libraries**
 
-```{r setup, include=FALSE}
+```{r setup, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(aiinsurance)
 library(dplyr)
@@ -28,7 +29,22 @@ library(caret) #for dummyVar function
 library(Metrics)
 library(randomForest)
 library(tidyverse)
+library(fontawesome)
 ```
+
+The package developed for this project is the `aiinsurance` package.
+Instructions on how to install and use the package's functions and features is provided in the [README part of package's Github repository](https://github.com/berserkhmdvhb/aiinsurance#readme) `r fa(name = "github")`.
+
+To install the package quickly, run the following:
+
+
+
+```{r, warning=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("berserkhmdvhb/aiinsurance")
+```
+
 
 # **Introduction**
 
@@ -129,11 +145,43 @@ As only two numerical columns include NA values, the will be imputed with the me
 For this `impute_median_hmd` function is used from the package:
 
 ```{r}
+df_copy <- df
 df <- impute_median_hmd(df)
 is.na(df) |> colSums()
 ```
 As evident, there is no missing data anymore.
+
+
+In the following we check the density plot of imputed columns:
+
+
+```{r}
+df_density <- data.frame(credit_score = df_copy$credit_score, 
+                         credit_score_imputed = df$credit_score, 
+                         annual_mileage = df_copy$annual_mileage, 
+                         annual_mileage_imputed = df$annual_mileage)
+df_density <- dplyr::mutate_all(df_density, function(x) as.numeric(x))
 ## Check Imbalance of Target
+```
+
+```{r}
+options(repr.plot.width=2, repr.plot.height=2)
+p1 <- df_density |> 
+  ggplot() +
+  geom_density(aes(x = annual_mileage_imputed), alpha=0.1) +
+  geom_density(aes(x = annual_mileage), color="blue", linetype="dashed", na.rm = TRUE, alpha=0.1) 
+
+p2 <- df_density |> 
+  ggplot() +
+  geom_density(aes(x = credit_score_imputed), alpha=0.1) +
+  geom_density(aes(x = credit_score), color="blue", linetype="dashed", na.rm = TRUE, alpha=0.1) 
+
+p1 <- p1 + labs(caption = "Density plot of annual_mileage") + 
+  ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) +  theme(plot.caption = element_text(hjust=0.5))
+p2 <- p2 +  labs(caption = "Density plot of credit_score") +
+    ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) + theme(plot.caption = element_text(hjust=0.5))
+
+```
 
 **Visualize Balance**
 
@@ -167,6 +215,8 @@ Ensuring the encoded dataframe didn't slip a NA value:
 ```{r}
 is.na(df_enc) |> colSums()
 ```
+
+
 
 ## Split to Train/Test
 
@@ -215,7 +265,16 @@ print(paste("train data has", nrow(train), "rows and", ncol(train), "columns"))
 print(paste("test data has", nrow(test), "rows and", ncol(test), "columns"))
 ```
 
+
+
 ## Oversampling
+The racog alogirthm is used here.
+Since this part is computationally extensive, the results after this are stored in the package, so most commands from here until applying the models are commented out  To access the processed datasets of train and test, with names `insurance_train` and `insurance_test` respectively in the package run the following:
+
+```{r}
+data(insurance_train)
+data(insurance_test)
+```
 
 
 ```{r}
@@ -238,7 +297,7 @@ Merge new sampled data with original train dataset
 ```
 
  
-
+We can compare the new generated classes and old ones:
 ```{r}
 tr <- within(train, rm("id"))
 tr$outcome <- as.factor(tr$outcome)
@@ -311,16 +370,6 @@ imbalance::imbalanceRatio(insurance_train, classAttr = "outcome")
 ```
 
 
-
-
-I added a `preprocess_hmd` function in package that is a wrapper around all the steps and functions from the [preprocessing section](#preprocess)
-section. Therefore, simply by writing the following syntax, the final `insurance_train` and `insurance_tetst` datasets can be obtained from the original `car_insurance_data`:
-
-```{r}
-#h <- preprocess_hmd(car_insurance_data)
-#insurance_train <- h$insurance_train
-#insurance_test <- h$insurance_test
-```
 
 
 

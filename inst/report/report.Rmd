@@ -4,7 +4,7 @@ authors:
     name: Hamed Vaheb
     email: hamed.vaheb.001@student.uni.lu
 abstract: 
-  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details, etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the classification models, logistic regression and random forest, which are implemented using the package's functions and their purposer was to classify the outcomes based on solely the historical data. The results indicate promising prediction performance with various evaluation metrics of over 80 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., statistical signifcance of the variables playing role in prediction.
+  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details, etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the classification models, logistic regression and random forest, which are implemented using the package's functions and their purposer was to classify the outcomes based on solely the historical data. The results indicate promising prediction performance with various evaluation metrics of over 70 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., statistical signifcance of the variables playing role in prediction.
 
 bibliography: references.bib
 biblio-style: unsrt
@@ -26,6 +26,7 @@ library(randomForest)
 library(tidyverse)
 library(fontawesome)
 library(gridExtra)
+library(kableExtra)
 #knitr::opts_chunk$set(fig.width=3, fig.height=3)
 ```
 
@@ -100,7 +101,7 @@ Instructions on how to install and use the package's functions and features is p
 
 Noteworthy features of the package are explained in the following: 
 
-1. Multiple functions that facilitated and automated processes in \ref{sec:process} and \ref{subsec:missing}. The functions are well documented and numerous unit tests are conducted on them.
+1. Multiple functions that facilitated and automated processes in \ref{sec:process} and \ref{subsec:missing}. The functions are well documented and numerous unit tests are conducted on them. This package was aimed to be developed as generalizable as possible, so that hopefully we little effort, it can be used for other datasets with classification setting.
 
 2. Both raw dataset and processed train and tests (explained in \ref{subsec:split}) are incorporated in the package.
 
@@ -282,7 +283,7 @@ options(repr.plot.width=2, repr.plot.height=2)
 pc <- imbalance::plotComparison(dataset = tr, anotherDataset = tr2, attrs = c("credit_score", "annual_mileage", "speeding_violations"), classAttr = "outcome") 
 ```
 
-\begin{figure}[htbp] 
+\begin{figure}[H] 
     \centerline{\includegraphics[width=9cm, height=7cm]{./figures/plotcompare.png}}
 \end{figure}
 
@@ -320,7 +321,10 @@ The significant variables and their direction of significance are reported below
 - `driving_experience.0.9y`: Having driving experience between 0-9 years, positive.
 - `vehicle_ownership`: Whether the policyholder owns the vehicle or not, negative.
 - `vehicle_year.after.2015`: The vehicle was built after 2015, negative.
+- `gender.female`: The policyholder being female, negative.
 - `postal_code`: Postal code of the policyholder.
+
+
 
 ## Random Forest \label{subsec:rf}
 The random forest model can also report significance level of variables using different measures, two of which will be reported, accuracy, and Gini. 
@@ -361,17 +365,52 @@ And the variables that were considered significant by random forest but not by l
 options(repr.plot.width=2, repr.plot.height=2)
 varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance")  + ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
 ```
-\begin{figure}[htbp] 
+\begin{figure}[H] 
     \centerline{\includegraphics[width=8.2cm, height=5cm]{./figures/varimp.png}}
 \end{figure}
 
 
 ## Hyper-parameter tuning \label{subsec:hyperpar}
 
+Although the classification models and in general machine learning models learn to find the best parameters of in a given model, there are some parameters that are not learned during the training process, and they should be chosen by the human. Using intuition, tial and error, and relying on domain knowledge are common practices to find the best set of hyperparameterse. Another essential way is to do a systematic search and try all possible combinations. This can be computationally intensive. In this work, the following hyperparameters were chosen by search:
+
+1. **Logit:**
+  - $\lambda$: the parameter that controls the amount of                regularization applied to the modeling logistic regression          derived from generalized linear model.
+
+2. **Random Forest:**
+  - `ntree`: Number of trees
+  - `mtry`: Number of variables randomly sampled as candidates at each split
 # Evaluation \label{sec:evaluation}
-In the following, various evaluation metrics were employed to measure and compare the classification performance of the models.
+In the following, various evaluation metrics employed to measure and compare the classification performance of the models are reported.
+The test set (explained in \ref{subsec:split}) is used to evaluate the models. The classification of test set's outcome variable predicted by models are compared with the test set's real values of outcome. The evaluation metrics will be explained in the following:
+
+
 
 ## Confusion Matrix
+
+The confusion matrix is made up of four different cells, each representing the number of correctly and incorrectly classified instances of a particular class. The cells are typically arranged in the following format:
+
+```{r, echo=FALSE, warning=FALSE}
+# Create a 2x2 matrix
+mat <- matrix(c("True Positive (TP)", "False Negative (FN)", "False Positive (FP)", "True Negative (TN)"), nrow = 2, ncol = 2)
+
+
+# Create a 2x2 matrix
+
+# Create a table with lines between rows and columns
+kable(mat, "latex", booktabs = TRUE) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+  
+The four quantities are defined below:
+
+- **True Positive (TP)**: cases where the model predicted the positive class, and the actual output was also positive.
+- **False Positive (FP)**: cases where the model predicted the positive class, but the actual output was negative.
+- **False Negative (FN)**: cases where the model predicted the negative class, but the actual output was positive.
+- **True Negative (TN)**: cases where the model predicted the negative class, and the actual output was also negative.
+
+
+In the following plot, the confusion matrix for both models are visualized.
 
 ```{r, echo=FALSE, warning=FALSE, fig.dim = c(6,2),  fig.align = 'center'}
 p1 <- eval_logit$confusion_matrix_plot + labs(caption = "Confusion matrix of logit") +
@@ -382,9 +421,19 @@ p2 <- eval_rf$confusion_matrix_plot +  labs(caption = "Confusion matrix of rando
 gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
+Both models demonstrate similar performance, with difference that logit have more misclassification cases for predicting class 0, and more corret classifications for class 1, whereas random forest have more misclassification cases for predicting class 1, and more corret classifications for class 0.
 
+## Metrics derived from confusion matrix
 
-## Accuracy, Precision, Recall, ROC
+The formulas for the evaluation metrics needed for the rest of the report are defined in the following, with terms that are from the confusion matrix explained earlier.
+Two new terms used here are condition positive (P), i.e.,
+the number of real positive cases in the data, and condition negative (N), i.e., the number of real negative cases in the data.
+
+- Accuracy: $$ACC = \frac{TP + TN}{P + N} = \frac{TP + TN}{TP + TN + FP + FN}$$
+- Precision (positive predictive value or PPV): $$PPV = \frac{TP}{TP + FP}$$
+- FDR (false discovery rate): $$FDR = 1 - PPV$$
+- Recall (True Positive Rate or TPR) $$TPR = \frac{TP}{P} = \frac{TP}{TP + FN}$$
+- Fall-out (False Positive Rate or FPR): $$\frac{FP}{N} = \frac{FP}{FP + TN}$$ 
 
 \begin{table}[h]
 \centering
@@ -393,6 +442,7 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 \textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
 \hline
 Accuracy & `r accuracy_logit` & `r accuracy_rf` \\
+FDR & `r 1 - precision_logit` & `r 1 - precision_rf` \\
 Precision & `r precision_logit` & `r precision_rf` \\
 Recall & `r recall_logit` & `r recall_rf` \\
 \hline
@@ -401,9 +451,16 @@ Recall & `r recall_logit` & `r recall_rf` \\
 \label{tab:comparison}
 \end{table}
 
+ From insurance company's perspective, the most prominent loss would be to approve a claim falsely. This is equivalent to misclassify an outcome to class 1 which originally belongs to class 0.
+From the reported evaluation metrics, of particular note is the FDR (false discovery rate), as it shows the exact quantity discussed. 
+The lower this quantity is, the less falsely approved claims will occur. This quantity is lower in logit, evidenced by \ref{tab:comparison}. Based on this, the logit is preferable.
 
 
 ## ROC Curve
+
+An ROC curve plots the recall (true positive rate) against the false positive rate (FPR) at different classification thresholds. The curve is visualized for the two models in the following:
+
+
 
 ```{r, include=FALSE}
 roc_logit <- pROC::roc(actual ~ pred_proba_glm, print.auc=FALSE)
@@ -429,3 +486,8 @@ gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
 # Conclusion
+
+This report described the project of analysis of the car insurance claims dataset, and prediction of claims' outcomes using random forest and logistic regression. Both models had promising performance, with most evaluation metrics more than 70 percent.
+Since the insurance company would be more concerned about falsely approving a claim, the false discovery rate metrics was reported as well, and logit had lower false discovery rate, making it a more suitable candidate. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Based on judgement of both models, the following variables had the most effective role in prediction, i.e., in the policyholder's claim more likely being accepted:
+Having driving experience between 0-9 years would make the claim more likely to accept. On the other hand, not owning the vehicle, the vehicle being built after 2015, and the policyholder being female would make the claim more likely to be rejected.
+
