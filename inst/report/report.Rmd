@@ -263,6 +263,10 @@ test$id <- as.double(test$id)
 After encoding the dataset, it is splitted to train and test datasets, with 80% proportion for the former and 20% for the latter.
 The oversampling method in \ref{subsec:racog}, the classification models in \ref{sec:modelling}, and the hyperparameter tuning in \ref{subsec:hyperpar} are all done using the train data, and the evaluation processes in \ref{sec:evaluation} is done on the test data, which is the data that is unobserved by the models.
 
+## Normalize
+As this point data is normalized as well, meaning that numerical variables are transformed to a homogeneous scale of values. The normalizing uses train dataset to be fitted to, but then after using statistical properties of only train, it changes both train and test dataset. Otherwise, if statistical properties of test is used, data leakage occurs and the models can cheat by footprint of test data on normalized train data.
+
+
 ## RaCog \label{subsec:racog}
 Existing oversampling approaches for addressing imbalanced dataset (explained in \ref{subsec:imbalance}) typically do not consider the probability distribution of the minority class while synthetically generating new samples. This leads to poor representation of the minority class, and hence to poor classification performance.
 

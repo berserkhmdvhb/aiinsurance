@@ -454,6 +454,17 @@ oversampling method in \ref{subsec:racog}, the classification models in
 evaluation processes in \ref{sec:evaluation} is done on the test data,
 which is the data that is unobserved by the models.
 
+\hypertarget{normalize}{%
+\subsection{Normalize}\label{normalize}}
+
+As this point data is normalized as well, meaning that numerical
+variables are transformed to a homogeneous scale of values. The
+normalizing uses train dataset to be fitted to, but then after using
+statistical properties of only train, it changes both train and test
+dataset. Otherwise, if statistical properties of test is used, data
+leakage occurs and the models can cheat by footprint of test data on
+normalized train data.
+
 \hypertarget{racog}{%
 \subsection{\texorpdfstring{RaCog
 \label{subsec:racog}}{RaCog }}\label{racog}}
@@ -700,10 +711,10 @@ cases in the data.
 \hline
 \textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
 \hline
-Accuracy & 0.8115 & 0.8335 \\
-FDR & 0.1555916 & 0.1944895 \\
-Precision & 0.8444084 & 0.8055105 \\
-Recall & 0.6496259 & 0.7 \\
+Accuracy & 0.8115 & 0.83 \\
+FDR & 0.1555916 & 0.1928687 \\
+Precision & 0.8444084 & 0.8071313 \\
+Recall & 0.6496259 & 0.6926287 \\
 \hline
 \end{tabular}
 \caption{Comparison of Evaluation Metrics for Two Models}
