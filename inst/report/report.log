@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.12)  15 JAN 2023 20:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2023.1.12)  15 JAN 2023 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -868,76 +868,80 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
 (Font)              scaled to size 12.0pt on input line 66.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 14.4pt on input line 87.
+(Font)              scaled to size 14.4pt on input line 88.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 14.4pt on input line 87.
-<./figures/aiactuary.png, id=94, 1806.75pt x 652.4375pt>
+(Font)              scaled to size 14.4pt on input line 88.
+<./figures/aiactuary.png, id=98, 1806.75pt x 652.4375pt>
 File: ./figures/aiactuary.png Graphic file (type png)
 <use ./figures/aiactuary.png>
-Package pdftex.def Info: ./figures/aiactuary.png  used on input line 90.
+Package pdftex.def Info: ./figures/aiactuary.png  used on input line 91.
 (pdftex.def)             Requested size: 147.97438pt x 53.43053pt.
+
+Underfull \vbox (badness 1400) has occurred while \output is active []
+
 [1
 
 
 {/home/hamed/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figures/aiactuary.png>]
-<./figures/carinsurance.png, id=123, 1497.595pt x 1173.38374pt>
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
+(Font)              scaled to size 10.0pt on input line 136.
+[2]
+<./figures/carinsurance.png, id=129, 1497.595pt x 1173.38374pt>
 File: ./figures/carinsurance.png Graphic file (type png)
 <use ./figures/carinsurance.png>
-Package pdftex.def Info: ./figures/carinsurance.png  used on input line 145.
+Package pdftex.def Info: ./figures/carinsurance.png  used on input line 147.
 (pdftex.def)             Requested size: 105.69414pt x 82.80771pt.
-<./figures/logit-model.png, id=125, 481.8pt x 476.78125pt>
+<./figures/logit-model.png, id=131, 481.8pt x 476.78125pt>
 File: ./figures/logit-model.png Graphic file (type png)
 <use ./figures/logit-model.png>
-Package pdftex.def Info: ./figures/logit-model.png  used on input line 172.
+Package pdftex.def Info: ./figures/logit-model.png  used on input line 174.
 (pdftex.def)             Requested size: 84.55402pt x 83.67076pt.
-<./figures/rf-model.png, id=126, 3663.6875pt x 2420.04124pt>
+<./figures/rf-model.png, id=132, 3663.6875pt x 2420.04124pt>
 File: ./figures/rf-model.png Graphic file (type png)
 <use ./figures/rf-model.png>
-Package pdftex.def Info: ./figures/rf-model.png  used on input line 198.
+Package pdftex.def Info: ./figures/rf-model.png  used on input line 201.
 (pdftex.def)             Requested size: 147.97438pt x 97.70833pt.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 232.
-[2 <./figures/carinsurance.png> <./figures/logit-model.png> <./figures/rf-model.png>]
+[3 <./figures/carinsurance.png> <./figures/logit-model.png> <./figures/rf-model.png>]
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/b/n' in size <14.4> not available
-(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' tried instead on input line 235.
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' tried instead on input line 239.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/bold/n' will be
-(Font)              scaled to size 14.4pt on input line 235.
-<./figures/logo.png, id=141, 431.6125pt x 113.42375pt>
+(Font)              scaled to size 14.4pt on input line 239.
+<./figures/logo.png, id=147, 431.6125pt x 113.42375pt>
 File: ./figures/logo.png Graphic file (type png)
 <use ./figures/logo.png>
-Package pdftex.def Info: ./figures/logo.png  used on input line 238.
+Package pdftex.def Info: ./figures/logo.png  used on input line 242.
 (pdftex.def)             Requested size: 63.4139pt x 16.66322pt.
-<report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf, id=144, 248.93pt x 256.96pt>
+<report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf, id=150, 248.93pt x 256.96pt>
 File: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf Graphic file (type pdf)
 <use report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf>
-Package pdftex.def Info: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf  used on input line 248.
+Package pdftex.def Info: report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf  used on input line 252.
 (pdftex.def)             Requested size: 9.6972pt x 9.99826pt.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 6.0pt on input line 279.
+(Font)              scaled to size 6.0pt on input line 283.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/m/n' in size <6> not available
-(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 281.
+(Font)              Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' tried instead on input line 285.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineMonoT-TLF/regular/n' will be
-(Font)              scaled to size 6.0pt on input line 281.
-<report_files/figure-latex/unnamed-chunk-3-1.pdf, id=150, 248.93pt x 146.5475pt>
+(Font)              scaled to size 6.0pt on input line 285.
+<report_files/figure-latex/unnamed-chunk-3-1.pdf, id=156, 248.93pt x 146.5475pt>
 File: report_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 312.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 316.
 (pdftex.def)             Requested size: 248.92938pt x 146.54712pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[3 <./figures/logo.png> <./report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf>]
-<report_files/figure-latex/unnamed-chunk-4-1.pdf, id=167, 260.975pt x 178.6675pt>
+[4 <./figures/logo.png> <./report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf>]
+<report_files/figure-latex/unnamed-chunk-4-1.pdf, id=173, 260.975pt x 178.6675pt>
 File: report_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 326.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 332.
 (pdftex.def)             Requested size: 260.97437pt x 178.66705pt.
-LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 333.
+LaTeX Font Info:    Trying to load font information for TS1+LinuxLibertineT-TLF on input line 340.
 (/home/hamed/.TinyTeX/texmf-dist/tex/latex/libertine/TS1LinuxLibertineT-TLF.fd
 File: TS1LinuxLibertineT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxLibertineT-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 333.
+(Font)              scaled to size 10.0pt on input line 340.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinuxLibertineT-TLF' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
@@ -945,69 +949,69 @@ Package microtype Info: Loading generic protrusion settings for font family
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[4 <./report_files/figure-latex/unnamed-chunk-3-1.pdf> <./report_files/figure-latex/unnamed-chunk-4-1.pdf>]
-Underfull \hbox (badness 2478) in paragraph at lines 375--379
+[5 <./report_files/figure-latex/unnamed-chunk-3-1.pdf> <./report_files/figure-latex/unnamed-chunk-4-1.pdf>]
+Underfull \hbox (badness 2478) in paragraph at lines 385--388
 []\T1/LinuxLibertineT-TLF/m/n/10 (+20) To ob-serve the changes in im-puted vari-ables, the den-sity plot of the vari-ables \T1/LinuxLibertineMonoT-TLF/regular/n/10 credit_score \T1/LinuxLibertineT-TLF/m/n/10 (+20) and
  []
 
-<report_files/figure-latex/unnamed-chunk-7-1.pdf, id=194, 383.4325pt x 168.63pt>
+<report_files/figure-latex/unnamed-chunk-7-1.pdf, id=200, 383.4325pt x 168.63pt>
 File: report_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 380.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 389.
 (pdftex.def)             Requested size: 383.43156pt x 168.62958pt.
-<report_files/figure-latex/unnamed-chunk-8-1.pdf, id=196, 107.40125pt x 104.39pt>
+<report_files/figure-latex/unnamed-chunk-8-1.pdf, id=202, 107.40125pt x 104.39pt>
 File: report_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-8-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 395.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-8-1.pdf  used on input line 405.
 (pdftex.def)             Requested size: 107.40097pt x 104.38972pt.
-[5 <./report_files/figure-latex/unnamed-chunk-7-1.pdf> <./report_files/figure-latex/unnamed-chunk-8-1.pdf>]
-<./figures/plotcompare.png, id=227, 526.96875pt x 325.215pt>
+[6 <./report_files/figure-latex/unnamed-chunk-7-1.pdf> <./report_files/figure-latex/unnamed-chunk-8-1.pdf>] [7]
+<./figures/plotcompare.png, id=243, 526.96875pt x 325.215pt>
 File: ./figures/plotcompare.png Graphic file (type png)
 <use ./figures/plotcompare.png>
-Package pdftex.def Info: ./figures/plotcompare.png  used on input line 504.
+Package pdftex.def Info: ./figures/plotcompare.png  used on input line 519.
 (pdftex.def)             Requested size: 256.0861pt x 199.17484pt.
-[6]
-<./figures/varimp.png, id=240, 847.165pt x 381.425pt>
+[8 <./figures/plotcompare.png (PNG copy)>]
+<./figures/varimp.png, id=255, 847.165pt x 381.425pt>
 File: ./figures/varimp.png Graphic file (type png)
 <use ./figures/varimp.png>
-Package pdftex.def Info: ./figures/varimp.png  used on input line 578.
+Package pdftex.def Info: ./figures/varimp.png  used on input line 592.
 (pdftex.def)             Requested size: 233.31364pt x 142.25995pt.
-[7 <./figures/plotcompare.png (PNG copy)>]
-<report_files/figure-latex/unnamed-chunk-18-1.pdf, id=251, 371.3875pt x 112.42pt>
+[9 <./figures/varimp.png>]
+<report_files/figure-latex/unnamed-chunk-18-1.pdf, id=268, 371.3875pt x 112.42pt>
 File: report_files/figure-latex/unnamed-chunk-18-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-18-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-18-1.pdf  used on input line 671.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-18-1.pdf  used on input line 691.
 (pdftex.def)             Requested size: 371.38658pt x 112.41972pt.
-[8 <./figures/varimp.png>]
-<report_files/figure-latex/unnamed-chunk-20-1.pdf, id=262, 307.1475pt x 125.46875pt>
+[10 <./report_files/figure-latex/unnamed-chunk-18-1.pdf>]
+<report_files/figure-latex/unnamed-chunk-20-1.pdf, id=286, 307.1475pt x 125.46875pt>
 File: report_files/figure-latex/unnamed-chunk-20-1.pdf Graphic file (type pdf)
 <use report_files/figure-latex/unnamed-chunk-20-1.pdf>
-Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-20-1.pdf  used on input line 740.
+Package pdftex.def Info: report_files/figure-latex/unnamed-chunk-20-1.pdf  used on input line 762.
 (pdftex.def)             Requested size: 307.14674pt x 125.46843pt.
-[9 <./report_files/figure-latex/unnamed-chunk-18-1.pdf>] (./report.bbl
+(./report.bbl
 Underfull \hbox (badness 2980) in paragraph at lines 4--7
 []\T1/LinuxLibertineT-TLF/m/n/10 (+20) Hamed Va-heb.  ai-in-sur-ance Pack-age.  Avail-able at [][]$\T1/LinuxLibertineMonoT-TLF/regular/n/10 http : / / github . com / berserkhmdvhb /
  []
 
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 10.0pt on input line 11.
-) [10 <./report_files/figure-latex/unnamed-chunk-20-1.pdf>] (./report.aux)
+[11 <./report_files/figure-latex/unnamed-chunk-20-1.pdf>]) [12] (./report.aux)
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 76DAD3F7BDE43D8AFF69CE8DF8E718B5;3361.
+(rerunfilecheck)             Checksum: 1BE95250608616A9C5A274DD7BCD6591;3645.
  ) 
 Here is how much of TeX's memory you used:
- 18346 strings out of 478053
- 309738 string characters out of 5840784
+ 18352 strings out of 478053
+ 309864 string characters out of 5840784
  1869793 words of memory out of 5000000
- 37833 multiletter control sequences out of 15000+600000
+ 37835 multiletter control sequences out of 15000+600000
  606831 words of font info for 215 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 72i,12n,77p,1003b,552s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,77p,1003b,585s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_naooyc.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_dhi6qf.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertinust1math/libusMI.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertinust1math/libusMR.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_tlukpt.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/home/hamed/.TinyTeX/texmf-dist/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}</home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertinust1math/LibertinusT1Math.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineMT.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineMTB.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></home/hamed/.TinyTeX/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb>
-Output written on report.pdf (10 pages, 2519620 bytes).
+Output written on report.pdf (12 pages, 2522423 bytes).
 PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 300 compressed objects within 3 object streams
- 81 named destinations out of 1000 (max. 500000)
- 46839 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 311 compressed objects within 4 object streams
+ 85 named destinations out of 1000 (max. 500000)
+ 46847 words of extra memory for PDF output out of 51595 (max. 10000000)
 

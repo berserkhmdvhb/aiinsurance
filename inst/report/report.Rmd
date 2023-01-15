@@ -4,7 +4,7 @@ authors:
     name: Hamed Vaheb
     email: hamed.vaheb.001@student.uni.lu
 abstract: 
-  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details, etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the classification models, logistic regression and random forest, which are implemented using the package's functions and their purposer was to classify the outcomes based on solely the historical data. The results indicate promising prediction performance with various evaluation metrics of over 70 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., statistical signifcance of the variables playing role in prediction.
+  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details, etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that connects the main processes of this work,  executable with a single command, and an interactive app that displays the performance of the classification models, logistic regression and random forest, which are implemented using the package's functions and their purposer was to classify the outcomes based on solely the historical data. The results indicate promising prediction performance with various evaluation metrics having value over 70 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., statistical signifcance of the variables playing more important role in prediction.
 
 bibliography: references.bib
 biblio-style: unsrt
@@ -39,20 +39,20 @@ Rapid advances in artificial intelligence (AI) and machine learning are creating
 the potential not only to change the environment in which actuaries operate but also to provide new opportunities within actuarial science \cite{aiinins}.
 
 The use of statistical learning models has been a common practice in actuarial science since the 1980s. 
-It was not long after since the field adopted classical models, such as linear models and generalized linear models (GLMs).
+It was not long after that time when the field adopted classical models, e.g., linear models and generalized linear models (GLMs).
 While actuaries use GLMs frequently in practice, it was in the past few years that the use of AI and machine learning, and hence more modern models garnered significant attention in the field \cite{rev1}.
 
 The goal of this work is to predict status of policyholders' claims. 
-The status lies at the "outcome" column of the car insruance dataset, indicating whether a customer has claimed his loan or not.
+The status lies at the `outcome` column of the car insruance dataset, indicating whether a customer has claimed his loan or not.
 
 A classical linear model and a modern nonlinear model is used and compared.
 The former model is logistic regression, which is an example of GLMs, accommodated to classification setting, i.e., for predicting discrete classes, in this work's case, status of claims.
-The latter model is a nonlinear tree-based model.
+The latter model is random forest, which is a nonlinear tree-based model.
 
 The remainder of this work is organized as the following:
 In section \ref{sec:concepts}, main concepts included in the work are explained. In \ref{subsec:claim}, the concept of car insurance is introduced followed by an elaboration on claims and how they interact among an insurer and a policyholder. Subsequently, the two machine learning models, logistic regression \ref{subsec:model-logit}, and random forest \ref{subsec:model-rf} are briefly explained.
-As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, and uses advanced features, e.g., pipeline and interactive app.
-In \ref{sec:data}, data is explored with a focus on expressing the status of categorical variables as well as missing values, both of which will be treated in \ref{sec:process}. which contains all the preprocessing steps. These steps are required before fitting the two classification models used, random forest and logit, their provided results in \ref{sec:modelling}. Finally, the models' performance are evaluated in \ref{sec:evaluation}.
+As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, and uses advanced features, e.g., a pipeline connecting this work's processes and interactive app.
+In \ref{sec:data}, data is explored, with stress on the effect of categorical variables as well as missing values, both of which will be treated in \ref{sec:process, which contains all the preprocessing steps. These steps are required before fitting the two classification models used, random forest and logit, with their results presented in \ref{sec:modeling}. Finally, the models' performance are evaluated in \ref{sec:evaluation}.
 
 \newpage
 
@@ -73,12 +73,12 @@ Predicting the outcome of claims can be utilized to better understand the custom
 \includegraphics[width=0.9\linewidth]{./figures/logit-model.png}
 \end{wrapfigure}
 
-Logistic regression (logit), which is type of GLM, uses the logistic function to model the probability of the binary outcome by creating a model that takes in the input variable (e.g., client's information) and produces a probability that a  "outcome" (the variable we aim to predict) is 1. The "outcome" in this work is whether a customer's claim is approved or not.
+Logistic regression (logit), which is a type of GLM, accommodated to classification setting (for predicting discrete classes), uses the logistic function to model the probability of the binary outcome by creating a model that takes in the input variable (e.g., policyholder's information) and produces a probability that a  "outcome" (the variable we aim to predict) is 1. The "outcome" in this work is whether a customer's claim is approved or not.
 The logistic function is defined as the following:
 
 $$\frac{1}{1 + e^{-x}}$$
 
-This probability can then be used to make a prediction about the outcome. For instance, if the probability that the client's claim will be approved is greater than a certain threshold (e.g., 0.5), we predict that the claim will be approved.
+This probability can then be used to make a prediction about the outcome. For instance, if the probability that the policyholder's claim will be approved is greater than a certain threshold (e.g., 0.5), we predict that the claim will be approved.
 In another words, the goal of logit is to find the best set of coefficients for a set of independent variables that maximizes the likelihood (measuring how well parameters of a model fit the data) of the observed data.
 
 ## Model: Random Forest \label{subsec:model-rf}
@@ -86,9 +86,9 @@ In another words, the goal of logit is to find the best set of coefficients for 
 \includegraphics[width=0.9\linewidth]{./figures/rf-model.png}
 \end{wrapfigure}
 
-An ensemble learning model is a model that is constructed from multiple models, to obtain combined results, expected to be improved compared to any of the constituent models. The random forest is an ensemble model built from decision trees, i.e., flowchart-like tree structures, wherein each internal node represents a "test" on a variable (e.g., vehicle type), each branch represents the outcome of the test, and each leaf node represents a class label (e.g., 1 for claim approval and 0 for claim rejection). The intuition behind a decision tree is to recursively split the data into subsets based on the values of the input variables, such that the subsets are as "pure" as possible in terms of their class labels. The less pure a subset is, the more the data belongs to the same class, and the more pure it is, the more data is evenly split among all classes. The goal is to create a tree that can accurately classify new examples by traversing the tree from the root to a leaf node, making decisions at each internal node based on the values of the input variables.
+An ensemble learning model is a model that is constructed from multiple models, to obtain combined results, expected to be improved compared to any of the constituent models. The random forest is an ensemble model built from decision trees, i.e., flowchart-like tree structures, wherein each internal node represents a "test" on a variable (e.g., vehicle type), each branch represents the outcome of the test, and each leaf node represents a class label (e.g., 1 for claim approval and 0 for claim rejection). The intuition behind a decision tree is to recursively split the data into subsets based on the values of the input variables, such that the subsets are as "pure" as possible in terms of their class labels, which means the most amount of information is extracted from them. The less pure a subset is, the more the data belongs to the same class, and the more pure it is, the more data is evenly split among all classes. The goal is to create a tree that can accurately classify new examples by traversing the tree from the root to a leaf node, making decisions at each internal node based on the values of the input variables.
 
-As a single random tree might not be able to capture the proper inherent complexity of a data, and may either overfit (become too complex and remembers data rather than learning from it) or underfit (become too simple and hence unable to learn the inherent complicated patterns in the data). By training multiple decision trees and combining their predictions by taking a majority vote, a random forest is able to capture a more robust and accurate representation of the data. The randomness in the random forest comes from randomly selecting subsets of the data to train each decision tree, and randomly selecting subsets of input variables to consider at each split point in the decision tree. This helps to decorrelate the trees, i.e., reducing the correlation or dependence between the trees, consequently, make the model more robust to overfitting, i.e., becoming too complex and remembers data rather than learning from it.
+As a single random tree might not be able to capture the proper inherent complexity of a data, and may either overfit (become too complex and remembers data rather than learning from it) or underfit (become too simple and hence unable to learn the inherent complicated patterns in the data), by training multiple decision trees and combining their predictions by taking a majority vote, a random forest is able to capture a more robust and accurate representation of the data. The randomness in the random forest comes from randomly selecting subsets of the data to train each decision tree, and randomly selecting subsets of input variables to consider at each split point in the decision tree. This helps to decorrelate the trees, i.e., reducing the correlation or dependence between the trees, consequently, make the model more robust to overfitting, i.e., becoming too complex and remembers data rather than learning from it.
 
 # `aiinsurance` Package \label{sec:package} 
 \begin{wrapfigure}{l}{0.15\textwidth}
@@ -105,9 +105,9 @@ Noteworthy features of the package are explained in the following:
 
 2. Both raw dataset and processed train and tests (explained in \ref{subsec:split}) are incorporated in the package.
 
-3. A pipeline that performs the main steps of this work in a single command. The pipeline takes the processed train and test datsets and output the evaluation plots in \ref{sec:evaluation}.
+3. A pipeline that performs the main processes of this work in a single command. The pipeline takes the processed train and test datsets and outputs the evaluation plots in \ref{sec:evaluation}.
 
-4. An interactive shiny app after performing the same tasks in pipeline, displays the evaluation plots in \ref{sec:evaluation} based on the type of the model and the type of the plot that user perfers.
+4. An interactive shiny app that after performing the same tasks in pipeline, displays the evaluation plots in \ref{sec:evaluation} based on the type of the model and the type of the plot that user prefers
 
 # Exploratory Data Analysis (EDA) \label{sec:data}
 An overview of the car insurance dataset is provided in the following:
@@ -131,8 +131,8 @@ options(repr.plot.width=2, repr.plot.height=2)
 vis_dat(df) + ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
 ```
 
-The `factor` types of the plot represent categorical variables containing classes as characters, e.g., `gender` variable contains characters `male` or `female`.
-However, there are some categorical variables in the integer type as well, e.g., `married` which has values {1,0}, corresponding to being married or not respectively. The categorical columns should be treated and mapped to proper numeric representations, elaborated in \ref{subsec:encode}.
+Variables with `factor` types (denoted red in the plot) represent categorical variables containing classes as characters, e.g., `gender` variable contains characters `male` or `female`, and `age` variable contains four age groups, `16-25`, `26-39`, `40-64`, `65+`, etc.
+However, there are some categorical variables in the integer type as well, e.g., `married` which has values {1,0}, with 1 corresponding to being married or 0 to not being married. The categorical columns, should be treated and mapped to proper numeric representations, elaborated in \ref{subsec:encode}.
 
 In the following, the proportion and location of missing values are visualized.
 
@@ -142,7 +142,7 @@ df[is.na(df) | df=="Inf"] = NA
 options(repr.plot.width=2, repr.plot.height=2)
 vis_miss(df, sort_miss = TRUE) + ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
 ```
-Evidence by the plot, the columns containing missing values are 
+Evidenced by the plot, the columns containing missing values are  the following:
 
 - `credit_score`
 - `annual_mileage`
@@ -151,23 +151,18 @@ The reason that the dataset is better not to contain missing values are explaine
 
 1. Many machine learning algorithms cannot handle missing values.
 2. Missing values introduce bias or lead to inaccurate conclusions if the missing data is not missing at random. 
-3. Missing values increase the variance of the estimate obtained from the data, which can lead to overfitting (i.e., becoming too complex and remembers data rather than learning from it).
+3. Missing values increase the variance of the estimate obtained from the data, which means the model's predictions will be more distant from actual values, caused by overfit (i.e., model becoming too complex and remembers data rather than learning from it).
 
 Treating missing values is expalined in detail in \ref{subsec:missing}.
 
 # Preprocessing \label{sec:process}
-
 ## Missing values \label{subsec:missing}
+To proceed the processing and modeling processes, missing values of each variable are imputed with median of that particular variable. The reason that median is chosen as the statistical quantity for filling the missing values is that median is robust to outliers, i.e., the data that are extremely different from existing data will not drastically change the value of median. 
 
-To proceed the processing and modeling parts, missing values of each variable are imputed with median for that particular variable. The reason that median is chosen for 
-The reason missing values are better be removed are the following:
-
-
-To fill the missing values, one must exercise prudence.
+When filling the missing values, one must exercise prudence.
 Imputing the missing values in a variable with some statistical property of that variable might lead to unwanted changes in nature of the variable, e.g., its distribution.
 
-To observe the changes in imputed variables, the density plot of the variables `credit_score` and `annual_mileage` alongside their imputed versions. The dashed blue lines indicate the imputed versions.
-
+To observe the changes in imputed variables, the density plot of the variables `credit_score` and `annual_mileage` are plotted alongside their imputed versions in the following.
 ```{r, include=FALSE, warning=FALSE}
 df_copy <- df
 df <- impute_median_hmd(df)
@@ -202,9 +197,9 @@ p2 <- p2 +  labs(caption = "Density plot of credit_score") +
 ```{r, echo=FALSE, warning=FALSE, fig.dim = c(6,3.1),fig.align = 'center'}
 gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
-
+The dashed blue lines indicate the imputed versions.
 Evidenced by the plots, the `credit_score` variable's imputed version has a slight shift in its mean. 
-Notwithstanding, this work resorted to median imputed versions, due to good performance of the models and due to computational intensity of more advanced methods, of which a prominent one is multiple imputation using chained equations \cite{mice}.
+Notwithstanding, this work resorted to median for filling missing values, due to good performance of the models and due to computational limit of using more advanced methods, of which a prominent one is multiple imputation using chained equations \cite{mice}.
 
 
 ## Class Imabalance \label{subsec:imbalance}
@@ -218,19 +213,20 @@ ggplot(df, aes(x = outcome)) +
 ```
 
 The number of class 0 and class 1 labels are respectively 6867, 3133.
-Imbalance ratio is defined as size of minority class (1 in our case) over size of majority class (0). Therefore, this quantity is 1 for a fully balanced binary variable. Imbalance ratio for the outcome variable is 0.45624
+Imbalance ratio is defined as size of minority class (1 in our case) over size of majority class (0). Therefore, this quantity is 1 for a fully balanced binary variable. Imbalance ratio for the outcome variable in the dataset is 0.45624
 
-To make the dataset balanced, oversampling methods can be used, which are methods that generate samples from the dataset with the minority class (having outcome = 1). The key challenge in these methods is that the samples should be similar to the original dataset, as their information, i.e., distribution and other statistical properties should align with the original data, however, they should be different to a small extent too, so that they would resemble new data available in the dataset, not merely a copy of what exists in it. 
-A promising oversampling method that is used for this work is the RaCog algorithm. 
+To make the dataset balanced, oversampling methods can be used, which are methods that generate samples from observations with the minority class (having outcome equal to 1). The key challenge in these methods is that the samples should be similar to the original dataset, as their information, i.e., distribution and other statistical properties should align with the original data, however, they would better be different to a small reasonable extent too, so as to resemble new data available in the dataset, not merely a copy of what exists therein. 
+The oversampling method that is used for this work is the RaCog algorithm. 
 After oversampling using the mentioned method, the number of class 0 and class 1 labels would become respectively 5484, 5516, leading to a imbalance ratio approximating 1.
-Prior to explaining the algorithm in \ref{subsec:racog}, the process of respresenting the categorical columns of the dataset as numerical ones is explained in \ref{subsec:encode}, as this process is a prerequisite for many oversampling methods. For RaCog, the dataset should be discretized and numeric, and a one-hot-encoded dataset satisfies this property.
+Prior to explaining the algorithm in \ref{subsec:racog}, the process of representing the categorical columns (variables) of the dataset as numerical ones is explained in \ref{subsec:encode}, as this process is a prerequisite for many oversampling methods. For RaCog, the dataset should be discretized and numeric variables, and when one-hot-encoded, the dataset would satisfy this property.
 
 
 
 ## Encoding Categorical Columns \label{subsec:encode}
-As mentioned earlier, a prerequisite of RaCog algorithm is a discretized and numeric dataset. In addition to this, there are other reasons for encoding the dataset to only contain numbers. Firstly, most machine learning algorithms require that input and output variables are numbers. Secondly, even if the dataset only contain numbers, and yet a categorical variable is represented with natural numbers, the following two cases might occur: Either the variable has a natural order, e.g., `age` which contains four age groups can be represented with numbers {1,2,3,4}, such that higher numbers correspond to older age group. However, the variables `vehicle_type`, `gender`, `race`, etc are not suitable to be represented with natural numbers, as higher or lower numbers doest not indicate any inherent ordrer, and this might mislead a machine learning model.
-One-hot-encoding is used to encode (represent) categorical variables as numerical values but not natural numbers. This is done by creating a new binary column for each unique category in the data, with a value of 1 in the column corresponding to the category and 0 in all other columns.
-One-hot-encoding wouldn't contain any order for classes of columns, and therefore overcomes the ordering issue mentioned earlier.
+As mentioned earlier, a prerequisite of RaCog algorithm is a discretized and numeric dataset. In addition to this, there are other reasons for encoding the dataset to a one containing only numbers. Firstly, most machine learning algorithms require that input and output variables are numbers. Secondly, even if the dataset only contain numbers, and yet a categorical variable is represented with natural numbers, the following two cases might occur: Either the variable has a natural order, e.g., `age` which contains four age groups can be represented with numbers {1,2,3,4}, such that higher numbers correspond to older age groups. 
+The second case is the case of variables `vehicle_type`, `gender`, `race`, etc that are not suitable to be represented with natural numbers, as higher or lower numbers does not indicate any inherent order, and this might mislead a machine learning model.
+
+One-hot-encoding is used to encode (represent) categorical variables as numerical values but not by natural numbers, rather by binary 0 and 1 values, which would omit any implicit indication of order existence in the variables. This would overcome the ordering issue mentioned earlier. One-hot-encoding is done by creating a new binary column for each unique category in the data, with a value of 1 in the column corresponding to that particular category, and 0 in all other columns.
 
 ```{r, include=FALSE, warning=FALSE}
 dummy <- dummyVars(" ~ .", data=df)
@@ -261,20 +257,20 @@ test$id <- as.double(test$id)
 
 ## Train/Test Split \label{subsec:split}
 After encoding the dataset, it is splitted to train and test datasets, with 80% proportion for the former and 20% for the latter.
-The oversampling method in \ref{subsec:racog}, the classification models in \ref{sec:modelling}, and the hyperparameter tuning in \ref{subsec:hyperpar} are all done using the train data, and the evaluation processes in \ref{sec:evaluation} is done on the test data, which is the data that is unobserved by the models.
+The oversampling method in \ref{subsec:racog}, the classification models in \ref{sec:modeling}, and the hyperparameter tuning in \ref{subsec:hyperpar} are all done using the train data, and the evaluation processes in \ref{sec:evaluation} is done on the test data, which is the data that is unobserved by the models.
 
 ## Normalize
-As this point data is normalized as well, meaning that numerical variables are transformed to a homogeneous scale of values. The normalizing uses train dataset to be fitted to, but then after using statistical properties of only train, it changes both train and test dataset. Otherwise, if statistical properties of test is used, data leakage occurs and the models can cheat by footprint of test data on normalized train data.
+As this point data is normalized as well, meaning that numerical variables are transformed to a homogeneous scale of values. The normalizing uses train dataset to be fitted to, i.e., to use its values for scaling. But after scaling by using statistical properties of only the train dataset, the scaler will transform both train and test dataset. Otherwise, if statistical properties of test is used during fitting the scaler, data leakage occurs and the models can cheat by using footprint of test data left on normalized train data.
 
 
-## RaCog \label{subsec:racog}
+## Oversampling minority class using RaCog \label{subsec:racog}
 Existing oversampling approaches for addressing imbalanced dataset (explained in \ref{subsec:imbalance}) typically do not consider the probability distribution of the minority class while synthetically generating new samples. This leads to poor representation of the minority class, and hence to poor classification performance.
 
-Rapidly converging Gibbs algorithm (RaCog) uses the joint probability distribution of input variables as well as Gibbs sampling to generate new minority class samples.  Gibbs sampling is a Markov Chain Monte Carlo (MCMC) method \cite{bishop} that is used to sample from a multi-dimensional distribution. The basic idea behind Gibbs sampling is that in order to sample from a probability distribution with multiple random variables, instead of directly sampling from the joint distribution of all the variables, the algorithm iteratively sample from the conditional distributions of each variable given the current values of the other variables. By dint of this, the computational difficulties of sampling from the full joint distribution are avoided. The result of the algorithm is a sequence of samples from the joint distribution of all the variables, which can be used to estimate various properties of the distribution, such as the mean and variance of each variable.
+Rapidly converging Gibbs algorithm (RaCog) uses the joint probability distribution of input variables as well as Gibbs sampling to generate new minority class samples. Gibbs sampling is a Markov Chain Monte Carlo (MCMC) method \cite{bishop} that is used to sample from a multi-dimensional distribution. The basic idea behind Gibbs sampling is that in order to sample from a probability distribution with multiple random variables, instead of directly sampling from the joint distribution of all the variables, the algorithm iteratively sample from the conditional distributions of each variable given the current values of the other variables. By dint of this, the computational difficulties of sampling from the full joint distribution are avoided. The result of the algorithm is a sequence of samples from the joint distribution of all the variables, which can be used to estimate various properties of the distribution, such as the mean and variance of each variable.
 
-In summary, Gibbs sampling is a way to iteratively sample from the conditional distributions of each variable given the current values of the other variables, to estimate properties of a multi-dimensional distribution. For more rigorous and detailed information on RaCog alogirhtm, the interested reader is reffered to \cite{racog}.
+In summary, Gibbs sampling is a way to iteratively sample from the conditional distributions of each variable given the current values of the other variables, to estimate properties of a multi-dimensional distribution. For more rigorous and detailed information on RaCog alogithm, the interested reader is referred to \cite{racog}.
 
-In following, a grid of one to one variable comparison is presented, wherein the the prior imbalanced dataset in placed graphics next to the balanced one, for each pair of variables.
+In following, a grid of one to one variable comparison is presented, wherein the the prior imbalanced dataset is placed next to the balanced one, for three variables (or six pair of variables).
 
 ```{r, eval=FALSE, echo=FALSE, fig.dim = c(5.5,4), warning=FALSE}
 tr <- within(train, rm("id"))
@@ -292,10 +288,8 @@ pc <- imbalance::plotComparison(dataset = tr, anotherDataset = tr2, attrs = c("c
 \end{figure}
 
 
-# Classification Models \label{sec:modelling}
+# Classification Models \label{sec:modeling}
 ## Logistic Regression \label{subsec:logit}
-When applying the logistic regression model (explained in)
-
 ```{r, include=FALSE, warning=FALSE}
 data("insurance_train")
 data("insurance_test")
@@ -319,8 +313,8 @@ precision_logit <- eval_logit$precision
 recall_logit <- eval_logit$recall
 ```
 
-Among results of fitting logistic regression (logit) on the dataset, the significance level of variables are reported, obtained by perturbing a small change in the variable under study while holding all other variables constant. The most significant variables that affects the prediction of outcomes, i.e., 1 for approval and 0 for or rejection of car insurance claims are listed below. The high significance levels were determined by observing small p-values. However, the direction of the variables' impact remains yet to be determined. The aim is to answer the following question. Would a significant have an effective role in increasing the chance of approval (class 1), or chance of rejection (class 0). The answer of this question lies at the sign of the coefficient of the variable in the model. 
-The significant variables and their direction of significance are reported below. Positive effect means the variable increased chance in class 1.
+Among results of fitting logistic regression (logit) on the dataset, the significance level of variables are reported, obtained by perturbing a small change in the variable under study while holding all other variables constant. The most significant variables that affects the prediction of outcomes, i.e., 1 for approval and 0 for or rejection of car insurance claims are listed below. The high significance levels were determined by observing small p-values. However, the direction of the variables' impact remains yet to be determined. The aim of deriving direction of impact is to answer the following question. Would a significant variable have an effective role in increasing the chance of approval (class 1), or increasing the chance of rejection (class 0)? The answer of this question lies at the sign of the coefficient of each variable in the model. 
+Therefore, the direction of significance are also reported below. Positive effect means the variable increased chance in class 1.
 
 - `driving_experience.0.9y`: Having driving experience between 0-9 years, positive.
 - `vehicle_ownership`: Whether the policyholder owns the vehicle or not, negative.
@@ -333,7 +327,7 @@ The significant variables and their direction of significance are reported below
 ## Random Forest \label{subsec:rf}
 The random forest model can also report significance level of variables using different measures, two of which will be reported, accuracy, and Gini. 
 
-The following plot visualizes significance level of variables. The left part shows how much accuracy th model losses by excluding each variable. The more the accuracy suffers (higher `MeanDecreaseAccuracy`), the more important the variable is for the successful classification. The variables are presented in descending quantity order of importance.
+The following plot visualizes significance level of variables. The left part shows how much accuracy the model loses by excluding each variable. The more the accuracy suffers (higher `MeanDecreaseAccuracy`), the more important the variable is for the successful classification. The variables are presented in descending quantity order of importance.
 The right part shows the mean decrease in Gini coefficient. The Gini coefficient is a measure of how each variable contributes to the homogeneity of the nodes and leaves in the resulting random forest. Again, higher `MeanDecreaseGini` indicates more significance.
 
 ```{r, include=FALSE, warning=FALSE}
@@ -359,7 +353,7 @@ precision_rf <- eval_rf$precision
 recall_rf <- eval_rf$recall
 ```
 
-A salient point to take into account is that almost all variables for which both the logit model \ref{subsec:logit} considered high significance level also have high significance in random forest \ref{subsec:rf} based on at least one of the accuracy or Gini measurements. 
+A salient point to take into account is that almost all variables for which the logit model \ref{subsec:logit} considered high significance level, also had high significance level in random forest \ref{subsec:rf}, judged by at least one of the accuracy or Gini measurements. 
 The only variable considered significant by logit but not by random forest was `gender.female`. 
 And the variables that were considered significant by random forest but not by logit were the following:
 `age`, `speeding_violations`, and `credit_score`.
@@ -375,23 +369,20 @@ varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance")  + ggp
 
 
 ## Hyper-parameter tuning \label{subsec:hyperpar}
-
-Although the classification models and in general machine learning models learn to find the best parameters of in a given model, there are some parameters that are not learned during the training process, and they should be chosen by the human. Using intuition, tial and error, and relying on domain knowledge are common practices to find the best set of hyperparameterse. Another essential way is to do a systematic search and try all possible combinations. This can be computationally intensive. In this work, the following hyperparameters were chosen by search:
+Although the classification models and in general machine learning models learn to find the best parameters of a given model, there are some parameters that are not learned during the training process, therefore they should be chosen by the human. Using intuition, trial and error, and relying on domain knowledge are common practices to find the best set of hyperparameters. Another essential method is to do a systematic search and try all (or a rich subset of) possible combinations. This is usually computationally intensive. In this work, the following hyperparameters were chosen by search:
 
 1. **Logit:**
-  - $\lambda$: the parameter that controls the amount of                regularization applied to the modeling logistic regression          derived from generalized linear model.
+  - $\lambda$: The parameter that controls the amount of                regularization applied to the modeling logistic regression          derived from generalized linear model.
 
 2. **Random Forest:**
   - `ntree`: Number of trees
   - `mtry`: Number of variables randomly sampled as candidates at each split
+  
 # Evaluation \label{sec:evaluation}
-In the following, various evaluation metrics employed to measure and compare the classification performance of the models are reported.
-The test set (explained in \ref{subsec:split}) is used to evaluate the models. The classification of test set's outcome variable predicted by models are compared with the test set's real values of outcome. The evaluation metrics will be explained in the following:
-
+In the following, various evaluation metrics are employed to measure, compare, and report the classification performance of the models. The test set (explained in \ref{subsec:split}) is used for evaluating the models. The prediction of the model (given test set as input and outputting outcome variable) are compared with the test set's real values of outcome. 
 
 
 ## Confusion Matrix
-
 The confusion matrix is made up of four different cells, each representing the number of correctly and incorrectly classified instances of a particular class. The cells are typically arranged in the following format:
 
 ```{r, echo=FALSE, warning=FALSE}
@@ -425,11 +416,10 @@ p2 <- eval_rf$confusion_matrix_plot +  labs(caption = "Confusion matrix of rando
 gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
-Both models demonstrate similar performance, with difference that logit have more misclassification cases for predicting class 0, and more corret classifications for class 1, whereas random forest have more misclassification cases for predicting class 1, and more corret classifications for class 0.
+Both models demonstrate similar performance, with difference that logit have more misclassification cases for predicting class 0, and more correct classification cases for class 1, whereas random forest have more misclassification cases for predicting class 1, and more correct classifications for class 0.
 
 ## Metrics derived from confusion matrix
-
-The formulas for the evaluation metrics needed for the rest of the report are defined in the following, with terms that are from the confusion matrix explained earlier.
+The formulas for the evaluation metrics needed for the rest of this work are defined in the following, derived from terms existing in the confusion matrix explained earlier.
 Two new terms used here are condition positive (P), i.e.,
 the number of real positive cases in the data, and condition negative (N), i.e., the number of real negative cases in the data.
 
@@ -455,13 +445,13 @@ Recall & `r recall_logit` & `r recall_rf` \\
 \label{tab:comparison}
 \end{table}
 
- From insurance company's perspective, the most prominent loss would be to approve a claim falsely. This is equivalent to misclassify an outcome to class 1 which originally belongs to class 0.
-From the reported evaluation metrics, of particular note is the FDR (false discovery rate), as it shows the exact quantity discussed. 
-The lower this quantity is, the less falsely approved claims will occur. This quantity is lower in logit, evidenced by \ref{tab:comparison}. Based on this, the logit is preferable.
+From insurance company's perspective, the most prominent loss would be to approve a claim falsely. This is equivalent to misclassify an outcome to class 1 which originally belongs to class 0.
+But rejecting a claim by false wouldn't have the same financial damage. Therefore, a quantity that concentrate on the number misclassifications to label 1 would be valuable.
+From the reported evaluation metrics, of particular note is the FDR (false discovery rate), as it shows exactly quantity discussed. 
+The lower this quantity is, the less falsely approved claims will occur. This quantity is lower in logit, evidenced by \ref{tab:comparison}. If judged by this metrics, the logit is preferable over random forest.
 
 
 ## ROC Curve
-
 An ROC curve plots the recall (true positive rate) against the false positive rate (FPR) at different classification thresholds. The curve is visualized for the two models in the following:
 
 
@@ -489,9 +479,10 @@ p2 <- p2 +  labs(caption = "ROC curve of random forest") +
 gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
-# Conclusion
+Both models demonstrate similar ROC curves, and their curves are  inclined toward the upper left of the plot, the part corresponding the least mistakes and most correct classifications.
 
-This report described the project of analysis of the car insurance claims dataset, and prediction of claims' outcomes using random forest and logistic regression. Both models had promising performance, with most evaluation metrics more than 70 percent.
-Since the insurance company would be more concerned about falsely approving a claim, the false discovery rate metrics was reported as well, and logit had lower false discovery rate, making it a more suitable candidate. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Based on judgement of both models, the following variables had the most effective role in prediction, i.e., in the policyholder's claim more likely being accepted:
-Having driving experience between 0-9 years would make the claim more likely to accept. On the other hand, not owning the vehicle, the vehicle being built after 2015, and the policyholder being female would make the claim more likely to be rejected.
+# Conclusion
+This report described the project of analysis of the car insurance claims dataset, and prediction of claims' outcomes (approval or rejection) based on historical data of policyholders. The classification models used in thie work were random forest and logistic regression. Both models had promising performance, with most evaluation metrics being more than 70 percent.
+Since the insurance company would be more concerned about falsely approving a claim, the false discovery rate metrics was reported, with lower value for logit, which implies it can a more suitable candidate. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main processes of this work in a single command, and an interactive app that displays the performance of the models. Based on judgement of both models, the following variables had the most effective role in prediction, i.e., in determining policyholder's claim more likely being accepted:
+Having driving experience between 0-9 years would make the claim more likely to accept. In contrast, not owning the vehicle, the vehicle being built after 2015, and the policyholder being female would make the claim more likely to be rejected.
 
