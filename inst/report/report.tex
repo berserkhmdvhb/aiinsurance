@@ -211,7 +211,8 @@ the data to train each decision tree, and randomly selecting subsets of
 input variables to consider at each split point in the decision tree.
 This helps to decorrelate the trees, i.e., reducing the correlation or
 dependence between the trees, consequently, make the model more robust
-to overfitting.
+to overfitting, i.e., becoming too complex and remembers data rather
+than learning from it.
 
 \hypertarget{aiinsurance-package}{%
 \section{\texorpdfstring{\texttt{aiinsurance} Package
@@ -270,18 +271,36 @@ An overview of the car insurance dataset is provided in the following:
 
 \normalsize
 
+The dataset has 19 variables (columns) and 10,000 observations (rows).
+
 The following plot visualizes proportion of data types within the
 dataset.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-3-1} \end{center}
 
-The ``factor'' types of the plot represent categorical variables contain
-classes as characters, e.g., \texttt{gender} variable contains
-characters \texttt{male} or \texttt{female}. However, there are some
-categorical variables in the integer type as well, e.g.,
-\texttt{married}.
+The \texttt{factor} types of the plot represent categorical variables
+containing classes as characters, e.g., \texttt{gender} variable
+contains characters \texttt{male} or \texttt{female}. However, there are
+some categorical variables in the integer type as well, e.g.,
+\texttt{married} which has values \{1,0\}, corresponding to being
+married or not respectively. The categorical columns should be treated
+and mapped to proper numeric representations, elaborated in
+\ref{subsec:encode}.
+
+In the following, the proportion and location of missing values are
+visualized.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
+
+To proceed the processing and modeling parts, missing values of each
+variable are imputed with median for that particular variable. The
+reason that median is chosen for The reason missing values are better be
+removed are the following: 1. Many machine learning algorithms cannot
+handle missing values, 2. Missing values introduce bias or lead to
+inaccurate conclusions if the missing data is not missing at random. 3.
+Missing values increase the variance of the estimate obtained from the
+data, which can lead to overfitting (i.e., becoming too complex and
+remembers data rather than learning from it).
 
 \hypertarget{preprocessing}{%
 \section{Preprocessing}\label{preprocessing}}
@@ -294,14 +313,11 @@ The proportion of outcome classes are shown in the following:
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-6-1} \end{center}
 
-The number of class 0 and class 1 labels are respectively 6867, 3133
-
+The number of class 0 and class 1 labels are respectively 6867, 3133.
 Imbalance ratio is defined as size of minority class (1 in our case)
-over size of majority class (0). Therefore, the ideal number for this
-quantity is 1. Imbalance ratio:0.45624
-
-After oversampling, the number of class 0 and class 1 labels are
-respectively 5484, 5516. Imbalance ratio is approximately 1 now.
+over size of majority class (0). Therefore, this quantity is 1 for a
+fully balanced binary variable. Imbalance ratio for the outcome variable
+is 0.45624
 
 To make the dataset balanced, oversampling methods can be used, which
 are methods that generate samples from the dataset with the minority
@@ -312,12 +328,14 @@ align with the original data, however, they should be different to a
 small extent too, so that they would resemble new data available in the
 dataset, not merely a copy of what exists in it. A promising
 oversampling method that is used for this work is the RaCog algorithm.
-Prior to explaining the algorithm in \ref{subsec:racog}, the process of
-respresenting the categorical columns of the dataset as numerical ones
-is explained in \ref{subsec:encode}, as this process is a prerequisite
-for many oversampling methods. For RaCog, the dataset should be
-discretized and numeric, and a one-hot-encoded dataset satisfies this
-property.
+After oversampling using the mentioned method, the number of class 0 and
+class 1 labels would become respectively 5484, 5516, leading to a
+imbalance ratio approximating 1. Prior to explaining the algorithm in
+\ref{subsec:racog}, the process of respresenting the categorical columns
+of the dataset as numerical ones is explained in \ref{subsec:encode}, as
+this process is a prerequisite for many oversampling methods. For RaCog,
+the dataset should be discretized and numeric, and a one-hot-encoded
+dataset satisfies this property.
 
 \hypertarget{encoding-categorical-columns}{%
 \subsection{\texorpdfstring{Encoding Categorical Columns
@@ -378,9 +396,9 @@ In following, a grid of one to one variable comparison is presented,
 wherein the the prior imbalanced dataset in placed graphics next to the
 balanced one, for each pair of variables.
 
-\newpage
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-8-1.pdf}
+\begin{figure}[htbp] 
+    \centerline{\includegraphics[width=9cm, height=7cm]{./figures/plotcompare.png}}
+\end{figure}
 
 \hypertarget{classification-models}{%
 \section{Classification Models}\label{classification-models}}
