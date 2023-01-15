@@ -459,12 +459,14 @@ following: \texttt{age}, \texttt{speeding\_violations}, and
 In the following, various evaluation metrics were employed to measure
 and compare the classification performance of the models.
 
-\hypertarget{evaluation-1}{%
-\section{Evaluation}\label{evaluation-1}}
+\hypertarget{confusion-matrix}{%
+\subsection{Confusion Matrix}\label{confusion-matrix}}
 
-\hypertarget{accuracy-precision-recall}{%
-\subsection{Accuracy, Precision,
-Recall}\label{accuracy-precision-recall}}
+\includegraphics{report_files/figure-latex/unnamed-chunk-15-1.pdf}
+
+\hypertarget{accuracy-precision-recall-roc}{%
+\subsection{Accuracy, Precision, Recall,
+ROC}\label{accuracy-precision-recall-roc}}
 
 \begin{table}[h]
 \centering
@@ -481,34 +483,10 @@ Recall & 0.6496259 & 0.6496259 \\
 \label{tab:comparison}
 \end{table}
 
-\hypertarget{confusion-matrix}{%
-\subsection{Confusion Matrix}\label{confusion-matrix}}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-16-1.pdf}
-
-\includegraphics{report_files/figure-latex/unnamed-chunk-17-1.pdf}
-
 \hypertarget{roc-curve}{%
 \subsection{ROC Curve}\label{roc-curve}}
 
-\begin{verbatim}
-## Setting levels: control = 0, case = 1
-\end{verbatim}
-
-\begin{verbatim}
-## Setting direction: controls < cases
-\end{verbatim}
-
 \includegraphics{report_files/figure-latex/unnamed-chunk-18-1.pdf}
-
-\begin{verbatim}
-## 
-## Call:
-## roc.formula(formula = actual ~ pred_proba_glm, plot = TRUE)
-## 
-## Data: pred_proba_glm in 1383 controls (actual 0) < 617 cases (actual 1).
-## Area under the curve: 0.9017
-\end{verbatim}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
