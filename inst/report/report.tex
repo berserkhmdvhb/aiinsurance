@@ -71,13 +71,12 @@ the variable of interest is the outcome of insurance, indicating whether
 a customer's claim is approved or not. The \texttt{aiinsurance} R
 package \cite{package} is developed to make this work reproducible,
 accessible, and equipped with advanced features, e.g., a pipeline that
-connects the main processes of this work, executable with a single
-command, and an interactive app that displays the performance of the
-classification models, logistic regression and random forest, which are
-implemented using the package's functions and their purposer was to
-classify the outcomes based on solely the historical data. The results
-indicate promising prediction performance with various evaluation
-metrics having value over 70 percent. In addition to classification,
+performs the main processes of this work in a single command, and an
+interactive app that displays the performance of the classification
+models, logistic regression and random forest, which are implemented
+using the package's functions and their purpose was to classify the
+outcomes based on solely the historical data. The results indicate
+promising prediction performance. In addition to classification,
 informative insights from the dataset and models have been drawn, e.g.,
 statistical signifcance of the variables playing more important role in
 prediction.
@@ -266,9 +265,10 @@ Noteworthy features of the package are explained in the following:
   Both raw dataset and processed train and tests (explained in
   \ref{subsec:split}) are incorporated in the package.
 \item
-  A pipeline that performs the main processes of this work in a single
-  command. The pipeline takes the processed train and test datsets and
-  outputs the evaluation plots in \ref{sec:evaluation}.
+  A pipeline that connects the main processes of this work and is
+  executable with a single command. The pipeline takes the processed
+  train and test datsets and outputs the evaluation plots in
+  \ref{sec:evaluation}.
 \item
   An interactive shiny app that after performing the same tasks in
   pipeline, displays the evaluation plots in \ref{sec:evaluation} based
@@ -731,10 +731,10 @@ cases in the data.
 \hline
 \textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
 \hline
-Accuracy & 0.8115 & 0.8315 \\
-FDR & 0.1555916 & 0.1944895 \\
-Precision & 0.8444084 & 0.8055105 \\
-Recall & 0.6496259 & 0.6960784 \\
+Accuracy & 0.8115 & 0.833 \\
+FDR & 0.1555916 & 0.197731 \\
+Precision & 0.8444084 & 0.802269 \\
+Recall & 0.6496259 & 0.7001414 \\
 \hline
 \end{tabular}
 \caption{Comparison of Evaluation Metrics for Two Models}
@@ -771,19 +771,17 @@ least mistakes and most correct classifications.
 This report described the project of analysis of the car insurance
 claims dataset, and prediction of claims' outcomes (approval or
 rejection) based on historical data of policyholders. The classification
-models used in thie work were random forest and logistic regression.
-Both models had promising performance, with most evaluation metrics
-being more than 70 percent. Since the insurance company would be more
-concerned about falsely approving a claim, the false discovery rate
-metrics was reported, with lower value for logit, which implies it can a
-more suitable candidate. The \texttt{aiinsurance} R package
-\cite{package} is developed to make this work reproducible, accessible,
-and equipped with advanced features, e.g., a pipeline that performs the
-main processes of this work in a single command, and an interactive app
-that displays the performance of the models. Based on judgement of both
-models, the following variables had the most effective role in
-prediction, i.e., in determining policyholder's claim more likely being
-accepted: Having driving experience between 0-9 years would make the
+models used in this work were random forest and logit, which showed
+promising performance, with most evaluation metrics being more than 70
+percent. Since the insurance company would be more concerned about
+falsely approving a claim, the FDR metrics was reported, with lower
+value for logit, implying a preferred model The \texttt{aiinsurance} R
+package \cite{package} is developed to make this work reproducible,
+accessible, and equipped with advanced features, e.g., a pipeline that
+performs the main processes of this work in a single command, and an
+interactive app that displays the performance of the models. Judged by
+both models, the following variables had the most effective role in
+prediction: Having driving experience between 0-9 years would make the
 claim more likely to accept. In contrast, not owning the vehicle, the
 vehicle being built after 2015, and the policyholder being female would
 make the claim more likely to be rejected.

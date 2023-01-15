@@ -183,6 +183,13 @@ p2 <- p2 +  labs(caption = "Density plot of credit_score") +
 
 ```
 
+```{r}
+p1
+```
+
+```{r}
+p2
+```
 **Visualize Balance**
 
 As imbalance of target classes affect predictions, the frequency of each class in the `outcome` column is visualized:
