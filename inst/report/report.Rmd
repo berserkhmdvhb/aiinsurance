@@ -4,7 +4,7 @@ authors:
     name: Hamed Vaheb
     email: hamed.vaheb.001@student.uni.lu
 abstract: 
-  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details , etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Using package's functions, two machine learning models, i.e., logistic regression and random forest are implemented to classify the outcomes based on solely the historical data. The results indicate promising prediction power with various evaluation metrics (e.g., accuracy, precision, recall, etc.) of over 80 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., by dint of the both models, statistical significance level of the variables of the dataset can be measured to determine the variables that perform more effective role in the prediction.
+  This report describes the project of analysis and prediction of the car insurance claims dataset. The dataset includes historical data of the policyholders (e.g., age, gender, vehicle details, etc.), among which the variable of interest is the outcome of insurance, indicating whether a customer's claim is approved or not. The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features, e.g., a pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the classification models, logistic regression and random forest, which are implemented using the package's functions and their purposer was to classify the outcomes based on solely the historical data. The results indicate promising prediction performance with various evaluation metrics of over 80 percent. In addition to classification, informative insights from the dataset and models have been drawn, e.g., statistical signifcance of the variables playing role in prediction.
 
 bibliography: references.bib
 biblio-style: unsrt
@@ -50,7 +50,8 @@ The latter model is a nonlinear tree-based model.
 
 The remainder of this work is organized as the following:
 In section \ref{sec:concepts}, main concepts included in the work are explained. In \ref{subsec:claim}, the concept of car insurance is introduced followed by an elaboration on claims and how they interact among an insurer and a policyholder. Subsequently, the two machine learning models, logistic regression \ref{subsec:model-logit}, and random forest \ref{subsec:model-rf} are briefly explained.
-As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, uses advanced features, e.g., runs a pipeline that performs the main steps of this work in a single command, and it provides an interactive shiny app to display the performance of the models.
+As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, and uses advanced features, e.g., pipeline and interactive app.
+In \ref{sec:data}, data is explored with a focus on expressing the status of categorical variables as well as missing values, both of which will be treated in \ref{sec:process}. which contains all the preprocessing steps. These steps are required before fitting the two classification models used, random forest and logit, their provided results in \ref{sec:modelling}. Finally, the models' performance are evaluated in \ref{sec:evaluation}.
 
 \newpage
 
@@ -91,15 +92,21 @@ As a single random tree might not be able to capture the proper inherent complex
 # `aiinsurance` Package \label{sec:package} 
 \begin{wrapfigure}{l}{0.15\textwidth}
 \includegraphics[width=0.9\linewidth]{"./figures/logo.png"}
-\captionsetup{justification=raggedright,singlelinecheck=false}
-\caption*{ \tiny \href{https://aiinsurance.io/}{Icon Source}}
 \end{wrapfigure}
 
 The `aiinsurance` R package \cite{package} is developed to make this work reproducible, accessible, and equipped with advanced features.
 
 Instructions on how to install and use the package's functions and features is provided in the [README part of package's Github repository](https://github.com/berserkhmdvhb/aiinsurance#readme) `r fa(name = "github")`.
 
-Noteworthy features of the package are explained in the following: A pipeline that performs the main steps of this work in a single command, and an interactive app that displays the performance of the models. Using package's functions
+Noteworthy features of the package are explained in the following: 
+
+1. Multiple functions that facilitated and automated processes in \ref{sec:process} and \ref{subsec:missing}. The functions are well documented and numerous unit tests are conducted on them.
+
+2. Both raw dataset and processed train and tests (explained in \ref{subsec:split}) are incorporated in the package.
+
+3. A pipeline that performs the main steps of this work in a single command. The pipeline takes the processed train and test datsets and output the evaluation plots in \ref{sec:evaluation}.
+
+4. An interactive shiny app after performing the same tasks in pipeline, displays the evaluation plots in \ref{sec:evaluation} based on the type of the model and the type of the plot that user perfers.
 
 # Exploratory Data Analysis (EDA) \label{sec:data}
 An overview of the car insurance dataset is provided in the following:
@@ -134,24 +141,79 @@ df[is.na(df) | df=="Inf"] = NA
 options(repr.plot.width=2, repr.plot.height=2)
 vis_miss(df, sort_miss = TRUE) + ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
 ```
+Evidence by the plot, the columns containing missing values are 
+
+- `credit_score`
+- `annual_mileage`
+
+The reason that the dataset is better not to contain missing values are explained in the following:
+
+1. Many machine learning algorithms cannot handle missing values.
+2. Missing values introduce bias or lead to inaccurate conclusions if the missing data is not missing at random. 
+3. Missing values increase the variance of the estimate obtained from the data, which can lead to overfitting (i.e., becoming too complex and remembers data rather than learning from it).
+
+Treating missing values is expalined in detail in \ref{subsec:missing}.
+
+# Preprocessing \label{sec:process}
+
+## Missing values \label{subsec:missing}
+
 To proceed the processing and modeling parts, missing values of each variable are imputed with median for that particular variable. The reason that median is chosen for 
 The reason missing values are better be removed are the following:
-1. Many machine learning algorithms cannot handle missing values, 2. Missing values introduce bias or lead to inaccurate conclusions if the missing data is not missing at random. 
-3. Missing values increase the variance of the estimate obtained from the data, which can lead to overfitting (i.e., becoming too complex and remembers data rather than learning from it).
-  
+
+
+To fill the missing values, one must exercise prudence.
+Imputing the missing values in a variable with some statistical property of that variable might lead to unwanted changes in nature of the variable, e.g., its distribution.
+
+To observe the changes in imputed variables, the density plot of the variables `credit_score` and `annual_mileage` alongside their imputed versions. The dashed blue lines indicate the imputed versions.
+
 ```{r, include=FALSE, warning=FALSE}
+df_copy <- df
 df <- impute_median_hmd(df)
+
+df_density <- data.frame(credit_score = df_copy$credit_score, 
+                         credit_score_imputed = df$credit_score, 
+                         annual_mileage = df_copy$annual_mileage, 
+                         annual_mileage_imputed = df$annual_mileage)
+df_density <- dplyr::mutate_all(df_density, function(x) as.numeric(x))
 ```
 
-# Preprocessing 
+
+```{r, include=FALSE, warning=FALSE}
+options(repr.plot.width=2, repr.plot.height=2)
+p1 <- df_density |> 
+  ggplot() +
+  geom_density(aes(x = annual_mileage_imputed), alpha=0.1) +
+  geom_density(aes(x = annual_mileage), color="blue", linetype="dashed", na.rm = TRUE, alpha=0.1) 
+
+p2 <- df_density |> 
+  ggplot() +
+  geom_density(aes(x = credit_score_imputed), alpha=0.1) +
+  geom_density(aes(x = credit_score), color="blue", linetype="dashed", na.rm = TRUE, alpha=0.1) 
+
+p1 <- p1 + labs(caption = "Density plot of annual_mileage") + 
+  ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) +  theme(plot.caption = element_text(hjust=0.5))
+p2 <- p2 +  labs(caption = "Density plot of credit_score") +
+    ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) + theme(plot.caption = element_text(hjust=0.5))
+
+```
+
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(6,3.1),fig.align = 'center'}
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+Evidenced by the plots, the `credit_score` variable's imputed version has a slight shift in its mean. 
+Notwithstanding, this work resorted to median imputed versions, due to good performance of the models and due to computational intensity of more advanced methods, of which a prominent one is multiple imputation using chained equations \cite{mice}.
+
+
 ## Class Imabalance \label{subsec:imbalance}
 The proportion of outcome classes are shown in the following:
 
 ```{r, echo=FALSE, fig.dim = c(2, 2.2), fig.align = 'center', warning=FALSE}
 options(repr.plot.width=2, repr.plot.height=2)
 ggplot(df, aes(x = outcome)) +
-    geom_bar() +
-ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
+    geom_bar() +labs(caption = "Proportion of outcome classes") +
+    ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) + theme(plot.caption = element_text(hjust=0.5))
 ```
 
 The number of class 0 and class 1 labels are respectively 6867, 3133.
@@ -161,6 +223,8 @@ To make the dataset balanced, oversampling methods can be used, which are method
 A promising oversampling method that is used for this work is the RaCog algorithm. 
 After oversampling using the mentioned method, the number of class 0 and class 1 labels would become respectively 5484, 5516, leading to a imbalance ratio approximating 1.
 Prior to explaining the algorithm in \ref{subsec:racog}, the process of respresenting the categorical columns of the dataset as numerical ones is explained in \ref{subsec:encode}, as this process is a prerequisite for many oversampling methods. For RaCog, the dataset should be discretized and numeric, and a one-hot-encoded dataset satisfies this property.
+
+
 
 ## Encoding Categorical Columns \label{subsec:encode}
 As mentioned earlier, a prerequisite of RaCog algorithm is a discretized and numeric dataset. In addition to this, there are other reasons for encoding the dataset to only contain numbers. Firstly, most machine learning algorithms require that input and output variables are numbers. Secondly, even if the dataset only contain numbers, and yet a categorical variable is represented with natural numbers, the following two cases might occur: Either the variable has a natural order, e.g., `age` which contains four age groups can be represented with numbers {1,2,3,4}, such that higher numbers correspond to older age group. However, the variables `vehicle_type`, `gender`, `race`, etc are not suitable to be represented with natural numbers, as higher or lower numbers doest not indicate any inherent ordrer, and this might mislead a machine learning model.
@@ -193,6 +257,11 @@ train$id <- as.double(train$id)
 test$id <- as.double(test$id)
 ```
 
+
+## Train/Test Split \label{subsec:split}
+After encoding the dataset, it is splitted to train and test datasets, with 80% proportion for the former and 20% for the latter.
+The oversampling method in \ref{subsec:racog}, the classification models in \ref{sec:modelling}, and the hyperparameter tuning in \ref{subsec:hyperpar} are all done using the train data, and the evaluation processes in \ref{sec:evaluation} is done on the test data, which is the data that is unobserved by the models.
+
 ## RaCog \label{subsec:racog}
 Existing oversampling approaches for addressing imbalanced dataset (explained in \ref{subsec:imbalance}) typically do not consider the probability distribution of the minority class while synthetically generating new samples. This leads to poor representation of the minority class, and hence to poor classification performance.
 
@@ -217,7 +286,8 @@ pc <- imbalance::plotComparison(dataset = tr, anotherDataset = tr2, attrs = c("c
     \centerline{\includegraphics[width=9cm, height=7cm]{./figures/plotcompare.png}}
 \end{figure}
 
-# Classification Models
+
+# Classification Models \label{sec:modelling}
 ## Logistic Regression \label{subsec:logit}
 When applying the logistic regression model (explained in)
 
@@ -258,7 +328,7 @@ The random forest model can also report significance level of variables using di
 The following plot visualizes significance level of variables. The left part shows how much accuracy th model losses by excluding each variable. The more the accuracy suffers (higher `MeanDecreaseAccuracy`), the more important the variable is for the successful classification. The variables are presented in descending quantity order of importance.
 The right part shows the mean decrease in Gini coefficient. The Gini coefficient is a measure of how each variable contributes to the homogeneity of the nodes and leaves in the resulting random forest. Again, higher `MeanDecreaseGini` indicates more significance.
 
-```{r, eval=FALSE, include=FALSE, warning=FALSE}
+```{r, include=FALSE, warning=FALSE}
 rf <- rf_fit_hmd(insurance_train, 
                  ntree = 300,
                  mtry = 10,
@@ -270,7 +340,7 @@ pred_proba_rf <- predict_rf$predict_proba
 ```
 
 
-```{r, include=FALSE, warning=FALSE}
+```{r,eval=FALSE, include=FALSE, warning=FALSE}
 eval_rf <- eval_logit
 ```
 
@@ -286,36 +356,35 @@ The only variable considered significant by logit but not by random forest was `
 And the variables that were considered significant by random forest but not by logit were the following:
 `age`, `speeding_violations`, and `credit_score`.
 
-```{r, eval=FALSE, echo=FALSE, warning=FALSE}
-varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance") 
-```
 
-## Hyper-parameter tuning
+```{r, eval=FALSE, include=FALSE, warning=FALSE, fig.dim = c(7.5,4), fig.align = 'center'}
+options(repr.plot.width=2, repr.plot.height=2)
+varImpPlot(rf, sort = T, n.var = 10, main = "Top 10 Variable Importance")  + ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
+```
+\begin{figure}[htbp] 
+    \centerline{\includegraphics[width=8.2cm, height=5cm]{./figures/varimp.png}}
+\end{figure}
+
+
+## Hyper-parameter tuning \label{subsec:hyperpar}
+
 # Evaluation \label{sec:evaluation}
 In the following, various evaluation metrics were employed to measure and compare the classification performance of the models.
 
 ## Confusion Matrix
 
-```{r, echo=FALSE, warning=FALSE, fig.dim = c(7,2.5)}
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(6,2),  fig.align = 'center'}
 p1 <- eval_logit$confusion_matrix_plot + labs(caption = "Confusion matrix of logit") +
   theme(plot.caption = element_text(hjust=0.5))
 p2 <- eval_rf$confusion_matrix_plot +  labs(caption = "Confusion matrix of random forest") +
   theme(plot.caption = element_text(hjust=0.5))
 
-gridExtra::grid.arrange(p1, p2, ncol = 2, top = 0.5, left=0.5)
+gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
 
 
 ## Accuracy, Precision, Recall, ROC
-
-```{r, eval=FALSE, include=FALSE, warning=FALSE}
-metrics_list <- c("Accuracy", "Precision", "Recall")
-matrics_logit <- c(accuracy_logit, precision_logit, recall_logit)
-metrics_rf <- c(accuracy_rf, precision_rf, recall_rf)
-df_eval <- data.frame(metrics_list, matrics_logit, metrics_rf)
-```
-
 
 \begin{table}[h]
 \centering
@@ -324,8 +393,8 @@ df_eval <- data.frame(metrics_list, matrics_logit, metrics_rf)
 \textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
 \hline
 Accuracy & `r accuracy_logit` & `r accuracy_rf` \\
-Precision & `r precision_logit` & `r precision_logit` \\
-Recall & `r recall_logit` & `r recall_logit` \\
+Precision & `r precision_logit` & `r precision_rf` \\
+Recall & `r recall_logit` & `r recall_rf` \\
 \hline
 \end{tabular}
 \caption{Comparison of Evaluation Metrics for Two Models}
@@ -338,7 +407,7 @@ Recall & `r recall_logit` & `r recall_logit` \\
 
 ```{r, include=FALSE}
 roc_logit <- pROC::roc(actual ~ pred_proba_glm, print.auc=FALSE)
-roc_rf <- pROC::roc(actual ~ pred_proba_glm, print.auc=FALSE)
+roc_rf <- pROC::roc(actual ~ pred_proba_rf, print.auc=FALSE)
 p1 <- pROC::ggroc(roc_logit)
 p2 <- pROC::ggroc(roc_rf)
 ```
@@ -347,7 +416,7 @@ p2 <- pROC::ggroc(roc_rf)
 
 
 
-```{r, echo=FALSE, warning=FALSE, fig.dim = c(5,2.5)}
+```{r, echo=FALSE, warning=FALSE, fig.dim = c(5,2.5), fig.align = 'center'}
 options(repr.plot.width=2, repr.plot.height=2)
 p1 <- p1 + labs(caption = "ROC curve of logit") + 
   ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) + 
@@ -356,7 +425,7 @@ p2 <- p2 +  labs(caption = "ROC curve of random forest") +
     ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm")) +
   theme(plot.caption = element_text(hjust=0.5))
 
-gridExtra::grid.arrange(p1, p2, ncol = 2, top = 0.5, right=1)
+gridExtra::grid.arrange(p1, p2, ncol = 2)
 ```
 
 # Conclusion

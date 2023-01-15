@@ -52,22 +52,20 @@
 \begin{abstract}
 This report describes the project of analysis and prediction of the car
 insurance claims dataset. The dataset includes historical data of the
-policyholders (e.g., age, gender, vehicle details , etc.), among which
+policyholders (e.g., age, gender, vehicle details, etc.), among which
 the variable of interest is the outcome of insurance, indicating whether
 a customer's claim is approved or not. The \texttt{aiinsurance} R
 package \cite{package} is developed to make this work reproducible,
 accessible, and equipped with advanced features, e.g., a pipeline that
 performs the main steps of this work in a single command, and an
-interactive app that displays the performance of the models. Using
-package's functions, two machine learning models, i.e., logistic
-regression and random forest are implemented to classify the outcomes
-based on solely the historical data. The results indicate promising
-prediction power with various evaluation metrics (e.g., accuracy,
-precision, recall, etc.) of over 80 percent. In addition to
-classification, informative insights from the dataset and models have
-been drawn, e.g., by dint of the both models, statistical significance
-level of the variables of the dataset can be measured to determine the
-variables that perform more effective role in the prediction.
+interactive app that displays the performance of the classification
+models, logistic regression and random forest, which are implemented
+using the package's functions and their purposer was to classify the
+outcomes based on solely the historical data. The results indicate
+promising prediction performance with various evaluation metrics of over
+80 percent. In addition to classification, informative insights from the
+dataset and models have been drawn, e.g., statistical signifcance of the
+variables playing role in prediction.
 \end{abstract}
 
 
@@ -110,10 +108,14 @@ regression \ref{subsec:model-logit}, and random forest
 \ref{subsec:model-rf} are briefly explained. As a contribution of this
 work, the \texttt{aiinsurance} package \cite{package}, introduced in
 \ref{sec:package}, is developed, which automates many of the
-classification tasks, uses advanced features, e.g., runs a pipeline that
-performs the main steps of this work in a single command, and it
-provides an interactive shiny app to display the performance of the
-models.
+classification tasks, and uses advanced features, e.g., pipeline and
+interactive app. In \ref{sec:data}, data is explored with a focus on
+expressing the status of categorical variables as well as missing
+values, both of which will be treated in \ref{sec:process}. which
+contains all the preprocessing steps. These steps are required before
+fitting the two classification models used, random forest and logit,
+their provided results in \ref{sec:modelling}. Finally, the models'
+performance are evaluated in \ref{sec:evaluation}.
 
 \newpage
 
@@ -220,8 +222,6 @@ than learning from it.
 
 \begin{wrapfigure}{l}{0.15\textwidth}
 \includegraphics[width=0.9\linewidth]{"./figures/logo.png"}
-\captionsetup{justification=raggedright,singlelinecheck=false}
-\caption*{ \tiny \href{https://aiinsurance.io/}{Icon Source}}
 \end{wrapfigure}
 
 The \texttt{aiinsurance} R package \cite{package} is developed to make
@@ -233,10 +233,26 @@ features is provided in the
 of package's Github repository}
 \includegraphics[width=0.97em,height=1em]{report_files/figure-latex/fa-icon-9e25601f72c0b4fff1c079a486ca8bba.pdf}.
 
-Noteworthy features of the package are explained in the following: A
-pipeline that performs the main steps of this work in a single command,
-and an interactive app that displays the performance of the models.
-Using package's functions
+Noteworthy features of the package are explained in the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Multiple functions that facilitated and automated processes in
+  \ref{sec:process} and \ref{subsec:missing}. The functions are well
+  documented and numerous unit tests are conducted on them.
+\item
+  Both raw dataset and processed train and tests (explained in
+  \ref{subsec:split}) are incorporated in the package.
+\item
+  A pipeline that performs the main steps of this work in a single
+  command. The pipeline takes the processed train and test datsets and
+  output the evaluation plots in \ref{sec:evaluation}.
+\item
+  An interactive shiny app after performing the same tasks in pipeline,
+  displays the evaluation plots in \ref{sec:evaluation} based on the
+  type of the model and the type of the plot that user perfers.
+\end{enumerate}
 
 \hypertarget{exploratory-data-analysis-eda}{%
 \section{\texorpdfstring{Exploratory Data Analysis (EDA)
@@ -292,18 +308,66 @@ visualized.
 
 \begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
+Evidence by the plot, the columns containing missing values are
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{credit\_score}
+\item
+  \texttt{annual\_mileage}
+\end{itemize}
+
+The reason that the dataset is better not to contain missing values are
+explained in the following:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Many machine learning algorithms cannot handle missing values.
+\item
+  Missing values introduce bias or lead to inaccurate conclusions if the
+  missing data is not missing at random.
+\item
+  Missing values increase the variance of the estimate obtained from the
+  data, which can lead to overfitting (i.e., becoming too complex and
+  remembers data rather than learning from it).
+\end{enumerate}
+
+Treating missing values is expalined in detail in \ref{subsec:missing}.
+
+\hypertarget{preprocessing}{%
+\section{\texorpdfstring{Preprocessing
+\label{sec:process}}{Preprocessing }}\label{preprocessing}}
+
+\hypertarget{missing-values}{%
+\subsection{\texorpdfstring{Missing values
+\label{subsec:missing}}{Missing values }}\label{missing-values}}
+
 To proceed the processing and modeling parts, missing values of each
 variable are imputed with median for that particular variable. The
 reason that median is chosen for The reason missing values are better be
-removed are the following: 1. Many machine learning algorithms cannot
-handle missing values, 2. Missing values introduce bias or lead to
-inaccurate conclusions if the missing data is not missing at random. 3.
-Missing values increase the variance of the estimate obtained from the
-data, which can lead to overfitting (i.e., becoming too complex and
-remembers data rather than learning from it).
+removed are the following:
 
-\hypertarget{preprocessing}{%
-\section{Preprocessing}\label{preprocessing}}
+To fill the missing values, one must exercise prudence. Imputing the
+missing values in a variable with some statistical property of that
+variable might lead to unwanted changes in nature of the variable, e.g.,
+its distribution.
+
+To observe the changes in imputed variables, the density plot of the
+variables \texttt{credit\_score} and \texttt{annual\_mileage} alongside
+their imputed versions. The dashed blue lines indicate the imputed
+versions.
+
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-7-1} \end{center}
+
+Evidenced by the plots, the \texttt{credit\_score} variable's imputed
+version has a slight shift in its mean. Notwithstanding, this work
+resorted to median imputed versions, due to good performance of the
+models and due to computational intensity of more advanced methods, of
+which a prominent one is multiple imputation using chained equations
+\cite{mice}.
 
 \hypertarget{class-imabalance}{%
 \subsection{\texorpdfstring{Class Imabalance
@@ -311,7 +375,7 @@ remembers data rather than learning from it).
 
 The proportion of outcome classes are shown in the following:
 
-\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-6-1} \end{center}
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
 The number of class 0 and class 1 labels are respectively 6867, 3133.
 Imbalance ratio is defined as size of minority class (1 in our case)
@@ -361,6 +425,18 @@ the column corresponding to the category and 0 in all other columns.
 One-hot-encoding wouldn't contain any order for classes of columns, and
 therefore overcomes the ordering issue mentioned earlier.
 
+\hypertarget{traintest-split}{%
+\subsection{\texorpdfstring{Train/Test Split
+\label{subsec:split}}{Train/Test Split }}\label{traintest-split}}
+
+After encoding the dataset, it is splitted to train and test datasets,
+with 80\% proportion for the former and 20\% for the latter. The
+oversampling method in \ref{subsec:racog}, the classification models in
+\ref{sec:modelling}, and the hyperparameter tuning in
+\ref{subsec:hyperpar} are all done using the train data, and the
+evaluation processes in \ref{sec:evaluation} is done on the test data,
+which is the data that is unobserved by the models.
+
 \hypertarget{racog}{%
 \subsection{\texorpdfstring{RaCog
 \label{subsec:racog}}{RaCog }}\label{racog}}
@@ -401,7 +477,8 @@ balanced one, for each pair of variables.
 \end{figure}
 
 \hypertarget{classification-models}{%
-\section{Classification Models}\label{classification-models}}
+\section{\texorpdfstring{Classification Models
+\label{sec:modelling}}{Classification Models }}\label{classification-models}}
 
 \hypertarget{logistic-regression}{%
 \subsection{\texorpdfstring{Logistic Regression
@@ -467,8 +544,13 @@ considered significant by random forest but not by logit were the
 following: \texttt{age}, \texttt{speeding\_violations}, and
 \texttt{credit\_score}.
 
+\begin{figure}[htbp] 
+    \centerline{\includegraphics[width=8.2cm, height=5cm]{./figures/varimp.png}}
+\end{figure}
+
 \hypertarget{hyper-parameter-tuning}{%
-\subsection{Hyper-parameter tuning}\label{hyper-parameter-tuning}}
+\subsection{\texorpdfstring{Hyper-parameter tuning
+\label{subsec:hyperpar}}{Hyper-parameter tuning }}\label{hyper-parameter-tuning}}
 
 \hypertarget{evaluation}{%
 \section{\texorpdfstring{Evaluation
@@ -480,7 +562,7 @@ and compare the classification performance of the models.
 \hypertarget{confusion-matrix}{%
 \subsection{Confusion Matrix}\label{confusion-matrix}}
 
-\includegraphics{report_files/figure-latex/unnamed-chunk-15-1.pdf}
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-17-1} \end{center}
 
 \hypertarget{accuracy-precision-recall-roc}{%
 \subsection{Accuracy, Precision, Recall,
@@ -492,9 +574,9 @@ ROC}\label{accuracy-precision-recall-roc}}
 \hline
 \textbf{Metric} & \textbf{Logit} & \textbf{Random Forest} \\
 \hline
-Accuracy & 0.8115 & 0.8115 \\
-Precision & 0.8444084 & 0.8444084 \\
-Recall & 0.6496259 & 0.6496259 \\
+Accuracy & 0.8115 & 0.8315 \\
+Precision & 0.8444084 & 0.7990276 \\
+Recall & 0.6496259 & 0.6983003 \\
 \hline
 \end{tabular}
 \caption{Comparison of Evaluation Metrics for Two Models}
@@ -504,7 +586,7 @@ Recall & 0.6496259 & 0.6496259 \\
 \hypertarget{roc-curve}{%
 \subsection{ROC Curve}\label{roc-curve}}
 
-\includegraphics{report_files/figure-latex/unnamed-chunk-18-1.pdf}
+\begin{center}\includegraphics{report_files/figure-latex/unnamed-chunk-19-1} \end{center}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
