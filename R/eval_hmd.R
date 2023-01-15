@@ -38,12 +38,12 @@ eval_hmd <- function(actual,
     }
   }
 
-  if (!(y_actual |> unique() |> length() == 2) | !(y_predicted |> unique() |> length() == 2)){
+  if (!(y_actual |> unique() |> length() <= 2) | !(y_predicted |> unique() |> length() <= 2)){
     stop("Both actual and predicted should be binary. Ensure they contain only two classes.")
   }
 
-  if (!(setequal(unique(y_actual), unique(y_predicted)))){
-    stop("Both actual and predicted should have the same classes.")
+  if (!(all(unique(y_predicted) %in% unique(y_actual))) & !(all(unique(y_actual) %in% unique(y_predicted)))){
+    stop("Predicted cannot have any class outside of actual classes")
   }
 
 

@@ -216,6 +216,8 @@ data("insurance_test")
 actual <- insurance_test$outcome
 ```
 
+
+
 ```{r, include=FALSE, warning=FALSE}
 
 actual <- insurance_test$outcome

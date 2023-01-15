@@ -387,14 +387,23 @@ Extract AIC and BIC from the fit of glm
 fit$aic
 ```
 
-
-
-
-avplot of results
-
-```{r warning=FALSE}
-#glm_plot_hmd(fit)
+**GLMNET**
+```{r}
+fit <- glmnet_fit_hmd(insurance_train, 
+                      target="outcome", 
+                      family="binomial")
+h <- glm_predict_hmd(fit, 
+                     data = insurance_test, 
+                     target = "outcome",
+                     s=0.5)
+coef = h$coef
+pred_glmnet <- h$predictions
+pred_proba_glmnet <- h$predict_proba
 ```
+
+Any `s` value that is not close to zero will yield a prediction which always predicts class 1, and hence it would perform poorly.
+
+
 
 **cross validated GLMNET**
 
@@ -438,6 +447,7 @@ glmnet_cv_aic_hmd(fit, lchoice = "min")
 
 
 
+**GLMNET**
 
 
 **1SE**
@@ -497,7 +507,8 @@ glmnet_cv_aic_hmd(fit, lchoice = "1se")
 ### Evaluate    
 
 
-**GLMNET**
+
+**GLM**
 
 
 ```{r}
@@ -531,6 +542,45 @@ Plot Confusion Matrix
 ```{r}
 eval$confusion_matrix_plot
 ```
+
+
+**GLMNET**
+
+
+```{r}
+eval <- eval_hmd(actual, pred_glmnet)
+```
+
+```{r}
+print("confusion matrix: ")
+print(eval$confusion_matrix)
+```
+
+```{r}
+print("accuracy: ")
+print(eval$accuracy)
+print("precision: ")
+print(eval$precision)
+print("recall: ")
+print(eval$recall)
+print("f1_score")
+print(eval$f1_score)
+print("fbeta_score")
+print(eval$fbeta_score)
+```
+
+```{r}
+pROC::roc(actual ~ pred_proba_glmnet, plot = TRUE, print.auc = TRUE)
+```
+
+Plot Confusion Matrix
+
+```{r}
+eval$confusion_matrix_plot
+```
+
+
+
 
 **GLMNET CV**
 

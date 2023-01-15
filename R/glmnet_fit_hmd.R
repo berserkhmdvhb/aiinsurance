@@ -20,13 +20,12 @@ glmnet_fit_hmd <- function(data=aiinsurance::insurance_train,
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
-  features_names <- names(df)[names(df) != {{target}}]
   features <- df[, colnames(df)[colnames(df) != {{target}}]]
-  # extract feature names either from input or dataframe
-  glm_format <- stats::as.formula(paste({{target}}, "~",
-                                        paste(features_names, collapse = "+"),
-                                        sep = ""
-  ))
-  fit <- glmnet::glmnet(features, df[{{target}}], family={{family}})
+  features_names <- names(df)[names(df) != {{target}}]
+  format <- stats::as.formula(paste({{target}}, "~",
+                                    paste(features_names, collapse = "+")))
+  X <- stats::model.matrix(format, data=df)
+  y <- data.matrix((df[{{target}}]))
+  fit <- glmnet::glmnet(X, y, family={{family}})
   return(fit)
 }

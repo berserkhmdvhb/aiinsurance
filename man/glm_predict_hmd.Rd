@@ -2,13 +2,14 @@
 % Please edit documentation in R/glm_predict_hmd.R
 \name{glm_predict_hmd}
 \alias{glm_predict_hmd}
-\title{Predict data with results using GLM fit object}
+\title{Predict data with results using either GLM fit object or GLMNET fit ojbect}
 \usage{
 glm_predict_hmd(
   fit,
   data = aiinsurance::insurance_test,
   target = "outcome",
-  threshold = 0.5
+  threshold = 0.5,
+  s = 0.5
 )
 }
 \arguments{
@@ -20,13 +21,17 @@ glm_predict_hmd(
 
 \item{threshold}{Cutoff point of probability of class 1, to classify the inputs
 with the probability above threshold as 1.}
+
+\item{s}{"s" controls the amount of shrinkage or regularization applied to the model.
+It is a value between 0 and 1, where 0 corresponds to Ridge regression (no variable selection) and 1 corresponds to Lasso regression (variable selection).}
 }
 \value{
 Returns fit object of glm function
 }
 \description{
-Predict data with results using GLM fit object
+Predict data with results using either GLM fit object or GLMNET fit ojbect
 }
 \details{
-This functions allows the user to predict the results obtained from GLM model
+This functions allows the user to predict the results obtained from either
+GLM model or GLMNET function (Elastic-net regression)
 }

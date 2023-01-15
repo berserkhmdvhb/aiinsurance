@@ -35,7 +35,7 @@ list(
   ),
   tar_target(
     model_glm,
-    glmn_fit_hmd(insurance_train,
+    glm_fit_hmd(insurance_train,
                    target = "outcome",
                    family = "binomial")
   ),
