@@ -14,7 +14,7 @@
 categoricals_hmd <- function(data=aiinsurance::car_insurance_data){
   # ensure dataframe is not empty
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
   }
 
   # make a copy of data with different pointer in memory

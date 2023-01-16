@@ -16,7 +16,9 @@ except the target}
 
 \item{target}{The target variable aimed for prediction}
 
-\item{family}{specify family of distribution.}
+\item{family}{specify family of distribution.
+The options are binomial, gaussian Gamma, inverse.gaussian, poisson, quasi,
+quasibinomial, quasipoisson}
 }
 \value{
 Returns fit object of glm function

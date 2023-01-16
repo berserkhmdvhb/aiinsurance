@@ -7,7 +7,7 @@
 normalizer_hmd(
   train = aiinsurance::insurance_train,
   test = aiinsurance::insurance_test,
-  normalize_method = "minmax"
+  method = "minmax"
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ normalizer_hmd(
 
 \item{test}{Test Data}
 
-\item{normalize_method}{If set to "std", then standard scaler is used, and if
+\item{method}{If set to "std", then standard scaler is used, and if
 set to "minmax", minmax is applied. Default is "minmax".}
 }
 \value{

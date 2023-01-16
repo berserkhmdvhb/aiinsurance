@@ -13,7 +13,7 @@ glm_predict_hmd(
 )
 }
 \arguments{
-\item{fit}{fit object from a glm model}
+\item{fit}{fit object from a glm or glmnet model}
 
 \item{data}{An arbitrary dataframe}
 
@@ -26,7 +26,7 @@ with the probability above threshold as 1.}
 It is a value between 0 and 1, where 0 corresponds to Ridge regression (no variable selection) and 1 corresponds to Lasso regression (variable selection).}
 }
 \value{
-Returns fit object of glm function
+Returns a hash of predictions, prediction probabilities, and coefficients
 }
 \description{
 Predict data with results using either GLM fit object or GLMNET fit ojbect

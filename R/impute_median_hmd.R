@@ -11,7 +11,7 @@
 impute_median_hmd <- function(data=aiinsurance::car_insurance_data){
   # ensure dataframe is not empy
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
   }
 
   cols_list = which(colSums(is.na(df))>0)

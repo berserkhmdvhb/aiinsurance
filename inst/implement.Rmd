@@ -40,9 +40,9 @@ To install the package quickly, run the following:
 
 
 ```{r, warning=FALSE}
-install.packages("devtools")
-library(devtools)
-install_github("berserkhmdvhb/aiinsurance")
+#install.packages("devtools")
+#library(devtools)
+#install_github("berserkhmdvhb/aiinsurance")
 ```
 
 

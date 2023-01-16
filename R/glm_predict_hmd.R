@@ -1,5 +1,5 @@
 #' Predict data with results using either GLM fit object or GLMNET fit ojbect
-#' @param fit fit object from a glm model
+#' @param fit fit object from a glm or glmnet model
 #' @param data An arbitrary dataframe
 #' @param target An arbitrary dataframe
 #' "response" gives the fitted probabilities. "class" produces the class label
@@ -10,7 +10,7 @@
 #' @param s "s" controls the amount of shrinkage or regularization applied to the model.
 #' It is a value between 0 and 1, where 0 corresponds to Ridge regression (no variable selection) and 1 corresponds to Lasso regression (variable selection).
 #' @export
-#' @return Returns fit object of glm function
+#' @return Returns a hash of predictions, prediction probabilities, and coefficients
 #' @details
 #' This functions allows the user to predict the results obtained from either
 #' GLM model or GLMNET function (Elastic-net regression)
@@ -22,9 +22,33 @@ glm_predict_hmd <- function(fit,
                             threshold = 0.5,
                             s=0.5
                           ){
-  if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("data input argument should be a dataframe.")
   }
+  if (!(is.numeric({{threshold}}) == "TRUE")){
+    stop("threshould input argument should be a number.")
+  }
+  if (!(dplyr::between({{threshold}}, 0, 1) == "TRUE")){
+    stop("threshould input argument should be between 0 and 1")
+  }
+  if (!(is.numeric({{s}}) == "TRUE")){
+    stop("s input argument should be a number.")
+  }
+  if (!(dplyr::between({{s}}, 0, 1) == "TRUE")){
+    stop("s input argument should be between 0 and 1")
+  }
+  if (!(setequal({{fit}} |> class(), c("glm", "lm"))) & !(setequal({{fit}} |> class(), c("lognet", "glmnet")))){
+    stop("fit input argument should be from either glm model or glmnet model")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!({{target}} %in% names({{data}}))){
+    stop("target input argument should be contained in dataframe from data input argument.")
+  }
+
+
+
   features_names=names({{data}})[names({{data}}) != {{target}}]
 
   # make a copy of data with different pointer in memory
@@ -33,7 +57,6 @@ glm_predict_hmd <- function(fit,
 
   features <- df[, colnames(df)[colnames(df) != {{target}}]]
   features_names <- names(df)[names(df) != {{target}}]
-  coef <- coef({{fit}})
 
   if (setequal(class({{fit}}), c("glm", "lm"))){
     predict_proba <- stats::predict({{fit}}, features, type="response")
@@ -48,7 +71,7 @@ glm_predict_hmd <- function(fit,
   else{
     stop("The fit input should be from either glm or glmnet function")
   }
-
+  coef <- coef({{fit}})
   predict <- ifelse(predict_proba > {{threshold}}, 1, 0)
   h <- hash::hash()
   h[["coef"]] <- coef

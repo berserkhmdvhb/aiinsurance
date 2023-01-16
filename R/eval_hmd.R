@@ -27,14 +27,14 @@ eval_hmd <- function(actual,
 
   if (!(is.matrix(y_actual))){
     if (!(is.numeric(y_actual))){
-      stop("actual input should contain numbers.
+      stop("actual input argument should contain numbers.
          Please ensure actual's class is either numeric or factor")
     }
   }
 
   if (!(is.matrix(y_predicted))){
     if (!(is.numeric(y_predicted))){
-      stop("predict input should contain numbers.
+      stop("predict input argument should contain numbers.
          Please ensure predict's class is either numeric or factor")
     }
   }
@@ -44,7 +44,7 @@ eval_hmd <- function(actual,
   }
 
   if (!(all(unique(y_predicted) %in% unique(y_actual))) & !(all(unique(y_actual) %in% unique(y_predicted)))){
-    stop("Predicted cannot have any class outside of actual classes")
+    stop("predicted input argument cannot have any class outside of actual classes")
   }
 
 
@@ -68,7 +68,7 @@ eval_hmd <- function(actual,
     ggplot2::labs(x = "Prediction", y = "Reference") +
     ggplot2::scale_x_discrete(labels=c("Class 0","Class 1")) +
     ggplot2::scale_y_discrete(labels=c("Class 1","Class 0")) +
-    ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = unit(c(1,1,1,1),"cm"))
+    ggplot2::theme(text = ggplot2::element_text(size = 9), ggplot2::element_line(size =1), plot.margin = ggplot2::unit(c(1,1,1,1),"cm"))
 
   h <- hash::hash()
   h[["confusion_matrix"]] <- cm

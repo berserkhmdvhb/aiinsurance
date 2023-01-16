@@ -7,7 +7,6 @@
 rf_fit_hmd(
   data = aiinsurance::insurance_train,
   target = "outcome",
-  family = "binomial",
   ntree = 300,
   mtry = 10,
   proximity = TRUE,
@@ -18,8 +17,6 @@ rf_fit_hmd(
 \item{data}{An arbitrary dataframe}
 
 \item{target}{The target variable aimed for prediction}
-
-\item{family}{Specify family of distribution.}
 
 \item{ntree}{Number of trees to grow. This should not be set to too small a '
 umber, to ensure that every input row gets predicted at least a few times.}

@@ -1,7 +1,7 @@
 #' Normalizing Train and Test Data
 #' @param train Training Data
 #' @param test Test Data
-#' @param normalize_method If set to "std", then standard scaler is used, and if
+#' @param method If set to "std", then standard scaler is used, and if
 #' set to "minmax", minmax is applied. Default is "minmax".
 #' @export
 #' @return Returns normalized dataframe
@@ -15,29 +15,28 @@
 
 normalizer_hmd <- function(train=aiinsurance::insurance_train,
                            test=aiinsurance::insurance_test,
-                           normalize_method="minmax"){
+                           method="minmax"){
   # ensure dataframe is not empty
   if (!(is.data.frame({{train}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
   }
   if (!(is.data.frame({{test}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
   }
-
+  if (!({{method}} %in% c("minmax", "std"))){
+    stop("method should be either minmax or std.")
+  }
   # make a copy of data with different pointer in memory
   df_train <- data.frame({{train}})
   df_test <- data.frame({{test}})
   train_numeric <- dplyr::select_if(df_train, is.numeric)
   test_numeric <- dplyr::select_if(df_test, is.numeric)
 
-  if(tolower({{normalize_method}}) == "minmax"){
+  if(tolower({{method}}) == "minmax"){
     method <- c("range")
   }
-  else if (tolower({{normalize_method}}) == "std"){
+  else if (tolower({{method}}) == "std"){
     method <- c("center", "scale")
-  }
-  else{
-    warning("Method is not defined, minmax will be used")
   }
   # normalizer
 

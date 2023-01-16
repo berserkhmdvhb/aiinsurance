@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_cv_aic_hmd.R
 \name{glmnet_cv_aic_hmd}
 \alias{glmnet_cv_aic_hmd}
-\title{Predict data with results from GLMNET model}
+\title{Extract AIC from CV.GLMNET function (cross-validated GLM model)}
 \usage{
 glmnet_cv_aic_hmd(fit, lchoice = "min")
 }
@@ -15,7 +15,7 @@ glmnet_cv_aic_hmd(fit, lchoice = "min")
 AIC and BIC from a glm fit object
 }
 \description{
-Predict data with results from GLMNET model
+Extract AIC from CV.GLMNET function (cross-validated GLM model)
 }
 \details{
 This function allows the user to extract AIC and BIC from a cv.glmnet fit object.

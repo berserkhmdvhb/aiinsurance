@@ -11,10 +11,22 @@
 rf_predict_hmd <- function(fit,
                            data = aiinsurance::insurance_test,
                            target = "outcome"
-
                            ){
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be a character.")
+  }
+
+  if (!({{fit}} |> class() == "randomForest")){
+   stop("fit input argument should be from a random forest model from randomForest function or rf_ft_hmd function.")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!({{target}} %in% names({{data}}))){
+    stop("target input argument should be contained in dataframe from data input argument.")
   }
 
   df <- data.frame({{data}})

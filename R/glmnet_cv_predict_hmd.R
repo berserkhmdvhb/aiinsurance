@@ -18,9 +18,29 @@ glmnet_cv_predict_hmd <- function(fit,
                                   threshold = 0.5
                           ){
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
   }
-
+  if (!({{fit}} |> class() == "cv.glmnet")){
+    stop("fit input argument should be obtained from cv.glmnet function or glmnet_cv_fit_hmd function")
+  }
+  if (!({{lchoice}} %in% c("min", "1se"))){
+    stop("lchoice input argument can be min or 1se.")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!(is.numeric({{threshold}}) == "TRUE")){
+    stop("threshould input argument should be a number.")
+  }
+  if (!(dplyr::between({{threshold}}, 0, 1) == "TRUE")){
+    stop("threshould input argument should be between 0 and 1")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!({{target}} %in% names({{data}}))){
+    stop("target input argument should be contained in dataframe from data input argument.")
+  }
   features_names=names({{data}})[names({{data}}) != {{target}}]
 
   # make a copy of data with different pointer in memory

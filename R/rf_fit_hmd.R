@@ -1,7 +1,6 @@
 #' Random Forest Model Fitting
 #' @param data An arbitrary dataframe
 #' @param target The target variable aimed for prediction
-#' @param family Specify family of distribution.
 #' @param ntree Number of trees to grow. This should not be set to too small a '
 #' umber, to ensure that every input row gets predicted at least a few times.
 #' @param mtry Number of variables randomly sampled as candidates at each split.
@@ -16,7 +15,6 @@
 
 rf_fit_hmd <- function(data=aiinsurance::insurance_train,
                            target="outcome",
-                           family="binomial",
                            ntree=300,
                            mtry=10,
                            proximity=TRUE,
@@ -25,7 +23,31 @@ rf_fit_hmd <- function(data=aiinsurance::insurance_train,
   # ensure dataframe is not empty
 
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
+  }
+  if (!(is.numeric({{ntree}}))){
+    stop("ntree input argument should be a number")
+  }
+  if (!(is.numeric({{mtry}}))){
+    stop("mtry input argument should be a number")
+  }
+  if (!(all.equal({{ntree}}, as.integer({{ntree}})))){
+    stop("ntree input argument should be an integer")
+  }
+  if (!(all.equal({{mtry}}, as.integer({{mtry}})))){
+    stop("mtry input argument should be an integer")
+  }
+  if (!(is.logical({{proximity}}))){
+    stop("proximity input argument should be boolean (TRUE or FALSE")
+  }
+  if (!(is.logical({{importance}}))){
+    stop("importance input argument should be boolean (TRUE or FALSE")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!({{target}} %in% names({{data}}))){
+    stop("target input argument should be contained in dataframe from data input argument.")
   }
 
   # make a copy of data with different pointer in memory

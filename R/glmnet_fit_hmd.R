@@ -17,7 +17,26 @@ glmnet_fit_hmd <- function(data=aiinsurance::insurance_train,
 
   # ensure dataframe is not empy
   if (!(is.data.frame({{data}}))){
-    stop("The data input argument should be a dataframe.")
+    stop("data input argument should be a dataframe.")
+  }
+  if (!(is.character({{target}}))){
+    stop("target input argument should be of type character ")
+  }
+  if (!(is.character({{family}}))){
+    stop("family input argument should be of type character ")
+  }
+  if (!({{family}} %in% c("binomial",
+                          "gaussian",
+                          "Gamma",
+                          "inverse.gaussian",
+                          "poisson",
+                          "quasi",
+                          "quasibinomial",
+                          "quasipoisson"))){
+    stop("family input argument should one of the ones defined, see the documentation to choose.")
+  }
+  if (!({{target}} %in% names({{data}}))){
+    stop("target input argument should be contained in dataframe from data input argument.")
   }
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
