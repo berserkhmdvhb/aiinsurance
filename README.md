@@ -161,13 +161,14 @@ help(package = aiinsurance)
 ## `testthat` Unit Tests
 
 
-Various tests have been done only for the [`eval_hmd`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
+Various tests have been on the functions. 
+For purpose of illustration, I will describe the tests for the [`eval_hmd`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
 Since the inputs `actual` and `predicted` should have certain conditions, the following type checkings and other tests were embedded inside the `eval_hmd` function:
 
 1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`.
 If they are of class `factor`, they will be converted to `numeric` class, as this makes later tests and computations more convenient.
 2. The actual input and predict input should be binary, therefore if any of them contain more than 2 values, error will raise.
-3. The actual input and predict input should have same classes, e.g., they both should contain classes 0 and 1.
+3. The predict input should contain any class that is not present in actual input. But since the user might not always put the arguments' names, I will accept the cases whether either the predict input is subset of actual, or vice versa.
 
 Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the following unit tests have been added in the [`test-eval_hmd.R`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/tests/testthat/test-eval_hmd.R) file (visible also in tree structure below):
 
