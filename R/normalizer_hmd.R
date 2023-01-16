@@ -13,15 +13,17 @@
 
 
 
-normalizer_hmd <- function(train, test,
+normalizer_hmd <- function(train=aiinsurance::insurance_train,
+                           test=aiinsurance::insurance_test,
                            normalize_method="minmax"){
   # ensure dataframe is not empty
-  if(nrow({{train}}) == 0) {
-    warning("The inputted train data frame is empty.")
+  if (!(is.data.frame({{train}}))){
+    stop("The data input argument should be a dataframe.")
   }
-  if(nrow({{test}}) == 0) {
-    warning("The inputted test data frame is empty.")
+  if (!(is.data.frame({{test}}))){
+    stop("The data input argument should be a dataframe.")
   }
+
   # make a copy of data with different pointer in memory
   df_train <- data.frame({{train}})
   df_test <- data.frame({{test}})

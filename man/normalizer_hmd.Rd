@@ -4,7 +4,11 @@
 \alias{normalizer_hmd}
 \title{Normalizing Train and Test Data}
 \usage{
-normalizer_hmd(train, test, normalize_method = "minmax")
+normalizer_hmd(
+  train = aiinsurance::insurance_train,
+  test = aiinsurance::insurance_test,
+  normalize_method = "minmax"
+)
 }
 \arguments{
 \item{train}{Training Data}

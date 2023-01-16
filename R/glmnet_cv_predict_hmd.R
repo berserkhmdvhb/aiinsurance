@@ -17,9 +17,10 @@ glmnet_cv_predict_hmd <- function(fit,
                                   lchoice="min",
                                   threshold = 0.5
                           ){
-  if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("The data input argument should be a dataframe.")
   }
+
   features_names=names({{data}})[names({{data}}) != {{target}}]
 
   # make a copy of data with different pointer in memory

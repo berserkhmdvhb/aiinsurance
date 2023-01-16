@@ -12,9 +12,10 @@ train_test_splitter_hmd <- function(data=aiinsurance::car_insurance_data,
                               proportion=0.7
                               ){
   # ensure dataframe is not empty
-  if(nrow({{data}}) == 0) {
-    warning("The inputted data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("The data input argument should be a dataframe.")
   }
+
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   df_train <- df |> dplyr::sample_frac({{proportion}})

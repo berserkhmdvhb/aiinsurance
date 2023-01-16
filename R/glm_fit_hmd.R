@@ -14,9 +14,10 @@ glm_fit_hmd <- function(data=aiinsurance::insurance_train,
                               family="binomial"){
   # ensure dataframe is not empty
 
-  if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("The data input argument should be a dataframe.")
   }
+
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   features_names <- names(df)[names(df) != {{target}}]

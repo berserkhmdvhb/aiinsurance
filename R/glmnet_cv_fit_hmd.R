@@ -14,10 +14,11 @@ glmnet_cv_fit_hmd <- function(data=aiinsurance::insurance_train,
                           target="outcome",
                           family="binomial"){
   # ensure dataframe is not empty
-  features_names <- names({{data}})[names({{data}}) != {{target}}]
-  if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("The data input argument should be a dataframe.")
   }
+  features_names <- names({{data}})[names({{data}}) != {{target}}]
+
   # make a copy of data with different pointer in memory
   df <- data.frame({{data}})
   # extract feature names either from input or dataframe

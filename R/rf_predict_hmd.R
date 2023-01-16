@@ -13,9 +13,10 @@ rf_predict_hmd <- function(fit,
                            target = "outcome"
 
                            ){
-  if(nrow({{data}}) == 0) {
-    warning("The returned data frame is empty.")
+  if (!(is.data.frame({{data}}))){
+    stop("The data input argument should be a dataframe.")
   }
+
   df <- data.frame({{data}})
 
   X_test <- df[, colnames(df)[colnames(df) != {{target}}]]

@@ -11,6 +11,7 @@
 #' matrix, and plot confusion matrix
 eval_hmd <- function(actual,
                     predicted){
+
   y_actual <- {{actual}}
   y_predicted <- {{predicted}}
 
