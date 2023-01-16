@@ -161,8 +161,7 @@ help(package = aiinsurance)
 ## `testthat` Unit Tests
 
 All functions include type checking of inputs.
-Unit tests were used for some functions. 
-For purpose of illustration, I will describe the tests for the [`eval_hmd`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
+Some functions were supplied with unit tests. For purpose of illustration, I will describe the tests for the [`eval_hmd`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/R/eval_hmd.R) function, which accepts `actual` and `predicted` objects, and then computes evaluation metrics suitable for a binary classified prediction. The function returns a hash containing various evaluation metrics, as well as a confusion matrix plot.
 Since the inputs `actual` and `predicted` should have certain conditions, the following type checkings and other tests were embedded inside the `eval_hmd` function:
 
 1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`.
