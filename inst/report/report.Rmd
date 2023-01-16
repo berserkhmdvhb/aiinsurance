@@ -52,7 +52,7 @@ The latter model is random forest, which is a nonlinear tree-based model.
 The remainder of this work is organized as the following:
 In section \ref{sec:concepts}, main concepts included in the work are explained. In \ref{subsec:claim}, the concept of car insurance is introduced followed by an elaboration on claims and how they interact among an insurer and a policyholder. Subsequently, the two machine learning models, logistic regression \ref{subsec:model-logit}, and random forest \ref{subsec:model-rf} are briefly explained.
 As a contribution of this work, the `aiinsurance` package \cite{package}, introduced in \ref{sec:package}, is developed, which automates many of the classification tasks, and uses advanced features, e.g., a pipeline connecting this work's processes and interactive app.
-In \ref{sec:data}, data is explored, with stress on the effect of categorical variables as well as missing values, both of which will be treated in \ref{sec:process, which contains all the preprocessing steps. These steps are required before fitting the two classification models used, random forest and logit, with their results presented in \ref{sec:modeling}. Finally, the models' performance are evaluated in \ref{sec:evaluation}.
+In \ref{sec:data}, data is explored, with stress on the effect of categorical variables as well as missing values, both of which will be treated in \ref{sec:process}, which contains all the preprocessing steps. These steps are required before fitting the two classification models used, random forest and logit, with their results presented in \ref{sec:modeling}. Finally, the models' performance are evaluated in \ref{sec:evaluation}.
 
 \newpage
 
