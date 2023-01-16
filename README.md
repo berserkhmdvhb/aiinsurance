@@ -74,7 +74,7 @@ targets::tar_read(plot_rf)
 ```
 
 
-### Tree Structure
+### Directory Tree 
 
 ```bash
 ├── R
@@ -135,7 +135,7 @@ aiinsurance::shiny_run_hmd()
 
 Although the shiny app could be based on `targets`, since I wanted the shiny app to work just by installing the package (and without the need to clone anything), I separated the `shiny` app and `targerts` pipeline.
 
-### Tree Structure
+### Directory Tree
 
 ```bash
 ├── inst
@@ -176,13 +176,16 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 
 
-### Tree Structure
+### Directory Tree
 
 ```bash
 └── tests
     ├── testthat
-    │   └── test-eval_hmd.R
+    │   ├── test-categoricals_hmd.R
+    │   ├── test-glm_fit_hmd.R
+    │   └── test-normalizer_hmd.R
     └── testthat.R
+
 ```
 
 # Report
