@@ -178,6 +178,7 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 └── tests
     ├── testthat
     │   ├── test-categoricals_hmd.R
+    │   ├── test-eval_hmd.R
     │   ├── test-glm_fit_hmd.R
     │   └── test-normalizer_hmd.R
     └── testthat.R
