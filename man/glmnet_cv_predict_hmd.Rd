@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_cv_predict_hmd.R
 \name{glmnet_cv_predict_hmd}
 \alias{glmnet_cv_predict_hmd}
-\title{Predict data with results from CV.GLMNET model}
+\title{Predict data with results from CV.GLMNET function (cross-validated GLM model)}
 \usage{
 glmnet_cv_predict_hmd(
   fit,
@@ -28,7 +28,7 @@ with the probability above threshold as 1.}
 Returns a hash of predictions, prediction probabilities, and coefficients
 }
 \description{
-Predict data with results from CV.GLMNET model
+Predict data with results from CV.GLMNET function (cross-validated GLM model)
 }
 \details{
 This functions allows the user to predict a given dataset using fit object

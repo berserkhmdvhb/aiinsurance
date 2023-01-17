@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_fit_hmd.R
 \name{glmnet_fit_hmd}
 \alias{glmnet_fit_hmd}
-\title{CV GLMNET model}
+\title{GLMNET model (Elastic-net Regression)}
 \usage{
 glmnet_fit_hmd(
   data = aiinsurance::insurance_train,
@@ -22,7 +22,7 @@ except the target}
 Returns fit object of glmnet function
 }
 \description{
-CV GLMNET model
+GLMNET model (Elastic-net Regression)
 }
 \details{
 This functions allows the user to perform elastic-net

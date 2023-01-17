@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_cv_plot_hmd.R
 \name{glmnet_cv_plot_hmd}
 \alias{glmnet_cv_plot_hmd}
-\title{Plot lambda of CV.GLMNET model}
+\title{Plot lambda of CV.GLMNET function (cross-validated GLM model)}
 \usage{
 glmnet_cv_plot_hmd(fit)
 }
@@ -13,7 +13,7 @@ glmnet_cv_plot_hmd(fit)
 Returns plot of c
 }
 \description{
-Plot lambda of CV.GLMNET model
+Plot lambda of CV.GLMNET function (cross-validated GLM model)
 }
 \details{
 Plots fit object fit against the log-lambda value and with each curve labeled:

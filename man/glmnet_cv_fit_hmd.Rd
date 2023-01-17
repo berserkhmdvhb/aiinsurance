@@ -2,7 +2,7 @@
 % Please edit documentation in R/glmnet_cv_fit_hmd.R
 \name{glmnet_cv_fit_hmd}
 \alias{glmnet_cv_fit_hmd}
-\title{CV GLMNET model}
+\title{Cross-validated GLM model}
 \usage{
 glmnet_cv_fit_hmd(
   data = aiinsurance::insurance_train,
@@ -22,7 +22,7 @@ except the target}
 Returns fit object of glmnet function
 }
 \description{
-CV GLMNET model
+Cross-validated GLM model
 }
 \details{
 This functions allows the user to perform cross-validated elastic-net

@@ -2,7 +2,7 @@
 % Please edit documentation in R/eval_hmd.R
 \name{eval_hmd}
 \alias{eval_hmd}
-\title{Evaluation Metrics Computation for binary class objects}
+\title{Evaluation Metrics Computation for Binary Classification}
 \usage{
 eval_hmd(actual, predicted)
 }
@@ -15,7 +15,7 @@ eval_hmd(actual, predicted)
 Returns a hash of all evaluation metrics
 }
 \description{
-Evaluation Metrics Computation for binary class objects
+Evaluation Metrics Computation for Binary Classification
 }
 \details{
 This functions computes various evaluation metrics of classification for a given

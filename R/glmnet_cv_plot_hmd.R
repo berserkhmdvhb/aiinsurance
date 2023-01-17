@@ -1,4 +1,4 @@
-#' Plot lambda of CV.GLMNET model
+#' Plot lambda of CV.GLMNET function (cross-validated GLM model)
 #' @param fit fit object from CV.GLMNET
 #' @export
 #' @return Returns plot of c

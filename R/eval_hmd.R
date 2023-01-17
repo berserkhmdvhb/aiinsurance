@@ -1,4 +1,4 @@
-#' Evaluation Metrics Computation for binary class objects
+#' Evaluation Metrics Computation for Binary Classification
 #' @param actual The actual data (usually obtained from the test data)
 #' @param predicted Predictions from an arbitrary model
 #' @export

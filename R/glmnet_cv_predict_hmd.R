@@ -1,4 +1,4 @@
-#' Predict data with results from CV.GLMNET model
+#' Predict data with results from CV.GLMNET function (cross-validated GLM model)
 #' @param fit fit object from a cv.glmnet model
 #' @param data An arbitrary dataframe
 #' @param target Target column in the data

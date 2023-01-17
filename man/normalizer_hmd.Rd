@@ -2,7 +2,7 @@
 % Please edit documentation in R/normalizer_hmd.R
 \name{normalizer_hmd}
 \alias{normalizer_hmd}
-\title{Normalizing Train and Test Data}
+\title{Normalize Train and Test Data}
 \usage{
 normalizer_hmd(
   train = aiinsurance::insurance_train,
@@ -22,7 +22,7 @@ set to "minmax", minmax is applied. Default is "minmax".}
 Returns normalized dataframe
 }
 \description{
-Normalizing Train and Test Data
+Normalize Train and Test Data
 }
 \details{
 This functions allows the user to normalize given train and test data based on the method

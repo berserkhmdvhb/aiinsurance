@@ -1,4 +1,4 @@
-#' Normalizing Train and Test Data
+#' Normalize Train and Test Data
 #' @param train Training Data
 #' @param test Test Data
 #' @param method If set to "std", then standard scaler is used, and if

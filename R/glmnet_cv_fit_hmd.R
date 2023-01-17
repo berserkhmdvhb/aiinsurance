@@ -1,4 +1,4 @@
-#' CV GLMNET model
+#' Cross-validated GLM model
 #' @param data An arbitrary dataframe
 #' except the target
 #' @param target The target variable aimed for prediction

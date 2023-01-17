@@ -1,4 +1,4 @@
-#' CV GLMNET model
+#' GLMNET model (Elastic-net Regression)
 #' @param data An arbitrary dataframe
 #' except the target
 #' @param target The target variable aimed for prediction
