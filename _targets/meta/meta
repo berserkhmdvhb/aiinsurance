@@ -10,16 +10,16 @@ glmnet_fit_hmd|function|14662d0a03390523|||||||||||||||
 glmnet_predict_hmd|function|21d0d9304e8067e4|||||||||||||||
 insurance_test|stem|ba244eb957d2ce3c|8331ceff6c6929bf|f947756d09db810d|390558078||t19374.1539695961s|86f8e0e8b5429710|34842|rds|local|vector|||0||
 insurance_train|stem|b7ed10088fe3a07d|ebf543a2b11cc366|4d0caa6f0c17eda3|488345169||t19374.1539690868s|9a8cad470188a934|167484|rds|local|vector|||0.01||
-model_glm|stem|d27064e40e2a501d|5ef8bffc0a97e472|6a0e21a9d0a8945a|-1710445127||t19374.1539855221s|6cb5165baf4c99a1|7475925|rds|local|vector|||0.434||
-model_random_forest|stem|c7ad2c04e73e6073|0f0435b95b0d11ae|4c7baa35da79ad91|962776895||t19374.1551256259s|4ebe3012ccf59cb1|36269528|rds|local|vector|||84.182||
+model_glm|stem|cfa3f183baca877a|5ef8bffc0a97e472|f405671bfeef24a4|-1710445127||t19374.6563945146s|1b72c7349e1210f2|7475955|rds|local|vector|||0.282||
+model_random_forest|stem|c7ad2c04e73e6073|0f0435b95b0d11ae|b8353760a5d84752|962776895||t19374.6570857706s|4ebe3012ccf59cb1|36269528|rds|local|vector|||51.428||
 plot_glm|stem|38204b163f367c6f|34603838dc734c57|5d002ea4cac0762a|-2018339114||t19374.1551360889s|536637aad42fc4e9|910162|rds|local|vector|||0.032||
 plot_rf|stem|145e0993e792c732|0c275c8e1ef1e090|7e17c0c5f8c12077|1373462244||t19374.1551374315s|c5252387c52f52aa|290411|rds|local|vector|||0.009||
 plot_roc_curve|function|1ff4ae447835a76e|||||||||||||||
 pred_proba_glm|stem|4ddf49330e9ee848|bbd83e100159fcf4|c4c874ab5bb60968|454783083||t19374.1551325704s|e9c59894ecbf5dc1|20215|rds|local|vector|||0.001||
 pred_proba_glmnet|stem|4ddf49330e9ee848|bbd83e100159fcf4|c4c874ab5bb60968|771698680||t19369.4094336443s|e9c59894ecbf5dc1|20215|rds|local|vector|||0||
 pred_proba_rf|stem|a1dbfa3cafd08621|5fd588e7c52a1990|204ea1251d56f161|-127489373||t19374.155132663s|e7aabd05690738b4|4087|rds|local|vector|||0.002||
-predictions_glm|stem|0582b138b4770edd|a22373cc5abf45b5|aa7ceeda1f301528|259089266||t19374.1551272462s|7f40bc6aae9a85ea|40912|rds|local|vector|||0.082|prediction from a rankdeficient fit may be misleading|
-predictions_rf|stem|ffe75721c940631f|e99d110f24722304|f009ee430df00641|1034609077||t19374.1551324315s|03ff470fcbef6580|30472|rds|local|vector|||0.409||
+predictions_glm|stem|0582b138b4770edd|a22373cc5abf45b5|6d0073e6040f051e|259089266||t19374.6570873446s|7f40bc6aae9a85ea|40912|rds|local|vector|||0.008|prediction from a rankdeficient fit may be misleading|
+predictions_rf|stem|ffe75721c940631f|e99d110f24722304|c1f80e7c3cf636c3|1034609077||t19374.6570903539s|03ff470fcbef6580|30472|rds|local|vector|||0.24||
 rf_fit_hmd|function|03eb638dde5d263b|||||||||||||||
 rf_predict_hmd|function|40034383cae33bab|||||||||||||||
 roc_obj_cal|function|4e80757eb2d938ae|||||||||||||||

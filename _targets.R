@@ -12,12 +12,6 @@ library(pROC)
 library(randomForest)
 library(aiinsurance)
 
-
-
-source("./R/glm_fit_hmd.R")
-source("./R/glm_predict_hmd.R")
-source("./R/rf_fit_hmd.R")
-source("./R/rf_predict_hmd.R")
 source("./R/functions.R")
 
 list(
