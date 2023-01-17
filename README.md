@@ -194,7 +194,7 @@ Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the follow
 
 2. The written report explaining both theory and implementation can is provided in the following links:
 
-[PDF](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report/report.pdf)
+[Report PDF](https://github.com/berserkhmdvhb/aiinsurance/blob/main/inst/report/report.pdf)
 
 
 ### `rticles`
