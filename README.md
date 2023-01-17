@@ -163,7 +163,7 @@ Since the inputs `actual` and `predicted` should have certain conditions, the fo
 1. The actual input and predict input can be matrices, and if not, they should be of class either `numeric` or `factor`.
 If they are of class `factor`, they will be converted to `numeric` class, as this makes later tests and computations more convenient.
 2. The actual input and predict input should be binary, therefore if any of them contain more than 2 values, error will raise.
-3. The predict input should contain any class that is not present in actual input. But since the user might not always put the arguments' names, I will accept the cases whether either the predict input is subset of actual, or vice versa.
+3. The predict input should contain any class that is not present in actual input. But since the user might not always put the arguments' names (actual and predicted), I will accept two cases, either the predict input is subset of actual, or actual is subset of predicted.
 
 Moreover, using the [`testthat`](https://testthat.r-lib.org/) library the following unit tests have been added in the [`test-eval_hmd.R`](https://github.com/berserkhmdvhb/aiinsurance/blob/main/tests/testthat/test-eval_hmd.R) file (visible also in tree structure below):
 
