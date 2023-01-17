@@ -123,7 +123,7 @@ The steps of the pipeline are elaborated on in the following:
 
 Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. 
 To view the shiny app, adhere to the instructions provided below:
-Simply install the `aiinsurance` package (refer to [Install](#Install)), and executing the following command will display the app.
+Simply install the `aiinsurance` package (refer to [Install](#Install)), and execute the following command will display the app.
 ```r
 library(aiinsurance)
 shiny_run_hmd()
