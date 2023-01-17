@@ -10,8 +10,8 @@
 #' user prefers. The methods available are "minmax", which transforms features by
 #' scaling each feature to a given range, and "std", the standard scaler, which
 #' standardizes features by removing the mean and scaling to unit variance.
-
-
+#' @examples
+#' normalizer_hmd(train = insurance_train, test = insurance_test, method="minmax")
 
 normalizer_hmd <- function(train=aiinsurance::insurance_train,
                            test=aiinsurance::insurance_test,

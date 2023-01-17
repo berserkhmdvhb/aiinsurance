@@ -9,6 +9,9 @@
 #' This functions allows the user to perform elastic-net
 #' regression on a given dataframe by specifying feature names (response variables),
 #' target variable, family of distribution, and the dataset.
+#' @examples
+#' fit <- glmnet_fit_hmd(data = insurance_train, target = "outcome", family = "binomial")
+#' summary(fit)
 
 glmnet_fit_hmd <- function(data=aiinsurance::insurance_train,
                            target="outcome",

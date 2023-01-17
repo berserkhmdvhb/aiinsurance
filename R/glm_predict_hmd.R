@@ -14,7 +14,17 @@
 #' @details
 #' This functions allows the user to predict the results obtained from either
 #' GLM model or GLMNET function (Elastic-net regression)
-#'
+#' @examples
+#' fit_glm <- glm_fit_hmd(data = insurance_test,
+#' target = "outcome",
+#' family="binomial")
+#' h <- glm_predict_hmd(fit_glm,
+#' insurance_test,
+#' target = "outcome",
+#' threshold = 0.5,
+#' s = 0.5)
+#' predictions <- h$predictions
+#' predictions
 
 glm_predict_hmd <- function(fit,
                             data = aiinsurance::insurance_test,

@@ -12,6 +12,18 @@
 #' @details
 #' This functions allows the user to fit a random forest on a given dataframe
 #' and to choose the hyperparameters for it.
+#' @examples
+#' fit <- rf_fit_hmd(data = insurance_train,
+#' target = "outcome",
+#' ntree = 300,
+#' mtry = 10,
+#' proximity = TRUE,
+#' importance = TRUE)
+#' summary(fit)
+#' randomForest::varImpPlot(fit,
+#' sort = TRUE,
+#' n.var = 10,
+#' main = "Top 10 Variable Importance")
 
 rf_fit_hmd <- function(data=aiinsurance::insurance_train,
                            target="outcome",

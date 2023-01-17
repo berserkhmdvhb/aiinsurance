@@ -5,6 +5,9 @@
 #' @return AIC and BIC from a glm fit object
 #' @details
 #' This function allows the user to extract AIC and BIC from a cv.glmnet fit object.
+#' @examples
+#' fit_glmnet_cv <- glmnet_cv_fit_hmd(insurance_train, target = "outcome", family = "binomial")
+#' glmnet_cv_aic_hmd(fit_glmnet_cv, lchoice = "min")
 
 glmnet_cv_aic_hmd <- function(fit,
                               lchoice="min"

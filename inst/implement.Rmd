@@ -232,7 +232,8 @@ is.na(df_enc) |> colSums()
 ```{r}
 
 df_dict <- train_test_splitter_hmd(df_enc, 
-                             proportion=0.8)
+                             proportion=0.8, 
+                             join="id")
 train <- df_dict$train
 test <- df_dict$test
 

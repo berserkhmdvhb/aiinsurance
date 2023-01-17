@@ -18,3 +18,7 @@ Plot lambda of CV.GLMNET model
 \details{
 Plots fit object fit against the log-lambda value and with each curve labeled:
 }
+\examples{
+fit <- glmnet_cv_fit_hmd(insurance_train, target = "outcome", family = "binomial")
+glmnet_cv_plot_hmd(fit)
+}

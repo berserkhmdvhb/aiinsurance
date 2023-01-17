@@ -233,7 +233,8 @@ dummy <- dummyVars(" ~ .", data=df)
 df_enc <- data.frame(predict(dummy, newdata = df)) 
 dplyr::glimpse(df_enc)
 df_dict <- train_test_splitter_hmd(df_enc, 
-                             proportion=0.8)
+                             proportion=0.8, 
+                             join = "id")
 train <- df_dict$train
 test <- df_dict$test
 for (col in names(train)){

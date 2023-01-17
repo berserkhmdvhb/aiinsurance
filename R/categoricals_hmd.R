@@ -8,8 +8,9 @@
 #' categorical columns, the function recognize a column as categorical if either
 #' its class is "character", or the number of unique values in
 #' that column has is less than 5.
-
-
+#' @examples
+#' df <- categoricals_hmd(data = car_insurance_data)
+#' dplyr::glimpse(df)
 
 categoricals_hmd <- function(data=aiinsurance::car_insurance_data){
   # ensure dataframe is not empty

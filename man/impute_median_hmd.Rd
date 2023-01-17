@@ -20,3 +20,7 @@ Imputes missing values with median
 This function receives a dataframe, finds columns containing NA values, and then
 replaces NA values of each found column with median of that column.
 }
+\examples{
+df <- impute_median_hmd(data = car_insurance_data)
+dplyr::glimpse(df)
+}

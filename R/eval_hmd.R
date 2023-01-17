@@ -9,6 +9,20 @@
 #' The function returns a hash containing the
 #' following items: accuracy, precision, recall, F-score, F-beta score, confusion
 #' matrix, and plot confusion matrix
+#' @examples
+#' actual <- insurance_test$outcome
+#' glm_fit <- glm_fit_hmd(data = insurance_train,
+#' target="outcome",
+#' family="binomial")
+#' h <- glm_predict_hmd(fit = glm_fit,
+#' data = insurance_test,
+#' target ="outcome",
+#' threshold = 0.5, s=0)
+#' predicted <- h$predictions
+#' h <- eval_hmd(actual, predicted)
+#' acc <- h$accuracy
+#' acc
+
 eval_hmd <- function(actual,
                     predicted){
 

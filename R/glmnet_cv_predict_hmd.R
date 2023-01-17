@@ -10,6 +10,20 @@
 #' @details
 #' This functions allows the user to predict a given dataset using fit object
 #' obtained from the cv.glmnet function
+#' @examples
+#' fit <- glmnet_cv_fit_hmd(insurance_train,
+#' target = "outcome",
+#' family = "binomial")
+#' glmnet_cv_predict_hmd(fit,
+#' data = insurance_test,
+#' target = "outcome",
+#' lchoice = "min",
+#' threshold = 0.5)
+#' h <- glmnet_cv_predict_hmd(fit, data = insurance_test,
+#' target = "outcome",
+#' lchoice = "min")
+#' predictions <- h$predictions
+#' predictions
 
 glmnet_cv_predict_hmd <- function(fit,
                                   data = aiinsurance::insurance_test,

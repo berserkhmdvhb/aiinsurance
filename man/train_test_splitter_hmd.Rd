@@ -6,13 +6,16 @@
 \usage{
 train_test_splitter_hmd(
   data = aiinsurance::car_insurance_data,
-  proportion = 0.7
+  proportion = 0.7,
+  join = "ID"
 )
 }
 \arguments{
 \item{data}{An arbitrary dataframe}
 
 \item{proportion}{Proportion of train to test. Default is 0.7}
+
+\item{join}{The common column of train and test, by which separation is based on.}
 }
 \value{
 Returns a hash containing train and test data
@@ -21,5 +24,14 @@ Returns a hash containing train and test data
 Splitting a Dataframe to Training and Test Datasets
 }
 \details{
-This functions allows the user to split data into train and test
+This functions allows the user to split data into train and test. The function
+needs a common column in both train and test, on which the separation is based.
+In car_insurance_data, the join column is ID
+}
+\examples{
+h <- train_test_splitter_hmd(car_insurance_data, proportion=0.7, join="ID")
+train <- h$train
+test <- h$test
+dplyr::glimpse(train)
+dplyr::glimpse(test)
 }

@@ -30,3 +30,7 @@ GLM model
 This functions allows the user to perform generalized linear model (GLM) on a given dataframe by specifying feature names (response variables),
 target variable, family of distribution, and the dataset.
 }
+\examples{
+fit <- glm_fit_hmd(data = insurance_test, target = "outcome", family="binomial")
+summary(fit)
+}

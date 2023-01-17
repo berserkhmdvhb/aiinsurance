@@ -23,3 +23,10 @@ Predict data with results from random forest model
 \details{
 This functions allows the user to predict a given dataset using a randomForest fit object
 }
+\examples{
+fit_rf <- rf_fit_hmd(data = insurance_train, target = "outcome",
+ntree = 300, mtry = 10, proximity = TRUE, importance = TRUE)
+h <- rf_predict_hmd(fit_rf, data = insurance_test, target = "outcome")
+predictions <- h$predictions
+predictions
+}

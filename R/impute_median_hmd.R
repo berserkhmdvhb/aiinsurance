@@ -6,14 +6,16 @@
 #' @details
 #' This function receives a dataframe, finds columns containing NA values, and then
 #' replaces NA values of each found column with median of that column.
-
+#' @examples
+#' df <- impute_median_hmd(data = car_insurance_data)
+#' dplyr::glimpse(df)
 
 impute_median_hmd <- function(data=aiinsurance::car_insurance_data){
   # ensure dataframe is not empy
   if (!(is.data.frame({{data}}))){
     stop("data input argument should be a dataframe.")
   }
-
+  df <- data.frame({{data}})
   cols_list = which(colSums(is.na(df))>0)
   if (length({{cols_list}}) == 0)
   {

@@ -18,3 +18,6 @@ the detected columns contain numbers or characters. To detect categorical column
 the function recognizes a column as categorical if either its class is "character",
 or the number of unique values in that column has is less than 5.
 }
+\examples{
+categoricals_print_hmd(data = car_insurance_data)
+}
