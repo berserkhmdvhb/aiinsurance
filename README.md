@@ -124,7 +124,7 @@ The steps of the pipeline are elaborated on in the following:
 Unlike the `targets` pipeline, the `shiny` is part of the packages' functions. 
 To view the shiny app, adhere to the instructions provided below:
 
-install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)).
+Install the packages required for the `aiinsurance` package from the `renv.lock` file (refer to [`renv`](#renv-packages)), then install the `aiinsurance` package itself (refer to [Install](#Install)).
 
 **Note** : Make sure to install the `aiinsurance` package after restoring the `renv`, as restoring will only include the packages required for the `aiinsurance`, but no the package itself, and hence if one installs renv after, the `aiinsurance` will no longer exist.
 
