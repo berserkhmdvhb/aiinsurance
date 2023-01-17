@@ -9,7 +9,7 @@ The `aiinsurance` package is dedicated to a project for the workshop of master o
 In this package, functions are defined for various stages of classification of the `outcome` column of the [Car Insurance Data](https://www.kaggle.com/datasets/sagnik1511/car-insurance-data).
 The raw dataset along with the processed train and test datasets, obtained by using the `aiinsurance` functions (prepared to be fed in models) are incorporated in the package.
 The package's documentation, including documentation of functions and datasets, as well as unit tests for the functions are elaborated on [Documentation](#Documentation).
-Using package's functions a machine learning classification project was done. The link to project's implementation and a detailed report is provided on [Report](#Report).
+Using package's functions, a machine learning classification project was done on the Car Insurance Dataset. The link to project's implementation, and a detailed report is provided on [Report](#Report).
 Moreover, a pipeline including main stages of the classification (refer to [`targets` Pipeline](#targets-Pipeline)), and a shiny interactive app (refer to [`shiny` App](#shiny-App)) visualizing evaluation plots are included in the package.
 
 **Note**: All functions from this pakcage are suffixed with `hmd` so as not to confuse with other built-in packages.
